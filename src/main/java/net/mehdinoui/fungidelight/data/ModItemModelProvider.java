@@ -15,6 +15,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         flatItem(ModItems.INKY_CAP_MUSHROOM);
+        flatItem(ModItems.MOREL_MUSHROOM);
     }
     // --- Helper Methods ---
     private void flatItem(RegistryObject<?> itemRegistry) {

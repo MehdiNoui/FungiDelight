@@ -26,6 +26,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleCrossBlock(ModBlocks.INKY_CAP_MUSHROOM);
+        simpleCrossBlock(ModBlocks.MOREL_MUSHROOM);
     }
 
     // --- Helper Methods ---

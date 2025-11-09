@@ -26,5 +26,6 @@ public class ModCreativeTab {
                     .title(Component.translatable("creativetab.fungidelight_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.INKY_CAP_MUSHROOM.get());
+                        pOutput.accept(ModItems.MOREL_MUSHROOM.get());
                     }).build());
 }

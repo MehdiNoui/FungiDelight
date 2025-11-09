@@ -35,4 +35,6 @@ public class ModItems {
     // --- Block Items ---
     public static final RegistryObject<Item> INKY_CAP_MUSHROOM = ITEMS.register("inky_cap_mushroom",
             () -> new BlockItem(ModBlocks.INKY_CAP_MUSHROOM.get(), basicItem()));
+    public static final RegistryObject<Item> MOREL_MUSHROOM = ITEMS.register("morel_mushroom",
+            () -> new BlockItem(ModBlocks.MOREL_MUSHROOM.get(), basicItem()));
 }
