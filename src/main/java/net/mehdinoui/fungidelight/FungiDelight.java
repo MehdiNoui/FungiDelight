@@ -1,5 +1,6 @@
 package net.mehdinoui.fungidelight;
 
+import net.mehdinoui.fungidelight.common.registry.*;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -14,6 +15,11 @@ public class FungiDelight {
 
     public FungiDelight() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModCreativeTab.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 }
