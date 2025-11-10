@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.item.MushroomColonyItem;
 
 
 public class ModItems {
@@ -48,4 +49,9 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.MOREL_MUSHROOM_BLOCK.get(), basicItem()));
     public static final RegistryObject<Item> MOREL_MUSHROOM_STEM = ITEMS.register("morel_mushroom_stem",
             () -> new BlockItem(ModBlocks.MOREL_MUSHROOM_STEM.get(), basicItem()));
+
+    public static final RegistryObject<Item> INKY_CAP_MUSHROOM_COLONY = ITEMS.register("inky_cap_mushroom_colony",
+            () -> new MushroomColonyItem(ModBlocks.INKY_CAP_MUSHROOM_COLONY.get(), basicItem()));
+    public static final RegistryObject<Item> MOREL_MUSHROOM_COLONY = ITEMS.register("morel_mushroom_colony",
+            () -> new MushroomColonyItem(ModBlocks.MOREL_MUSHROOM_COLONY.get(), basicItem()));
 }

@@ -11,6 +11,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.block.MushroomColonyBlock;
 
 public class ModBlocks {
     // --- Deferred Register ---
@@ -25,7 +26,7 @@ public class ModBlocks {
     // --- Blocks Registry ---
     // Mushrooms
     public static final RegistryObject<Block> INKY_CAP_MUSHROOM = BLOCKS.register("inky_cap_mushroom",
-            () -> new InkyCapBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
+            () -> new InkyCapBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM)));
     public static final RegistryObject<Block> MOREL_MUSHROOM = BLOCKS.register("morel_mushroom",
             () -> new MorelBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
     // Mushrooms Blocks
@@ -40,4 +41,10 @@ public class ModBlocks {
             () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> MOREL_MUSHROOM_STEM = BLOCKS.register("morel_mushroom_stem",
             () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM)));
+
+    // Mushroom Colonies
+    public static final RegistryObject<Block> INKY_CAP_MUSHROOM_COLONY = BLOCKS.register("inky_cap_mushroom_colony",
+            () -> new MushroomColonyBlock(Block.Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.INKY_CAP_MUSHROOM));
+    public static final RegistryObject<Block> MOREL_MUSHROOM_COLONY = BLOCKS.register("morel_mushroom_colony",
+            () -> new MushroomColonyBlock(Block.Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.MOREL_MUSHROOM));
 }
