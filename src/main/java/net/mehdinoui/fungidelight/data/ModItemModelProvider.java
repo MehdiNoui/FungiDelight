@@ -5,10 +5,13 @@ import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.block.MushroomColonyBlock;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -19,6 +22,9 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         flatItem(ModItems.INKY_CAP_MUSHROOM);
         flatItem(ModItems.MOREL_MUSHROOM);
+
+        flatItem(ModItems.INKY_CAP_MUSHROOM_COLONY, "_stage3");
+        flatItem(ModItems.MOREL_MUSHROOM_COLONY, "_stage3");
 
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_BLOCK, "_inventory");
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_EDGE, "_inventory");
@@ -31,6 +37,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         String name = itemRegistry.getId().getPath();
         withExistingParent(name, "item/generated")
                 .texture("layer0", modLoc("block/" + name));
+    }
+    private void flatItem(RegistryObject<?> itemRegistry, String stuff) {
+        String name = itemRegistry.getId().getPath();
+        withExistingParent(name, "item/generated")
+                .texture("layer0", modLoc("block/" + name + stuff));
     }
     public void simpleBlock(RegistryObject<Block> block) {
         this.withExistingParent(
