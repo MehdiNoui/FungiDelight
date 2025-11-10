@@ -54,4 +54,8 @@ public class ModItems {
             () -> new MushroomColonyItem(ModBlocks.INKY_CAP_MUSHROOM_COLONY.get(), basicItem()));
     public static final RegistryObject<Item> MOREL_MUSHROOM_COLONY = ITEMS.register("morel_mushroom_colony",
             () -> new MushroomColonyItem(ModBlocks.MOREL_MUSHROOM_COLONY.get(), basicItem()));
+
+    public static final RegistryObject<Item> INKY_GOO = ITEMS.register("inky_goo",
+            () -> new BlockItem(ModBlocks.INKY_GOO.get(), basicItem()));
+
 }

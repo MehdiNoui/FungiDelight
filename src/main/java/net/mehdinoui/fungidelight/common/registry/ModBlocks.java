@@ -2,6 +2,7 @@ package net.mehdinoui.fungidelight.common.registry;
 
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.block.mushrooms.InkyCapBlock;
+import net.mehdinoui.fungidelight.common.block.mushrooms.InkyGooBlock;
 import net.mehdinoui.fungidelight.common.block.mushrooms.MorelBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -47,4 +48,8 @@ public class ModBlocks {
             () -> new MushroomColonyBlock(Block.Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.INKY_CAP_MUSHROOM));
     public static final RegistryObject<Block> MOREL_MUSHROOM_COLONY = BLOCKS.register("morel_mushroom_colony",
             () -> new MushroomColonyBlock(Block.Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.MOREL_MUSHROOM));
+
+    // Inky Cap Goo
+    public static final RegistryObject<Block> INKY_GOO = BLOCKS.register("inky_goo",
+            () -> new InkyGooBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES)));
 }
