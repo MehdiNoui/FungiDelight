@@ -37,4 +37,15 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.INKY_CAP_MUSHROOM.get(), basicItem()));
     public static final RegistryObject<Item> MOREL_MUSHROOM = ITEMS.register("morel_mushroom",
             () -> new BlockItem(ModBlocks.MOREL_MUSHROOM.get(), basicItem()));
+
+    public static final RegistryObject<Item> INKY_CAP_MUSHROOM_BLOCK = ITEMS.register("inky_cap_mushroom_block",
+            () -> new BlockItem(ModBlocks.INKY_CAP_MUSHROOM_BLOCK.get(), basicItem()));
+    public static final RegistryObject<Item> INKY_CAP_MUSHROOM_EDGE = ITEMS.register("inky_cap_mushroom_edge",
+            () -> new BlockItem(ModBlocks.INKY_CAP_MUSHROOM_EDGE.get(), basicItem()));
+    public static final RegistryObject<Item> INKY_CAP_MUSHROOM_STEM = ITEMS.register("inky_cap_mushroom_stem",
+            () -> new BlockItem(ModBlocks.INKY_CAP_MUSHROOM_STEM.get(), basicItem()));
+    public static final RegistryObject<Item> MOREL_MUSHROOM_BLOCK = ITEMS.register("morel_mushroom_block",
+            () -> new BlockItem(ModBlocks.MOREL_MUSHROOM_BLOCK.get(), basicItem()));
+    public static final RegistryObject<Item> MOREL_MUSHROOM_STEM = ITEMS.register("morel_mushroom_stem",
+            () -> new BlockItem(ModBlocks.MOREL_MUSHROOM_STEM.get(), basicItem()));
 }
