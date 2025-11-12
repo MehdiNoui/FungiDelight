@@ -15,13 +15,13 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class InkyGooBlock extends Block {
+public class InkyGooVeilBlock extends Block {
     public static final BooleanProperty CONNECTED = BooleanProperty.create("connected");
 
     protected static final VoxelShape SHAPE_NORMAL = Block.box(0.0D, 9.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     protected static final VoxelShape SHAPE_CONNECTED = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
-    public InkyGooBlock(BlockBehaviour.Properties properties) {
+    public InkyGooVeilBlock(BlockBehaviour.Properties properties) {
         super(properties.noOcclusion().instabreak().lightLevel(state -> 5).sound(SoundType.HONEY_BLOCK));
         this.registerDefaultState(this.stateDefinition.any().setValue(CONNECTED, false));
     }

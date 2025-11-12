@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "connected=false": { "model": "fungidelight:block/inky_goo_veil" },
+    "connected=true":  { "model": "fungidelight:block/inky_goo_veil_connected" }
+  }
+}

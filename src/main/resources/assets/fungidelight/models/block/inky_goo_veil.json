@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "fungidelight:block/inky_goo"
+    "cross": "fungidelight:block/inky_goo_veil"
   }
 }

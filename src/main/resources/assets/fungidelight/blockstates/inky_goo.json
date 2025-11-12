@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "connected=false": { "model": "fungidelight:block/inky_goo" },
-    "connected=true":  { "model": "fungidelight:block/inky_goo_connected" }
-  }
-}
