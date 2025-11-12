@@ -26,7 +26,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         flatItem(ModItems.INKY_CAP_MUSHROOM_COLONY, "_stage3");
         flatItem(ModItems.MOREL_MUSHROOM_COLONY, "_stage3");
 
-        flatItem(ModItems.INKY_GOO_VEIL);
+        flatItem(ModItems.INKY_GOO_VEIL, "_connected");
 
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_BLOCK, "_inventory");
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_EDGE, "_inventory");
