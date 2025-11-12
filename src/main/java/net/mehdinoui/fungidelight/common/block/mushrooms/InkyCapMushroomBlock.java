@@ -12,11 +12,13 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
-public class InkyCapBlock extends MushroomBlock {
+import static net.mehdinoui.fungidelight.common.registry.ModConfiguredFeatures.HUGE_INKY_CAP_MUSHROOM;
+
+public class InkyCapMushroomBlock extends MushroomBlock {
     protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
 
-    public InkyCapBlock(Properties pProperties) {
-        super(pProperties, null);
+    public InkyCapMushroomBlock(Properties pProperties) {
+        super(pProperties, HUGE_INKY_CAP_MUSHROOM);
     }
 
     @Override
