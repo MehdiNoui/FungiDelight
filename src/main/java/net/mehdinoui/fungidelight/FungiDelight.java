@@ -19,6 +19,7 @@ public class FungiDelight {
         ModCreativeTab.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModFeatures.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
