@@ -1,9 +1,9 @@
 package net.mehdinoui.fungidelight.common.registry;
 
 import net.mehdinoui.fungidelight.FungiDelight;
-import net.mehdinoui.fungidelight.common.block.mushrooms.InkyCapBlock;
-import net.mehdinoui.fungidelight.common.block.mushrooms.InkyGooBlock;
-import net.mehdinoui.fungidelight.common.block.mushrooms.MorelBlock;
+import net.mehdinoui.fungidelight.common.block.mushrooms.InkyCapMushroomBlock;
+import net.mehdinoui.fungidelight.common.block.mushrooms.InkyGooVeilBlock;
+import net.mehdinoui.fungidelight.common.block.mushrooms.MorelMushroomBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HugeMushroomBlock;
@@ -27,9 +27,9 @@ public class ModBlocks {
     // --- Blocks Registry ---
     // Mushrooms
     public static final RegistryObject<Block> INKY_CAP_MUSHROOM = BLOCKS.register("inky_cap_mushroom",
-            () -> new InkyCapBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM)));
+            () -> new InkyCapMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM)));
     public static final RegistryObject<Block> MOREL_MUSHROOM = BLOCKS.register("morel_mushroom",
-            () -> new MorelBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
+            () -> new MorelMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
     // Mushrooms Blocks
     public static final RegistryObject<Block> INKY_CAP_MUSHROOM_BLOCK = BLOCKS.register("inky_cap_mushroom_block",
             () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM)));
@@ -50,6 +50,6 @@ public class ModBlocks {
             () -> new MushroomColonyBlock(Block.Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.MOREL_MUSHROOM));
 
     // Inky Cap Goo
-    public static final RegistryObject<Block> INKY_GOO = BLOCKS.register("inky_goo",
-            () -> new InkyGooBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES)));
+    public static final RegistryObject<Block> INKY_GOO_VEIL = BLOCKS.register("inky_goo_veil",
+            () -> new InkyGooVeilBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES)));
 }
