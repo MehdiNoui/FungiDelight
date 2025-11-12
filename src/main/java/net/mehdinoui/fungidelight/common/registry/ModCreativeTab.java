@@ -33,7 +33,7 @@ public class ModCreativeTab {
                         pOutput.accept(ModItems.INKY_CAP_MUSHROOM_BLOCK.get());
                         pOutput.accept(ModItems.INKY_CAP_MUSHROOM_EDGE.get());
                         pOutput.accept(ModItems.INKY_CAP_MUSHROOM_STEM.get());
-                        pOutput.accept(ModItems.INKY_GOO.get());
+                        pOutput.accept(ModItems.INKY_GOO_VEIL.get());
 
                         pOutput.accept(ModItems.MOREL_MUSHROOM_BLOCK.get());
                         pOutput.accept(ModItems.MOREL_MUSHROOM_STEM.get());
