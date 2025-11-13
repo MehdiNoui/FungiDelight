@@ -1,6 +1,7 @@
 package net.mehdinoui.fungidelight.common.world.feature;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -21,8 +22,10 @@ public abstract class CustomHugeMushroomFeature extends Feature<NoneFeatureConfi
         }
         return stemHeight > 0;
     }
+
     // Cap placing
     protected void placeCapLayer(LevelAccessor world, BlockPos center, int[][] offsets, BlockState block, boolean hanging) {
+        // This part is to get the center of each cap layer to properly place it around the stem.
         int minX = Integer.MAX_VALUE, maxX = Integer.MIN_VALUE;
         int minZ = Integer.MAX_VALUE, maxZ = Integer.MIN_VALUE;
         for (int[] offset : offsets) {
@@ -34,7 +37,7 @@ public abstract class CustomHugeMushroomFeature extends Feature<NoneFeatureConfi
         int centerX = (minX + maxX) / 2;
         int centerZ = (minZ + maxZ) / 2;
 
-        if (!hanging) {
+        if (!hanging) { // For block placement
             for (int[] offset : offsets) {
                 BlockPos blockPos = center.offset(offset[0] - centerX, 0, offset[1] - centerZ);
                 // Check if it's replaceable, if not ignore and do nothing
@@ -42,7 +45,7 @@ public abstract class CustomHugeMushroomFeature extends Feature<NoneFeatureConfi
                     world.setBlock(blockPos, block, 3);
                 }
             }
-        } else {
+        } else { // For veils placement or anything with a chance
             var random = world.getRandom();
             for (int[] offset : offsets) {
                 BlockPos blockPos = center.offset(offset[0] - centerX, 0, offset[1] - centerZ);
@@ -60,11 +63,23 @@ public abstract class CustomHugeMushroomFeature extends Feature<NoneFeatureConfi
             }
         }
     }
-
-    protected boolean isValidSpace(LevelAccessor world, BlockPos pos, int height) {
-        if (!world.getBlockState(pos.below()).isSolid()) return false;
-        for (int y = 0; y <= height; y++) {
+    // This method checks if the mushroom got enough space
+    protected boolean isValidSpace(LevelAccessor world, BlockPos pos, int mushroomHeight, int capHeight, int mushroomRadius) {
+        // Checks if the ground is suitable for huge mushrooms
+        if (!world.getBlockState(pos.below()).is(BlockTags.MUSHROOM_GROW_BLOCK)) return false;
+        // Cheks for world height safety
+        if (pos.getY() + mushroomHeight >= world.getMaxBuildHeight()) return false;
+        // Checks if nothing is in the way for the stem
+        for (int y = 0; y <= mushroomHeight; y++) {
             if (!world.getBlockState(pos.above(y)).canBeReplaced()) return false;
+        }
+        // Checks if nothing is in the way for the cap radius
+        for (int y = mushroomHeight; y >= capHeight; y--) {
+            for (int x = -mushroomRadius; x <= mushroomRadius; x++) {
+                for (int z = -mushroomRadius; z <= mushroomRadius; z++) {
+                    if (!world.getBlockState(pos.offset(x, y, z)).canBeReplaced()) return false;
+                }
+            }
         }
         return true;
     }

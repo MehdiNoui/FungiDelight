@@ -19,7 +19,7 @@ public class HugeInkyCapFeature extends CustomHugeMushroomFeature {
         var world = context.level();
         var pos = context.origin();
 
-        if (!isValidSpace(world, pos, 6)) return false;
+        if (!isValidSpace(world, pos, 6,4,3)) return false;
 
         int stemHeight = 5 + context.random().nextInt(3);
         placeStem(world, pos, stemHeight, stemHeight, ModBlocks.INKY_CAP_MUSHROOM_STEM.get().defaultBlockState());

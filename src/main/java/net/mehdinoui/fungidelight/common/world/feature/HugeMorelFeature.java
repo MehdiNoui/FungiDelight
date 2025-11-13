@@ -23,7 +23,7 @@ public class HugeMorelFeature extends CustomHugeMushroomFeature {
         var world = context.level();
         var pos = context.origin();
 
-        if (!isValidSpace(world, pos, 6)) return false;
+        if (!isValidSpace(world, pos, 6,6, 2)) return false;
 
         int stemHeight = 9 + context.random().nextInt(4);
         placeStem(world, pos, stemHeight, stemHeight, ModBlocks.MOREL_MUSHROOM_STEM.get().defaultBlockState());
