@@ -1,6 +1,7 @@
 package net.mehdinoui.fungidelight.data;
 
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.data.tag.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -19,7 +20,13 @@ public class DataGenerators {
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        // Model
+
+        // Tags
+        BlockTags blockTags = new BlockTags(packOutput, lookupProvider, existingFileHelper);
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(),
+                new ItemTags(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
+        // Models
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
         // World-gen
