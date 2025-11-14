@@ -22,20 +22,26 @@ public class ModBiomeModifiers {
             ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_huge_inky_cap"));
     public static final ResourceKey<BiomeModifier> ADD_HUGE_MOREL =
             ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_huge_morel"));
+
     public static final ResourceKey<BiomeModifier> ADD_INKY_CAP_MUSHROOM_PATCH_MUSHROOM_FIELD =
             ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_inky_cap_patch_mushroom_field"));
     public static final ResourceKey<BiomeModifier> ADD_MOREL_MUSHROOM_PATCH_MUSHROOM_FIELD =
             ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_morel_patch_mushroom_field"));
-    public static final ResourceKey<BiomeModifier> ADD_INKY_CAP_MUSHROOM_PATCH_TAIGA =
-            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_inky_cap_patch_taiga"));
-    public static final ResourceKey<BiomeModifier> ADD_MOREL_MUSHROOM_PATCH_TAIGA =
-            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_morel_patch_taiga"));
+
+    public static final ResourceKey<BiomeModifier> ADD_INKY_CAP_MUSHROOM_PATCH_OVERWORLD =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_inky_cap_patch_overworld"));
+    public static final ResourceKey<BiomeModifier> ADD_MOREL_MUSHROOM_PATCH_OVERWORLD =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_morel_patch_overworld"));
+
+    public static final ResourceKey<BiomeModifier> ADD_INKY_CAP_MUSHROOM_PATCH_DENSE =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_inky_cap_patch_dense"));
+    public static final ResourceKey<BiomeModifier> ADD_MOREL_MUSHROOM_PATCH_SWAMP =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_morel_patch_swamp"));
 
     // --- Register ---
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
-
         // Huge Mushrooms
         context.register(
                 ADD_HUGE_INKY_CAP,
@@ -53,12 +59,29 @@ public class ModBiomeModifiers {
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );
-        // Mushrooms patches
+        // Mushrooms Patches
+        context.register(
+                ADD_INKY_CAP_MUSHROOM_PATCH_OVERWORLD,
+                new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.INKY_CAP_MUSHROOM_NORMAL_PLACED_KEY)),
+                        GenerationStep.Decoration.VEGETAL_DECORATION
+                )
+        );
+        context.register(
+                ADD_MOREL_MUSHROOM_PATCH_OVERWORLD,
+                new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MOREL_MUSHROOM_NORMAL_PLACED_KEY)),
+                        GenerationStep.Decoration.VEGETAL_DECORATION
+                )
+        );
+
         context.register(
                 ADD_INKY_CAP_MUSHROOM_PATCH_MUSHROOM_FIELD,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_MUSHROOM),
-                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.INKY_CAP_MUSHROOM_NORMAL_PLACED_KEY)),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.INKY_CAP_MUSHROOM_COMMON_PLACED_KEY)),
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );
@@ -66,23 +89,24 @@ public class ModBiomeModifiers {
                 ADD_MOREL_MUSHROOM_PATCH_MUSHROOM_FIELD,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_MUSHROOM),
-                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MOREL_MUSHROOM_NORMAL_PLACED_KEY)),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MOREL_MUSHROOM_COMMON_PLACED_KEY)),
+                        GenerationStep.Decoration.VEGETAL_DECORATION
+                )
+        );
+
+        context.register(
+                ADD_INKY_CAP_MUSHROOM_PATCH_DENSE,
+                new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_DENSE_OVERWORLD),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.INKY_CAP_MUSHROOM_RARE_PLACED_KEY)),
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );
         context.register(
-               ADD_INKY_CAP_MUSHROOM_PATCH_TAIGA,
+                ADD_MOREL_MUSHROOM_PATCH_SWAMP,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                        biomes.getOrThrow(BiomeTags.IS_TAIGA),
-                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.INKY_CAP_MUSHROOM_NORMAL_PLACED_KEY)),
-                        GenerationStep.Decoration.VEGETAL_DECORATION
-                )
-        );
-        context.register(
-                ADD_MOREL_MUSHROOM_PATCH_TAIGA,
-                new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                        biomes.getOrThrow(BiomeTags.IS_TAIGA),
-                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MOREL_MUSHROOM_NORMAL_PLACED_KEY)),
+                        biomes.getOrThrow(Tags.Biomes.IS_SWAMP),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MOREL_MUSHROOM_RARE_PLACED_KEY)),
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );

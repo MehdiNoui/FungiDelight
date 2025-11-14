@@ -22,6 +22,14 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "inky_cap_mushroom_normal"));
     public static final ResourceKey<PlacedFeature> MOREL_MUSHROOM_NORMAL_PLACED_KEY =
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "morel_mushroom_normal"));
+    public static final ResourceKey<PlacedFeature> INKY_CAP_MUSHROOM_COMMON_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "inky_cap_mushroom_common"));
+    public static final ResourceKey<PlacedFeature> MOREL_MUSHROOM_COMMON_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "morel_mushroom_common"));
+    public static final ResourceKey<PlacedFeature> INKY_CAP_MUSHROOM_RARE_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "inky_cap_mushroom_rare"));
+    public static final ResourceKey<PlacedFeature> MOREL_MUSHROOM_RARE_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "morel_mushroom_rare"));
 
     // --- Register ---
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -59,7 +67,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(8),
+                                RarityFilter.onAverageOnceEvery(768),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -71,6 +79,56 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
                         List.of(
+                                RarityFilter.onAverageOnceEvery(384),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP,
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+        context.register(
+                INKY_CAP_MUSHROOM_COMMON_PLACED_KEY,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM),
+                        List.of(
+                                RarityFilter.onAverageOnceEvery(4),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP,
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+        context.register(
+                MOREL_MUSHROOM_COMMON_PLACED_KEY,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
+                        List.of(
+                                RarityFilter.onAverageOnceEvery(4),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP,
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+        context.register(
+                INKY_CAP_MUSHROOM_RARE_PLACED_KEY,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM),
+                        List.of(
+                                CountPlacement.of(3),
+                                RarityFilter.onAverageOnceEvery(4),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP,
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+        context.register(
+                MOREL_MUSHROOM_RARE_PLACED_KEY,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
+                        List.of(
+                                CountPlacement.of(1),
                                 RarityFilter.onAverageOnceEvery(4),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
