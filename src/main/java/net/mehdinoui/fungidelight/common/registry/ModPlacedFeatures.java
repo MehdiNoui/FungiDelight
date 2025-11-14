@@ -54,7 +54,7 @@ public class ModPlacedFeatures {
                         configured.getOrThrow(ModConfiguredFeatures.HUGE_MOREL_MUSHROOM),
                         List.of(
                                 CountPlacement.of(1),
-                                RarityFilter.onAverageOnceEvery(3),
+                                RarityFilter.onAverageOnceEvery(4),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
