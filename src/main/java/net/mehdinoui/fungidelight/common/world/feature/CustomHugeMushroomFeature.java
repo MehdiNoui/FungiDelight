@@ -37,7 +37,7 @@ public abstract class CustomHugeMushroomFeature extends Feature<NoneFeatureConfi
         int centerX = (minX + maxX) / 2;
         int centerZ = (minZ + maxZ) / 2;
 
-        if (!hanging) { // For block placement
+        if (!hanging) { // For normal block placement
             for (int[] offset : offsets) {
                 BlockPos blockPos = center.offset(offset[0] - centerX, 0, offset[1] - centerZ);
                 // Check if it's replaceable, if not ignore and do nothing
@@ -51,22 +51,29 @@ public abstract class CustomHugeMushroomFeature extends Feature<NoneFeatureConfi
                 BlockPos blockPos = center.offset(offset[0] - centerX, 0, offset[1] - centerZ);
                 // Check if it's replaceable, if not ignore and do nothing
                 if (world.getBlockState(blockPos).canBeReplaced()
-                        && random.nextFloat() < 0.6f) {
-                    int length = 1 + random.nextInt(2); // either 1 or 2
+                        && random.nextFloat() < 0.6f) { // gets chance
+                    int length = 1 + random.nextInt(2); // either 1 or 2 hanging veils
                     for (int i = 0; i < length; i++) {
                         BlockPos hangingPos = blockPos.below(i);
+                        boolean connected = length - i > 1;
+                        // Setting the placed block state accordingly
+                        BlockState finalState = block.setValue(
+                                net.mehdinoui.fungidelight.common.block.mushrooms.InkyGooVeilBlock.CONNECTED,
+                                connected
+                        );
                         if (world.getBlockState(hangingPos).canBeReplaced()) {
-                            world.setBlock(hangingPos, block, 3);
+                            world.setBlock(hangingPos, finalState, 3);
                         } else break; // stop if it hits a solid block
                     }
                 }
             }
         }
     }
-    // This method checks if the mushroom got enough space
+
+    // This method simply checks if the mushroom got valid space in multiple senses
     protected boolean isValidSpace(LevelAccessor world, BlockPos pos, int mushroomHeight, int capHeight, int mushroomRadius) {
         // Checks if the ground is suitable for huge mushrooms
-        if (!world.getBlockState(pos.below()).is(BlockTags.MUSHROOM_GROW_BLOCK)) return false;
+        if (!world.getBlockState(pos.below()).is(BlockTags.DIRT)) return false;
         // Cheks for world height safety
         if (pos.getY() + mushroomHeight >= world.getMaxBuildHeight()) return false;
         // Checks if nothing is in the way for the stem
