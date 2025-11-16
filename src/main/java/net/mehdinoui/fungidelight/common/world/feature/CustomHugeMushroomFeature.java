@@ -6,6 +6,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 public abstract class CustomHugeMushroomFeature extends Feature<NoneFeatureConfiguration> {
     protected CustomHugeMushroomFeature(com.mojang.serialization.Codec<NoneFeatureConfiguration> codec) {
@@ -73,7 +74,9 @@ public abstract class CustomHugeMushroomFeature extends Feature<NoneFeatureConfi
     // This method simply checks if the mushroom got valid space in multiple senses
     protected boolean isValidSpace(LevelAccessor world, BlockPos pos, int mushroomHeight, int capHeight, int mushroomRadius) {
         // Checks if the ground is suitable for huge mushrooms
-        if (!world.getBlockState(pos.below()).is(BlockTags.DIRT)) return false;
+        BlockState state = world.getBlockState((pos.below()));
+        if (!state.is(BlockTags.DIRT) || state.is(ModTags.MUSHROOM_COLONY_GROWABLE_ON))
+            return false;
         // Cheks for world height safety
         if (pos.getY() + mushroomHeight >= world.getMaxBuildHeight()) return false;
         // Checks if nothing is in the way for the stem
