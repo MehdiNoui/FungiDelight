@@ -2,6 +2,9 @@ package net.mehdinoui.fungidelight.common.registry;
 
 import jdk.jfr.Registered;
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -38,13 +41,16 @@ public class ModConfiguredFeatures {
                 PATCH_MOREL_MUSHROOM,
                 new ConfiguredFeature<>(
                         Feature.RANDOM_PATCH,
-                        new RandomPatchConfiguration(96, 7, 3,
+                        new RandomPatchConfiguration(36, 5, 3,
                                 PlacementUtils.filtered(
                                         Feature.SIMPLE_BLOCK,
                                         new SimpleBlockConfiguration(
                                                 SimpleStateProvider.simple(ModBlocks.MOREL_MUSHROOM.get().defaultBlockState())
                                         ),
-                                        BlockPredicate.ONLY_IN_AIR_PREDICATE
+                                        BlockPredicate.allOf(
+                                                BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                                BlockPredicate.matchesTag(new Vec3i(0, -1, 0), FungiDelightTags.MOREL_PLACEABLE_ON)
+                                        )
                                 )
                         )
                 )
@@ -53,13 +59,16 @@ public class ModConfiguredFeatures {
                 PATCH_INKY_CAP_MUSHROOM,
                 new ConfiguredFeature<>(
                         Feature.RANDOM_PATCH,
-                        new RandomPatchConfiguration(96, 7, 3,
+                        new RandomPatchConfiguration(46, 7, 3,
                                 PlacementUtils.filtered(
                                         Feature.SIMPLE_BLOCK,
                                         new SimpleBlockConfiguration(
                                                 SimpleStateProvider.simple(ModBlocks.INKY_CAP_MUSHROOM.get().defaultBlockState())
                                         ),
-                                        BlockPredicate.ONLY_IN_AIR_PREDICATE
+                                        BlockPredicate.allOf(
+                                                BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                                BlockPredicate.matchesTag(new Vec3i(0, -1, 0), FungiDelightTags.MOREL_PLACEABLE_ON)
+                                        )
                                 )
                         )
                 )

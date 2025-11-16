@@ -91,7 +91,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(4),
+                                RarityFilter.onAverageOnceEvery(16),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -103,7 +103,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(4),
+                                RarityFilter.onAverageOnceEvery(12),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -115,8 +115,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM),
                         List.of(
-                                CountPlacement.of(3),
-                                RarityFilter.onAverageOnceEvery(4),
+                                RarityFilter.onAverageOnceEvery(64),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -128,8 +127,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
                         List.of(
-                                CountPlacement.of(1),
-                                RarityFilter.onAverageOnceEvery(4),
+                                RarityFilter.onAverageOnceEvery(32),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
