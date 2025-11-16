@@ -33,7 +33,8 @@ public class BlockTags extends BlockTagsProvider {
         // Mushrooms
         tag(net.minecraft.tags.BlockTags.SWORD_EFFICIENT).add(
                 ModBlocks.INKY_CAP_MUSHROOM.get(),
-                ModBlocks.MOREL_MUSHROOM.get()
+                ModBlocks.MOREL_MUSHROOM.get(),
+                ModBlocks.INKY_GOO_VEIL.get()
         );
         tag(net.minecraft.tags.BlockTags.ENDERMAN_HOLDABLE).add(
                 ModBlocks.INKY_CAP_MUSHROOM.get(),
@@ -45,8 +46,18 @@ public class BlockTags extends BlockTagsProvider {
                 ModBlocks.INKY_CAP_MUSHROOM_BLOCK.get(),
                 ModBlocks.INKY_CAP_MUSHROOM_EDGE.get(),
                 ModBlocks.INKY_CAP_MUSHROOM_STEM.get(),
+                ModBlocks.INKY_GOO_VEIL.get(),
                 ModBlocks.MOREL_MUSHROOM_BLOCK.get(),
                 ModBlocks.MOREL_MUSHROOM_STEM.get()
+        );
+        tag(net.minecraft.tags.BlockTags.REPLACEABLE_BY_TREES).add(
+                ModBlocks.INKY_GOO_VEIL.get()
+        );
+        tag(net.minecraft.tags.BlockTags.REPLACEABLE).add(
+                ModBlocks.INKY_GOO_VEIL.get()
+        );
+        tag(net.minecraft.tags.BlockTags.ENCHANTMENT_POWER_TRANSMITTER).add(
+                ModBlocks.INKY_GOO_VEIL.get()
         );
     }
     protected void registerFarmersDelightTags() {
