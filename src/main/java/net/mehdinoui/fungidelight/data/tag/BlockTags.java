@@ -2,8 +2,11 @@ package net.mehdinoui.fungidelight.data.tag;
 
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +25,7 @@ public class BlockTags extends BlockTagsProvider {
         this.registerForgeTags();
         this.registerMinecraftTags();
         this.registerFarmersDelightTags();
+        this.registerFungiDelightTags();
     }
     protected void registerForgeTags() {
     }
@@ -56,5 +60,20 @@ public class BlockTags extends BlockTagsProvider {
                 ModBlocks.INKY_CAP_MUSHROOM_COLONY.get(),
                 ModBlocks.MOREL_MUSHROOM_COLONY.get()
         );
+    }
+    protected void registerFungiDelightTags() {
+        tag(FungiDelightTags.INKY_CAP_PLACEABLE_ON)
+                .addTag(net.minecraft.tags.BlockTags.DIRT)
+                .addTag(net.minecraft.tags.BlockTags.LOGS)
+                .addTag(net.minecraft.tags.BlockTags.MUSHROOM_GROW_BLOCK)
+                .addTag(Tags.Blocks.COBBLESTONE)
+                .addTag(Tags.Blocks.STONE)
+                .add(Blocks.SCULK);
+        tag(FungiDelightTags.MOREL_PLACEABLE_ON)
+                .addTag(net.minecraft.tags.BlockTags.DIRT)
+                .addTag(net.minecraft.tags.BlockTags.LOGS)
+                .addTag(net.minecraft.tags.BlockTags.MUSHROOM_GROW_BLOCK)
+                .addTag(Tags.Blocks.COBBLESTONE)
+                .addTag(Tags.Blocks.STONE);
     }
 }
