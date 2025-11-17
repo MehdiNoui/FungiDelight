@@ -1,6 +1,7 @@
 package net.mehdinoui.fungidelight.common.registry;
 
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.common.world.ConfigurableRarityFilter;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -41,7 +42,8 @@ public class ModPlacedFeatures {
                         configured.getOrThrow(ModConfiguredFeatures.HUGE_INKY_CAP_MUSHROOM),
                         List.of(
                                 CountPlacement.of(1),
-                                RarityFilter.onAverageOnceEvery(3),
+                                // Pass the string key instead of calling .get()
+                                new ConfigurableRarityFilter("huge_inky_cap"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -54,7 +56,8 @@ public class ModPlacedFeatures {
                         configured.getOrThrow(ModConfiguredFeatures.HUGE_MOREL_MUSHROOM),
                         List.of(
                                 CountPlacement.of(1),
-                                RarityFilter.onAverageOnceEvery(4),
+                                // Pass the string key and (FIXED) use the correct key
+                                new ConfigurableRarityFilter("huge_morel"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -67,7 +70,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(768),
+                                new ConfigurableRarityFilter("inky_cap_normal"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -79,7 +82,8 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(384),
+                                // (FIXED) Use the correct key
+                                new ConfigurableRarityFilter("morel_normal"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -91,7 +95,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(16),
+                                new ConfigurableRarityFilter("inky_cap_common"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -103,7 +107,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(12),
+                                new ConfigurableRarityFilter("morel_common"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -115,7 +119,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(64),
+                                new ConfigurableRarityFilter("inky_cap_rare"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
@@ -127,7 +131,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(32),
+                                new ConfigurableRarityFilter("morel_rare"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
