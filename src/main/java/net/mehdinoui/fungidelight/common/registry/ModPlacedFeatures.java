@@ -8,8 +8,11 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
+import vectorwing.farmersdelight.common.registry.ModBiomeFeatures;
+import vectorwing.farmersdelight.common.world.filter.BiomeTagFilter;
 
 import java.util.List;
 
@@ -31,6 +34,10 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "inky_cap_mushroom_rare"));
     public static final ResourceKey<PlacedFeature> MOREL_MUSHROOM_RARE_PLACED_KEY =
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "morel_mushroom_rare"));
+    public static final ResourceKey<PlacedFeature> INKY_CAP_MUSHROOM_COLONY_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "patch_inky_cap_mushroom_colony"));
+    public static final ResourceKey<PlacedFeature> MOREL_MUSHROOM_COLONY_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "patch_morel_mushroom_colony"));
 
     // --- Register ---
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -42,7 +49,6 @@ public class ModPlacedFeatures {
                         configured.getOrThrow(ModConfiguredFeatures.HUGE_INKY_CAP_MUSHROOM),
                         List.of(
                                 CountPlacement.of(1),
-                                // Pass the string key instead of calling .get()
                                 new ConfigurableRarityFilter("huge_inky_cap"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
@@ -56,7 +62,6 @@ public class ModPlacedFeatures {
                         configured.getOrThrow(ModConfiguredFeatures.HUGE_MOREL_MUSHROOM),
                         List.of(
                                 CountPlacement.of(1),
-                                // Pass the string key and (FIXED) use the correct key
                                 new ConfigurableRarityFilter("huge_morel"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
@@ -82,7 +87,6 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM),
                         List.of(
-                                // (FIXED) Use the correct key
                                 new ConfigurableRarityFilter("morel_normal"),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
@@ -135,6 +139,32 @@ public class ModPlacedFeatures {
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
+                        )
+                )
+        );
+        context.register(
+                INKY_CAP_MUSHROOM_COLONY_PLACED_KEY,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.PATCH_INKY_CAP_MUSHROOM_COLONY_KEY),
+                        List.of(
+                                new ConfigurableRarityFilter("inky_cap_colony"),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP,
+                                BiomeFilter.biome(),
+                                BiomeTagFilter.biomeIsInTag(BiomeTags.IS_OVERWORLD)
+                        )
+                )
+        );
+        context.register(
+                MOREL_MUSHROOM_COLONY_PLACED_KEY,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.PATCH_MOREL_MUSHROOM_COLONY_KEY),
+                        List.of(
+                                new ConfigurableRarityFilter("morel_colony"),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP,
+                                BiomeFilter.biome(),
+                                BiomeTagFilter.biomeIsInTag(BiomeTags.IS_OVERWORLD)
                         )
                 )
         );
