@@ -2,8 +2,8 @@ package net.mehdinoui.fungidelight.common.world;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import net.mehdinoui.fungidelight.Configuration; // Import your Configuration
-import net.mehdinoui.fungidelight.common.registry.ModPlacementModifiers; // Import your registry
+import net.mehdinoui.fungidelight.Configuration;
+import net.mehdinoui.fungidelight.common.registry.ModPlacementModifiers;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.placement.PlacementFilter;
 import net.minecraft.world.level.levelgen.placement.PlacementContext;

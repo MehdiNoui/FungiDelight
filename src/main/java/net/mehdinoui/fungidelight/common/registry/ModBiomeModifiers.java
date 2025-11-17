@@ -15,7 +15,6 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
-import vectorwing.farmersdelight.common.world.modifier.AddFeaturesByFilterBiomeModifier;
 
 public class ModBiomeModifiers {
     // --- Keys ---

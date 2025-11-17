@@ -1,6 +1,5 @@
 package net.mehdinoui.fungidelight.common.block.mushrooms;
 
-import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 public class InkyGooVeilBlock extends Block implements BonemealableBlock {
     public static final BooleanProperty CONNECTED = BooleanProperty.create("connected");
