@@ -33,6 +33,8 @@ public class DataGenerators {
         // Models
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
+        // Loot Tables
+        generator.addProvider(event.includeServer(), ModLootTableProvider.create(packOutput));
         // Recipes
         generator.addProvider(event.includeServer(),
                 new RecipeProvider(packOutput) {
