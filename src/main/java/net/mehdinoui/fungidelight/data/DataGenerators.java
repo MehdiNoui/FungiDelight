@@ -31,8 +31,8 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(),
                 new ItemTags(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
         // Models
-        generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
         // Loot Tables
         generator.addProvider(event.includeServer(), ModLootTableProvider.create(packOutput));
         // Recipes

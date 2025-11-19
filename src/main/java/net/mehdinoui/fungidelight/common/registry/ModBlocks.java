@@ -42,14 +42,15 @@ public class ModBlocks {
             () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> MOREL_MUSHROOM_STEM = BLOCKS.register("morel_mushroom_stem",
             () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM)));
-
     // Mushroom Colonies
     public static final RegistryObject<Block> INKY_CAP_MUSHROOM_COLONY = BLOCKS.register("inky_cap_mushroom_colony",
             () -> new MushroomColonyBlock(Block.Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.INKY_CAP_MUSHROOM));
     public static final RegistryObject<Block> MOREL_MUSHROOM_COLONY = BLOCKS.register("morel_mushroom_colony",
             () -> new MushroomColonyBlock(Block.Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.MOREL_MUSHROOM));
-
     // Inky Cap Goo
     public static final RegistryObject<Block> INKY_GOO_VEIL = BLOCKS.register("inky_goo_veil",
             () -> new InkyGooVeilBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES)));
+    // Truffle Dirt
+    public static final RegistryObject<Block> TRUFFLE_DIRT = BLOCKS.register("truffle_dirt",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
 }

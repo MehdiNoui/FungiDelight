@@ -37,5 +37,8 @@ public class ModCreativeTab {
 
                         pOutput.accept(ModItems.MOREL_MUSHROOM_BLOCK.get());
                         pOutput.accept(ModItems.MOREL_MUSHROOM_STEM.get());
+
+                        pOutput.accept(ModItems.TRUFFLE.get());
+                        pOutput.accept(ModItems.TRUFFLE_DIRT.get());
                     }).build());
 }

@@ -31,8 +31,13 @@ public class ModItems {
     }
 
     // --- Items Registry ---
+    public static final RegistryObject<Item> TRUFFLE = ITEMS.register("truffle",
+            ()->new Item(basicItem()));
 
     // --- Block Items ---
+    public static final RegistryObject<Item> TRUFFLE_DIRT = ITEMS.register("truffle_dirt",
+            () -> new BlockItem(ModBlocks.TRUFFLE_DIRT.get(), basicItem()));
+
     public static final RegistryObject<Item> INKY_CAP_MUSHROOM = ITEMS.register("inky_cap_mushroom",
             () -> new BlockItem(ModBlocks.INKY_CAP_MUSHROOM.get(), basicItem()));
     public static final RegistryObject<Item> MOREL_MUSHROOM = ITEMS.register("morel_mushroom",

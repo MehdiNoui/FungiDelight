@@ -32,9 +32,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleCrossBlock(ModBlocks.MOREL_MUSHROOM);
         stageBlock(ModBlocks.INKY_CAP_MUSHROOM_COLONY.get(), MushroomColonyBlock.COLONY_AGE);
         stageBlock(ModBlocks.MOREL_MUSHROOM_COLONY.get(), MushroomColonyBlock.COLONY_AGE);
+        simpleCubeAllBlock(ModBlocks.TRUFFLE_DIRT);
     }
 
     // --- Helper Methods ---
+    private void simpleCubeAllBlock(RegistryObject<? extends Block> blockRegistry) {
+        Block block = blockRegistry.get();
+        this.simpleBlock(block,
+                models().cubeAll(blockName(block), resourceBlock(blockName(block)))
+        );
+    }
     private void simpleCrossBlock(RegistryObject<? extends Block> blockRegistry) {
         simpleCrossBlock(blockRegistry, false);
     }
