@@ -6,9 +6,10 @@ public class Configuration {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CONFIG;
 
-    // --- Foods ---
-    public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_FOODS;
 
+    // --- Pigs ---
+    public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_FOODS;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_TRUFFLE_DIGGING;
     // --- Trades ---
     public static final ForgeConfigSpec.BooleanValue ENABLE_VILLAGER_TRADES;
     public static final ForgeConfigSpec.BooleanValue ENABLE_WANDERING_TRADER_SELLS;
@@ -33,11 +34,14 @@ public class Configuration {
     public static final ForgeConfigSpec.IntValue CHANCE_MOREL_RARE;
 
     static {
-        // --- Foods ---
-        BUILDER.push("Food Settings");
+        // --- Pigs ---
+        BUILDER.push("Pigs Settings");
         ENABLE_PIG_FOODS = BUILDER
                 .comment("Enable mushrooms as pig food sources")
                 .define("enablePigFoods", true);
+        ENABLE_PIG_TRUFFLE_DIGGING = BUILDER
+                .comment("Enable pigs to randomly dig out truffle from podzol blocks")
+                .define("enablePigDigging", true);
         BUILDER.pop();
 
         // --- Trades ---
