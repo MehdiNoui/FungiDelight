@@ -20,10 +20,11 @@ public class ModMobsEvents {
         if (Configuration.ENABLE_PIG_FOODS.get()) {
             event.enqueueWork(() -> {
                 Ingredient newPigFood = Ingredient.of(
-                    Items.BROWN_MUSHROOM,
-                    Items.RED_MUSHROOM,
-                    ModItems.INKY_CAP_MUSHROOM.get(),
-                    ModItems.MOREL_MUSHROOM.get()
+                        Items.BROWN_MUSHROOM,
+                        Items.RED_MUSHROOM,
+                        ModItems.INKY_CAP_MUSHROOM.get(),
+                        ModItems.MOREL_MUSHROOM.get(),
+                        ModItems.TRUFFLE.get()
                 );
                 Pig.FOOD_ITEMS = new CompoundIngredient(Arrays.asList(Pig.FOOD_ITEMS, newPigFood)) {};
             });
