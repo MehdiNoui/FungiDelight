@@ -1,5 +1,6 @@
 package net.mehdinoui.fungidelight.server.event;
 
+import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.entity.ai.TruffleDiggingGoal; // Your goal class
 import net.minecraft.world.entity.animal.Pig;
@@ -11,6 +12,9 @@ import net.minecraftforge.fml.common.Mod;
 public class ModForgeEvents {
     @SubscribeEvent
     public static void addCustomGoals(EntityJoinLevelEvent event) {
+        if (!Configuration.ENABLE_PIG_TRUFFLE_DIGGING.get()) {
+            return;
+        }
         if (event.getEntity() instanceof Pig pig) {
             if (pig.goalSelector.getAvailableGoals().stream().anyMatch(
                     wrappedGoal -> wrappedGoal.getGoal() instanceof TruffleDiggingGoal)) {
