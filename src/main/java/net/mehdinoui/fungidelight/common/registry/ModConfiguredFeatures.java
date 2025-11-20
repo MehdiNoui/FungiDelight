@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import vectorwing.farmersdelight.common.world.configuration.WildCropConfiguration;
 
 import java.util.List;
@@ -43,6 +45,11 @@ public class ModConfiguredFeatures {
             ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "patch_inky_cap_mushroom_colony"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_MOREL_MUSHROOM_COLONY_KEY =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "patch_morel_mushroom_colony"));
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ROOTED_DIRT_BLOB_KEY =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "rooted_dirt_blob"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TRUFFLE_DIRT_ORE_KEY =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "truffle_dirt_ore"));
 
     // --- Helper Methods For Colony ---
     public static Holder<PlacedFeature> mushroomColonyFeature(BlockState block){
@@ -158,5 +165,17 @@ public class ModConfiguredFeatures {
                         )
                 )
         );
+        context.register(ROOTED_DIRT_BLOB_KEY, new ConfiguredFeature<>(
+                Feature.ORE,
+                new OreConfiguration(
+                        List.of(OreConfiguration.target(new BlockMatchTest(Blocks.DIRT), Blocks.ROOTED_DIRT.defaultBlockState())),
+                        20
+                )));
+        context.register(TRUFFLE_DIRT_ORE_KEY, new ConfiguredFeature<>(
+                Feature.ORE,
+                new OreConfiguration(
+                        List.of(OreConfiguration.target(new BlockMatchTest(Blocks.ROOTED_DIRT), ModBlocks.TRUFFLE_DIRT.get().defaultBlockState())),
+                        6
+                )));
     }
 }

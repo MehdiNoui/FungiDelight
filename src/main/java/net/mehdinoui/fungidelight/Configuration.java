@@ -35,6 +35,10 @@ public class Configuration {
     public static final ForgeConfigSpec.IntValue CHANCE_INKY_CAP_RARE;
     public static final ForgeConfigSpec.IntValue CHANCE_MOREL_RARE;
 
+    // ---- Truffle Ore Blobs ---
+    public static final ForgeConfigSpec.IntValue CHANCE_ROOTED_DIRT_BLOB;
+    public static final ForgeConfigSpec.IntValue CHANCE_TRUFFLE_DIRT_ORE;
+
     static {
         // --- Pigs ---
         BUILDER.push("Pigs Settings");
@@ -62,7 +66,7 @@ public class Configuration {
         BUILDER.pop();
 
         // --- World Generation ---
-        BUILDER.push("Worldgen Settings");
+        BUILDER.push("World-gen Settings");
 
         BUILDER.comment("Smaller value = more frequent. Or provide 0 to disable generation.");
         BUILDER.push("Huge Mushroom Generation");
@@ -88,7 +92,7 @@ public class Configuration {
         BUILDER.push("Mushroom Patches Generation");
         BUILDER.comment("Normal patches = Overworld");
         BUILDER.comment("Common patches = Mushroom Fields");
-        BUILDER.comment("Rare patches = Dense Overworld / Swamp");
+        BUILDER.comment("Rare patches = Coniferous Overworld / Swamp");
         CHANCE_INKY_CAP_NORMAL = BUILDER
                 .comment("Chance of generating normal Inky Cap mushroom patches (default = 768)")
                 .defineInRange("inkyCapNormalChance", 768, 0, Integer.MAX_VALUE);
@@ -108,6 +112,15 @@ public class Configuration {
                 .comment("Chance of generating rare Morel mushroom patches (default = 32)")
                 .defineInRange("morelRareChance", 32, 0, Integer.MAX_VALUE);
         BUILDER.pop();
+
+        BUILDER.comment("Smaller value = more frequent. Or provide 0 to disable generation.");
+        BUILDER.push("Truffle Ore Generation");
+        CHANCE_ROOTED_DIRT_BLOB = BUILDER
+                .comment("Chance of generating rooted dirt blobs (default = 3)")
+                .defineInRange("rootedDirtBlobChance", 3, 0, Integer.MAX_VALUE);
+        CHANCE_TRUFFLE_DIRT_ORE = BUILDER
+                .comment("Chance of generating truffle dirt ores (replacing the said rooted dirt blocks) (default = 1)")
+                .defineInRange("truffleDirtOreChance", 1, 0, Integer.MAX_VALUE);
 
         BUILDER.pop();
         CONFIG = BUILDER.build();

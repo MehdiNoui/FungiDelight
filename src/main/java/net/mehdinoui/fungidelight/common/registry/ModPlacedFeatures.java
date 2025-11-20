@@ -2,6 +2,7 @@ package net.mehdinoui.fungidelight.common.registry;
 
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.world.ConfigurableRarityFilter;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -9,6 +10,8 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import vectorwing.farmersdelight.common.world.filter.BiomeTagFilter;
@@ -37,6 +40,10 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "patch_inky_cap_mushroom_colony"));
     public static final ResourceKey<PlacedFeature> MOREL_MUSHROOM_COLONY_PLACED_KEY =
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "patch_morel_mushroom_colony"));
+    public static final ResourceKey<PlacedFeature> ROOTED_DIRT_BLOB_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "rooted_dirt_blob"));
+    public static final ResourceKey<PlacedFeature> TRUFFLE_DIRT_ORE_PLACED_KEY =
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(FungiDelight.MOD_ID, "truffle_dirt_ore"));
 
     // --- Register ---
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -164,6 +171,32 @@ public class ModPlacedFeatures {
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome(),
                                 BiomeTagFilter.biomeIsInTag(BiomeTags.IS_OVERWORLD)
+                        )
+                )
+        );
+        context.register(
+                ROOTED_DIRT_BLOB_PLACED_KEY,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.ROOTED_DIRT_BLOB_KEY),
+                        List.of(
+                                new ConfigurableRarityFilter("rooted_dirt_blob"),
+                                CountPlacement.of(1),
+                                InSquarePlacement.spread(),
+                                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+        context.register(
+                TRUFFLE_DIRT_ORE_PLACED_KEY,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.TRUFFLE_DIRT_ORE_KEY),
+                        List.of(
+                                new ConfigurableRarityFilter("truffle_dirt_ore"),
+                                CountPlacement.of(1),
+                                InSquarePlacement.spread(),
+                                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                                BiomeFilter.biome()
                         )
                 )
         );
