@@ -32,6 +32,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleCrossBlock(ModBlocks.MOREL_MUSHROOM);
         stageBlock(ModBlocks.INKY_CAP_MUSHROOM_COLONY.get(), MushroomColonyBlock.COLONY_AGE);
         stageBlock(ModBlocks.MOREL_MUSHROOM_COLONY.get(), MushroomColonyBlock.COLONY_AGE);
+
         simpleCubeAllBlock(ModBlocks.TRUFFLE_DIRT);
     }
 

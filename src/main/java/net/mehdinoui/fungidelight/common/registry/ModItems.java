@@ -35,6 +35,17 @@ public class ModItems {
             ()->new Item(basicItem()));
 
     // --- Block Items ---
+    public static final RegistryObject<Item> BROWN_MUSHROOM_CRATE = ITEMS.register("brown_mushroom_crate",
+            () -> new BlockItem(ModBlocks.BROWN_MUSHROOM_CRATE.get(), basicItem()));
+    public static final RegistryObject<Item> INKY_CAP_MUSHROOM_CRATE = ITEMS.register("inky_cap_mushroom_crate",
+            () -> new BlockItem(ModBlocks.INKY_CAP_MUSHROOM_CRATE.get(), basicItem()));
+    public static final RegistryObject<Item> MOREL_MUSHROOM_CRATE = ITEMS.register("morel_mushroom_crate",
+            () -> new BlockItem(ModBlocks.MOREL_MUSHROOM_CRATE.get(), basicItem()));
+    public static final RegistryObject<Item> RED_MUSHROOM_CRATE = ITEMS.register("red_mushroom_crate",
+            () -> new BlockItem(ModBlocks.RED_MUSHROOM_CRATE.get(), basicItem()));
+    public static final RegistryObject<Item> TRUFFLE_CRATE = ITEMS.register("truffle_crate",
+            () -> new BlockItem(ModBlocks.TRUFFLE_CRATE.get(), basicItem()));
+
     public static final RegistryObject<Item> TRUFFLE_DIRT = ITEMS.register("truffle_dirt",
             () -> new BlockItem(ModBlocks.TRUFFLE_DIRT.get(), basicItem()));
 

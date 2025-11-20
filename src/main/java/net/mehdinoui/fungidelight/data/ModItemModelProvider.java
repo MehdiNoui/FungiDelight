@@ -27,6 +27,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         flatItem(ModItems.MOREL_MUSHROOM_COLONY, "_stage3");
 
         flatItem(ModItems.INKY_GOO_VEIL, "_connected");
+        simpleItem(ModItems.TRUFFLE);
 
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_BLOCK, "_inventory");
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_EDGE, "_inventory");
@@ -34,8 +35,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleBlock(ModBlocks.MOREL_MUSHROOM_BLOCK, "_inventory");
         simpleBlock(ModBlocks.MOREL_MUSHROOM_STEM, "_inventory");
         simpleBlock(ModBlocks.TRUFFLE_DIRT);
-
-        simpleItem(ModItems.TRUFFLE);
+        simpleBlock(ModBlocks.BROWN_MUSHROOM_CRATE);
+        simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_CRATE);
+        simpleBlock(ModBlocks.MOREL_MUSHROOM_CRATE);
+        simpleBlock(ModBlocks.RED_MUSHROOM_CRATE);
+        simpleBlock(ModBlocks.TRUFFLE_CRATE);
     }
     // --- Helper Methods ---
     private void flatItem(RegistryObject<?> itemRegistry) {

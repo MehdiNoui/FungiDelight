@@ -25,6 +25,12 @@ public class ModCreativeTab {
                     .icon(() -> new ItemStack(ModItems.INKY_CAP_MUSHROOM.get()))
                     .title(Component.translatable("creativetab.fungidelight_tab"))
                     .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.BROWN_MUSHROOM_CRATE.get());
+                        pOutput.accept(ModItems.INKY_CAP_MUSHROOM_CRATE.get());
+                        pOutput.accept(ModItems.MOREL_MUSHROOM_CRATE.get());
+                        pOutput.accept(ModItems.RED_MUSHROOM_CRATE.get());
+                        pOutput.accept(ModItems.TRUFFLE_CRATE.get());
+
                         pOutput.accept(ModItems.INKY_CAP_MUSHROOM.get());
                         pOutput.accept(ModItems.INKY_CAP_MUSHROOM_COLONY.get());
                         pOutput.accept(ModItems.MOREL_MUSHROOM.get());

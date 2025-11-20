@@ -24,6 +24,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        this.dropSelf(ModBlocks.BROWN_MUSHROOM_CRATE.get());
+        this.dropSelf(ModBlocks.RED_MUSHROOM_CRATE.get());
+        this.dropSelf(ModBlocks.MOREL_MUSHROOM_CRATE.get());
+        this.dropSelf(ModBlocks.INKY_CAP_MUSHROOM_CRATE.get());
+        this.dropSelf(ModBlocks.TRUFFLE_CRATE.get());
+
         this.dropSelf(ModBlocks.INKY_CAP_MUSHROOM.get());
         this.dropSelf(ModBlocks.MOREL_MUSHROOM.get());
         this.add(ModBlocks.INKY_GOO_VEIL.get(),
