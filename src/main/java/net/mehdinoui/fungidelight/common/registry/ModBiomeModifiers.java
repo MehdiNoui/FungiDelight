@@ -1,6 +1,7 @@
 package net.mehdinoui.fungidelight.common.registry;
 
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
@@ -33,21 +34,27 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_MOREL_MUSHROOM_PATCH_OVERWORLD =
             ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_morel_patch_overworld"));
 
-    public static final ResourceKey<BiomeModifier> ADD_INKY_CAP_MUSHROOM_PATCH_DENSE =
-            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_inky_cap_patch_dense"));
-    public static final ResourceKey<BiomeModifier> ADD_MOREL_MUSHROOM_PATCH_SWAMP =
-            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_morel_patch_swamp"));
+    public static final ResourceKey<BiomeModifier> ADD_INKY_CAP_MUSHROOM_PATCH_TAGGED =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_inky_cap_patch_tagged"));
+    public static final ResourceKey<BiomeModifier> ADD_MOREL_MUSHROOM_PATCH_TAGGED =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_morel_patch_tagged"));
 
     public static final ResourceKey<BiomeModifier> ADD_INKY_CAP_MUSHROOM_COLONY =
             ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "patch_inky_cap_mushroom_colony"));
     public static final ResourceKey<BiomeModifier> ADD_MOREL_MUSHROOM_COLONY =
             ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "patch_morel_mushroom_colony"));
 
+    public static final ResourceKey<BiomeModifier> ADD_ROOTED_DIRT_BLOB =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_rooted_dirt_blob"));
+    public static final ResourceKey<BiomeModifier> ADD_TRUFFLE_DIRT_ORE =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_truffle_dirt_ore"));
+
+
     // --- Register ---
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
-        // Huge Mushrooms
+        // Huge Mushrooms (Mushroom Fields)
         context.register(
                 ADD_HUGE_INKY_CAP,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
@@ -64,7 +71,7 @@ public class ModBiomeModifiers {
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );
-        // Mushrooms Patches
+        // Mushrooms Patches (Overworld)
         context.register(
                 ADD_INKY_CAP_MUSHROOM_PATCH_OVERWORLD,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
@@ -81,7 +88,7 @@ public class ModBiomeModifiers {
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );
-
+        // Common Patches (Mushroom Fields)
         context.register(
                 ADD_INKY_CAP_MUSHROOM_PATCH_MUSHROOM_FIELD,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
@@ -98,23 +105,24 @@ public class ModBiomeModifiers {
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );
-
+        // Rare Patches (Custom Biomes)
         context.register(
-                ADD_INKY_CAP_MUSHROOM_PATCH_DENSE,
+                ADD_INKY_CAP_MUSHROOM_PATCH_TAGGED,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                        biomes.getOrThrow(Tags.Biomes.IS_DENSE_OVERWORLD),
+                        biomes.getOrThrow(FungiDelightTags.HAS_INKY_CAPS),
                         HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.INKY_CAP_MUSHROOM_RARE_PLACED_KEY)),
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );
         context.register(
-                ADD_MOREL_MUSHROOM_PATCH_SWAMP,
+                ADD_MOREL_MUSHROOM_PATCH_TAGGED,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                        biomes.getOrThrow(Tags.Biomes.IS_SWAMP),
+                        biomes.getOrThrow(FungiDelightTags.HAS_MORELS),
                         HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MOREL_MUSHROOM_RARE_PLACED_KEY)),
                         GenerationStep.Decoration.VEGETAL_DECORATION
                 )
         );
+        // Mushroom Colonies
         context.register(
                 ADD_INKY_CAP_MUSHROOM_COLONY,
                 new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
@@ -129,6 +137,22 @@ public class ModBiomeModifiers {
                         biomes.getOrThrow(Tags.Biomes.IS_MUSHROOM),
                         HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MOREL_MUSHROOM_COLONY_PLACED_KEY)),
                         GenerationStep.Decoration.VEGETAL_DECORATION
+                )
+        );
+        context.register(
+                ADD_ROOTED_DIRT_BLOB,
+                new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(FungiDelightTags.HAS_TRUFFLES),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ROOTED_DIRT_BLOB_PLACED_KEY)),
+                        GenerationStep.Decoration.UNDERGROUND_ORES
+                )
+        );
+        context.register(
+                ADD_TRUFFLE_DIRT_ORE,
+                new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(FungiDelightTags.HAS_TRUFFLES),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.TRUFFLE_DIRT_ORE_PLACED_KEY)),
+                        GenerationStep.Decoration.UNDERGROUND_ORES
                 )
         );
     }

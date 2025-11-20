@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -27,14 +28,19 @@ public class DataGenerators {
 
         // Tags
         BlockTags blockTags = new BlockTags(packOutput, lookupProvider, existingFileHelper);
+        ItemTags itemTags = new ItemTags(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper);
+        BiomeTags biomeTags = new BiomeTags(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(),
-                new ItemTags(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
+        generator.addProvider(event.includeServer(), itemTags);
+        generator.addProvider(event.includeServer(), biomeTags);
+
         // Models
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
+
         // Loot Tables
         generator.addProvider(event.includeServer(), ModLootTableProvider.create(packOutput));
+
         // Recipes
         generator.addProvider(event.includeServer(),
                 new RecipeProvider(packOutput) {
@@ -46,6 +52,7 @@ public class DataGenerators {
                         ModSmeltingRecipes.register(consumer);
                     }
                 });
+
         // World-gen
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
     }
