@@ -10,6 +10,8 @@ public class Configuration {
     // --- Pigs ---
     public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_FOODS;
     public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_TRUFFLE_DIGGING;
+    public static final ForgeConfigSpec.DoubleValue CHANCE_PIG_DIGGING;
+
     // --- Trades ---
     public static final ForgeConfigSpec.BooleanValue ENABLE_VILLAGER_TRADES;
     public static final ForgeConfigSpec.BooleanValue ENABLE_WANDERING_TRADER_SELLS;
@@ -42,6 +44,11 @@ public class Configuration {
         ENABLE_PIG_TRUFFLE_DIGGING = BUILDER
                 .comment("Enable pigs to randomly dig out truffle from podzol blocks")
                 .define("enablePigDigging", true);
+        CHANCE_PIG_DIGGING = BUILDER
+                .comment("Chance per tick for a pig to dig up loot from Podzol.",
+                        "Default: 0.00025 (Approx. every 3 min 20 sec)",
+                        "Range: 0.0 (Disabled) to 1.0 (Every tick)")
+                .defineInRange("chancePigDigging", 0.00025, 0.0, 1.0);
         BUILDER.pop();
 
         // --- Trades ---

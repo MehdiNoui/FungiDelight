@@ -46,7 +46,7 @@ public class TruffleDiggingGoal extends Goal {
     private static final int MAX_GIVE_UP_TICKS = 100; // 5 Seconds to reach the block before giving up
 
     // Rarity
-    private static final float DIG_CHANCE = 0.0002F; // Approximately every 4 mins
+    private static final Double DIG_CHANCE = Configuration.CHANCE_PIG_DIGGING.get();
 
     public TruffleDiggingGoal(Pig pig) {
         this.pig = pig;
