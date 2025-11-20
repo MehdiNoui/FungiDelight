@@ -1,7 +1,9 @@
 package net.mehdinoui.fungidelight.data.tag;
 
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -29,6 +31,16 @@ public class ItemTags extends ItemTagsProvider {
                 ModItems.INKY_CAP_MUSHROOM.get(),
                 ModItems.MOREL_MUSHROOM.get()
         );
+        tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_BROWN_MUSHROOM)
+                .add(ModBlocks.BROWN_MUSHROOM_CRATE.get().asItem());
+        tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_RED_MUSHROOM)
+                .add(ModBlocks.RED_MUSHROOM_CRATE.get().asItem());
+        tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_INKY_CAP)
+                .add(ModBlocks.INKY_CAP_MUSHROOM_CRATE.get().asItem());
+        tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_MOREL)
+                .add(ModBlocks.MOREL_MUSHROOM_CRATE.get().asItem());
+        tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_TRUFFLE)
+                .add(ModBlocks.TRUFFLE_CRATE.get().asItem());
     }
     public void registerMinecraftTags() {}
     public void registerFarmersDelightTags() {}

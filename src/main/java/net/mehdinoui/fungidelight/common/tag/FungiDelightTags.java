@@ -28,4 +28,27 @@ public class FungiDelightTags {
     // Blocks inky caps can naturally spawn on
     public static final TagKey<Block> INKY_CAP_PLACEABLE_ON =
             fungiDelightBlockTag("inky_cap_placeable_on");
+    // BLOCKS: Storage blocks
+    public static final TagKey<Block> STORAGE_BLOCKS_BROWN_MUSHROOM =
+            forgeBlockTag("storage_blocks/brown_mushroom");
+    public static final TagKey<Block> STORAGE_BLOCKS_RED_MUSHROOM =
+            forgeBlockTag("storage_blocks/red_mushroom");
+    public static final TagKey<Block> STORAGE_BLOCKS_INKY_CAP =
+            forgeBlockTag("storage_blocks/inky_cap");
+    public static final TagKey<Block> STORAGE_BLOCKS_MOREL =
+            forgeBlockTag("storage_blocks/morel");
+    public static final TagKey<Block> STORAGE_BLOCKS_TRUFFLE =
+            forgeBlockTag("storage_blocks/truffle");
+
+    // ITEMS: Storage block items
+    public static final TagKey<Item> STORAGE_BLOCKS_ITEM_BROWN_MUSHROOM =
+            forgeItemTag("storage_blocks/brown_mushroom");
+    public static final TagKey<Item> STORAGE_BLOCKS_ITEM_RED_MUSHROOM =
+            forgeItemTag("storage_blocks/red_mushroom");
+    public static final TagKey<Item> STORAGE_BLOCKS_ITEM_INKY_CAP =
+            forgeItemTag("storage_blocks/inky_cap");
+    public static final TagKey<Item> STORAGE_BLOCKS_ITEM_MOREL =
+            forgeItemTag("storage_blocks/morel");
+    public static final TagKey<Item> STORAGE_BLOCKS_ITEM_TRUFFLE =
+            forgeItemTag("storage_blocks/truffle");
 }

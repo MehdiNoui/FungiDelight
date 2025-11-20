@@ -28,6 +28,16 @@ public class BlockTags extends BlockTagsProvider {
         this.registerFungiDelightTags();
     }
     protected void registerForgeTags() {
+        tag(FungiDelightTags.STORAGE_BLOCKS_BROWN_MUSHROOM)
+                .add(ModBlocks.BROWN_MUSHROOM_CRATE.get());
+        tag(FungiDelightTags.STORAGE_BLOCKS_RED_MUSHROOM)
+                .add(ModBlocks.RED_MUSHROOM_CRATE.get());
+        tag(FungiDelightTags.STORAGE_BLOCKS_INKY_CAP)
+                .add(ModBlocks.INKY_CAP_MUSHROOM_CRATE.get());
+        tag(FungiDelightTags.STORAGE_BLOCKS_MOREL)
+                .add(ModBlocks.MOREL_MUSHROOM_CRATE.get());
+        tag(FungiDelightTags.STORAGE_BLOCKS_TRUFFLE)
+                .add(ModBlocks.TRUFFLE_CRATE.get());
     }
     protected void registerMinecraftTags() {
         // Mushrooms
@@ -48,7 +58,12 @@ public class BlockTags extends BlockTagsProvider {
                 ModBlocks.INKY_CAP_MUSHROOM_STEM.get(),
                 ModBlocks.INKY_GOO_VEIL.get(),
                 ModBlocks.MOREL_MUSHROOM_BLOCK.get(),
-                ModBlocks.MOREL_MUSHROOM_STEM.get()
+                ModBlocks.MOREL_MUSHROOM_STEM.get(),
+                ModBlocks.BROWN_MUSHROOM_CRATE.get(),
+                ModBlocks.INKY_CAP_MUSHROOM_CRATE.get(),
+                ModBlocks.MOREL_MUSHROOM_CRATE.get(),
+                ModBlocks.RED_MUSHROOM_CRATE.get(),
+                ModBlocks.TRUFFLE_CRATE.get()
         );
         tag(net.minecraft.tags.BlockTags.REPLACEABLE_BY_TREES).add(
                 ModBlocks.INKY_GOO_VEIL.get()
