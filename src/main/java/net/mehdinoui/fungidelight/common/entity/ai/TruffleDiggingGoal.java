@@ -2,7 +2,6 @@ package net.mehdinoui.fungidelight.common.entity.ai;
 
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
-import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -44,9 +43,6 @@ public class TruffleDiggingGoal extends Goal {
     private static final int SEARCH_RADIUS = 6;
     private static final int DIG_DURATION = 60; // 3 Seconds of digging
     private static final int MAX_GIVE_UP_TICKS = 100; // 5 Seconds to reach the block before giving up
-
-    // Rarity
-    private static final Double DIG_CHANCE = Configuration.CHANCE_PIG_DIGGING.get();
 
     public TruffleDiggingGoal(Pig pig) {
         this.pig = pig;
@@ -120,6 +116,7 @@ public class TruffleDiggingGoal extends Goal {
             }
         }
     }
+
     // --- AI Logic ---
     @Override
     public boolean canUse() {
@@ -137,7 +134,7 @@ public class TruffleDiggingGoal extends Goal {
             return false;
         }
         // Rarity Check
-        if (this.level.random.nextFloat() >= DIG_CHANCE) {
+        if (this.level.random.nextFloat() >= Configuration.CHANCE_PIG_DIGGING.get().floatValue()) {
             return false;
         }
         targetBlock = findNearestPODZOL();
