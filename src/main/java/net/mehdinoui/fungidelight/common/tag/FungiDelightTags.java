@@ -1,11 +1,14 @@
 package net.mehdinoui.fungidelight.common.tag;
 
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class FungiDelightTags {
@@ -14,6 +17,9 @@ public class FungiDelightTags {
     }
     private static TagKey<Item> fungiDelightItemTag(String path) {
         return ItemTags.create(new ResourceLocation(FungiDelight.MOD_ID, path));
+    }
+    private static TagKey<Biome> fungiDelightBiomeTag(String path) {
+        return TagKey.create(Registries.BIOME, new ResourceLocation(FungiDelight.MOD_ID, path));
     }
     private static TagKey<Block> forgeBlockTag(String path) {
         return BlockTags.create(new ResourceLocation("forge", path));
@@ -28,6 +34,12 @@ public class FungiDelightTags {
     // Blocks inky caps can naturally spawn on
     public static final TagKey<Block> INKY_CAP_PLACEABLE_ON =
             fungiDelightBlockTag("inky_cap_placeable_on");
+
+    // BIOMES:
+    public static final TagKey<Biome> HAS_INKY_CAPS = fungiDelightBiomeTag("has_inky_caps");
+    public static final TagKey<Biome> HAS_MORELS = fungiDelightBiomeTag("has_morels");
+    public static final TagKey<Biome> HAS_TRUFFLES = fungiDelightBiomeTag("has_truffles");
+
     // BLOCKS: Storage blocks
     public static final TagKey<Block> STORAGE_BLOCKS_BROWN_MUSHROOM =
             forgeBlockTag("storage_blocks/brown_mushroom");
