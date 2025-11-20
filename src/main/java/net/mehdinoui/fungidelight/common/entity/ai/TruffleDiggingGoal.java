@@ -1,9 +1,12 @@
 package net.mehdinoui.fungidelight.common.entity.ai;
 
+import net.mehdinoui.fungidelight.Configuration;
+import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -14,14 +17,22 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 import java.util.EnumSet;
+import java.util.List;
 
 public class TruffleDiggingGoal extends Goal {
     // Properties
     private final Pig pig;
     private final Level level;
     private BlockPos targetBlock = null;
+
+    // Digging Loot
+    public static final ResourceLocation DIGGING_LOOT = new ResourceLocation(FungiDelight.MOD_ID, "gameplay/pig_digging");
 
     // State Tracking
     private int digTime = 0;
@@ -35,7 +46,7 @@ public class TruffleDiggingGoal extends Goal {
     private static final int MAX_GIVE_UP_TICKS = 100; // 5 Seconds to reach the block before giving up
 
     // Rarity
-    private static final float DIG_CHANCE = 0.002F;
+    private static final float DIG_CHANCE = 0.0002F; // Approximately every 4 mins
 
     public TruffleDiggingGoal(Pig pig) {
         this.pig = pig;
@@ -88,9 +99,34 @@ public class TruffleDiggingGoal extends Goal {
         return best;
     }
 
+    private void dropLoot() {
+        if (this.level instanceof ServerLevel serverLevel) {
+            LootTable lootTable = serverLevel.getServer().getLootData().getLootTable(DIGGING_LOOT);
+            List<ItemStack> items = lootTable.getRandomItems(
+                    new LootParams.Builder(serverLevel)
+                            .withParameter(LootContextParams.ORIGIN, this.pig.position())
+                            .withParameter(LootContextParams.THIS_ENTITY, this.pig)
+                            .create(LootContextParamSets.PIGLIN_BARTER)
+            );
+
+            for (ItemStack item : items) {
+                ItemEntity itemEntity = new ItemEntity(this.level,
+                        this.targetBlock.getX() + 0.5D,
+                        this.targetBlock.getY() + 1.0D,
+                        this.targetBlock.getZ() + 0.5D,
+                        item);
+                itemEntity.setDeltaMovement(0, 0.25, 0);
+                this.level.addFreshEntity(itemEntity);
+            }
+        }
+    }
     // --- AI Logic ---
     @Override
     public boolean canUse() {
+        // Config Option Check
+        if (!Configuration.ENABLE_PIG_TRUFFLE_DIGGING.get()){
+            return false;
+        }
         // Cooldown Check
         if (cooldown > 0) {
             cooldown--;
@@ -98,10 +134,6 @@ public class TruffleDiggingGoal extends Goal {
         }
         // Basic State Checks
         if (!this.pig.onGround() || this.pig.isBaby()) {
-            return false;
-        }
-        // Must be moving to feels realistic? I don't know
-        if (this.pig.getNavigation().isDone()) {
             return false;
         }
         // Rarity Check
@@ -189,13 +221,7 @@ public class TruffleDiggingGoal extends Goal {
             this.level.playSound(null, this.targetBlock, SoundEvents.MUD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
             this.level.playSound(null, this.targetBlock, SoundEvents.CHICKEN_EGG, SoundSource.NEUTRAL, 1.0F, 1.0F);
             // Drop Truffle
-            ItemEntity truffle = new ItemEntity(this.level,
-                    this.targetBlock.getX() + 0.5D,
-                    this.targetBlock.getY() + 1.0D,
-                    this.targetBlock.getZ() + 0.5D,
-                    new ItemStack(ModItems.TRUFFLE.get()));
-            truffle.setDeltaMovement(0, 0.25, 0);
-            this.level.addFreshEntity(truffle);
+            this.dropLoot();
             // Convert Block
             this.level.setBlockAndUpdate(this.targetBlock, Blocks.COARSE_DIRT.defaultBlockState());
             // Cooldown (2400 ticks = 2 Minutes)
