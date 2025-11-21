@@ -1,4 +1,4 @@
-package net.mehdinoui.fungidelight.common.entity.ai;
+package net.mehdinoui.fungidelight.common.entity.ai.pig;
 
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
@@ -121,7 +121,7 @@ public class TruffleDiggingGoal extends Goal {
     @Override
     public boolean canUse() {
         // Config Option Check
-        if (!Configuration.ENABLE_PIG_TRUFFLE_DIGGING.get()){
+        if (!Configuration.ENABLE_PIG_DIGGING.get()){
             return false;
         }
         // Cooldown Check
@@ -217,7 +217,7 @@ public class TruffleDiggingGoal extends Goal {
             // Success sounds
             this.level.playSound(null, this.targetBlock, SoundEvents.MUD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
             this.level.playSound(null, this.targetBlock, SoundEvents.CHICKEN_EGG, SoundSource.NEUTRAL, 1.0F, 1.0F);
-            // Drop Truffle
+            // Drop Loot
             this.dropLoot();
             // Convert Block
             this.level.setBlockAndUpdate(this.targetBlock, Blocks.COARSE_DIRT.defaultBlockState());
