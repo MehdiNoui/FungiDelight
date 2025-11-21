@@ -6,11 +6,13 @@ public class Configuration {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CONFIG;
 
-
     // --- Pigs ---
     public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_FOODS;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_TRUFFLE_DIGGING;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_DIGGING;
     public static final ForgeConfigSpec.DoubleValue CHANCE_PIG_DIGGING;
+
+    // --- Wolf ---
+    public static final ForgeConfigSpec.BooleanValue ENABLE_WOLF_HUNT_TRUFFLE;
 
     // --- Trades ---
     public static final ForgeConfigSpec.BooleanValue ENABLE_VILLAGER_TRADES;
@@ -40,89 +42,123 @@ public class Configuration {
     public static final ForgeConfigSpec.IntValue CHANCE_TRUFFLE_DIRT_ORE;
 
     static {
-        // --- Pigs ---
-        BUILDER.push("Pigs Settings");
+        // ==========================================
+        //              Animal Settings
+        // ==========================================
+        BUILDER.push("Animal Settings");
+
         ENABLE_PIG_FOODS = BUILDER
-                .comment("Enable mushrooms as pig food sources")
+                .comment("If true, Pigs can be tempted and bred using Fungi Delight mushrooms.")
                 .define("enablePigFoods", true);
-        ENABLE_PIG_TRUFFLE_DIGGING = BUILDER
-                .comment("Enable pigs to randomly dig out truffle from podzol blocks")
+
+        ENABLE_PIG_DIGGING = BUILDER
+                .comment("If true, Pigs can randomly dig up items when standing on Podzol.")
                 .define("enablePigDigging", true);
+
         CHANCE_PIG_DIGGING = BUILDER
-                .comment("Chance per tick for a pig to dig up loot from Podzol.",
-                        "Default: 0.00025 (Approx. every 3 min 20 sec)",
-                        "Range: 0.0 (Disabled) to 1.0 (Every tick)")
+                .comment("The probability per tick that a pig will attempt to dig a podzol block",
+                        "Formula: 1 / value = Average Ticks.",
+                        "Default: 0.00025 (Approx. 1 attempt every 3 min 20 sec).",
+                        "Range: 0.0 (Disabled) to 1.0 (Every tick).")
                 .defineInRange("chancePigDigging", 0.00025, 0.0, 1.0);
+
+        ENABLE_WOLF_HUNT_TRUFFLE = BUILDER
+                .comment("If true, Tamed Wolves can be used to sniff and locate Truffle Dirt blocks")
+                .define("enableWolfHuntTruffle", true);
+
         BUILDER.pop();
 
-        // --- Trades ---
+        // ==========================================
+        //              Trade Settings
+        // ==========================================
         BUILDER.push("Trade Settings");
+
         ENABLE_VILLAGER_TRADES = BUILDER
-                .comment("Enable Fungi Delight villager trades")
+                .comment("If true, adds Fungi Delight trades to Farmers and Wandering Traders.")
                 .define("enableVillagerTrades", true);
+
         ENABLE_WANDERING_TRADER_SELLS = BUILDER
-                .comment("Enable Fungi Delight Wandering Trader sales")
+                .comment("If true, the Wandering Trader can sell Fungi Delight items.")
                 .define("enableWanderingTraderTrades", true);
+
         BUILDER.pop();
 
-        // --- World Generation ---
+        // ==========================================
+        //            World Gen Settings
+        // ==========================================
+        BUILDER.comment("Generation settings. Lower values = More Frequent generation.",
+                "Set value to 0 to disable the feature entirely.");
         BUILDER.push("World-gen Settings");
 
-        BUILDER.comment("Smaller value = more frequent. Or provide 0 to disable generation.");
+        // --- Huge Mushrooms ---
         BUILDER.push("Huge Mushroom Generation");
         CHANCE_HUGE_INKY_CAP = BUILDER
-                .comment("Chance of generating Huge Inky Caps Mushroom (default = 3)")
-                .defineInRange("hugeInkyCapChance", 3, 0, Integer.MAX_VALUE);
+                .comment("Average number of chunks between attempts to generate Huge Inky Caps.",
+                        "Default: 3")
+                .defineInRange("hugeInkyCapRarity", 3, 0, Integer.MAX_VALUE);
         CHANCE_HUGE_MOREL = BUILDER
-                .comment("Chance of generating Huge Morel Mushroom (default = 4)")
-                .defineInRange("hugeMorelChance", 4, 0, Integer.MAX_VALUE);
+                .comment("Average number of chunks between attempts to generate Huge Morels.",
+                        "Default: 4")
+                .defineInRange("hugeMorelRarity", 4, 0, Integer.MAX_VALUE);
         BUILDER.pop();
 
-        BUILDER.comment("Smaller value = more frequent. Or provide 0 to disable generation.");
+        // --- Mushroom Colonies ---
         BUILDER.push("Mushroom Colony Patches");
         CHANCE_INKY_CAP_COLONY = BUILDER
-                .comment("Chance of generating Inky Cap mushroom colony patches (default = 15)")
-                .defineInRange("inkyCapColonyChance", 15, 0, Integer.MAX_VALUE);
+                .comment("Average number of chunks between attempts to generate Inky Cap Colonies.",
+                        "Default: 15")
+                .defineInRange("inkyCapColonyRarity", 15, 0, Integer.MAX_VALUE);
         CHANCE_MOREL_COLONY = BUILDER
-                .comment("Chance of generating rare Morel mushroom colony patches (default = 15)")
-                .defineInRange("morelColonyChance", 15, 0, Integer.MAX_VALUE);
+                .comment("Average number of chunks between attempts to generate Morel Colonies.",
+                        "Default: 15")
+                .defineInRange("morelColonyRarity", 15, 0, Integer.MAX_VALUE);
         BUILDER.pop();
 
-        BUILDER.comment("Smaller value = more frequent. Or provide 0 to disable generation.");
+        // --- Mushroom Patches ---
         BUILDER.push("Mushroom Patches Generation");
-        BUILDER.comment("Normal patches = Overworld");
-        BUILDER.comment("Common patches = Mushroom Fields");
-        BUILDER.comment("Rare patches = Coniferous Overworld / Swamp");
+
         CHANCE_INKY_CAP_NORMAL = BUILDER
-                .comment("Chance of generating normal Inky Cap mushroom patches (default = 768)")
-                .defineInRange("inkyCapNormalChance", 768, 0, Integer.MAX_VALUE);
+                .comment("Rarity of Inky Caps in standard Overworld biomes.",
+                        "Default: 768")
+                .defineInRange("inkyCapStandardRarity", 768, 0, Integer.MAX_VALUE);
         CHANCE_MOREL_NORMAL = BUILDER
-                .comment("Chance of generating normal Morel mushroom patches (default = 384)")
-                .defineInRange("morelNormalChance", 384, 0, Integer.MAX_VALUE);
+                .comment("Rarity of Morels in standard Overworld biomes.",
+                        "Default: 384")
+                .defineInRange("morelStandardRarity", 384, 0, Integer.MAX_VALUE);
+
         CHANCE_INKY_CAP_COMMON = BUILDER
-                .comment("Chance of generating common Inky Cap mushroom patches (default = 16)")
-                .defineInRange("inkyCapCommonChance", 16, 0, Integer.MAX_VALUE);
+                .comment("Rarity of Inky Caps in Mushroom Fields.",
+                        "Default: 16")
+                .defineInRange("inkyCapMushroomFieldRarity", 16, 0, Integer.MAX_VALUE);
         CHANCE_MOREL_COMMON = BUILDER
-                .comment("Chance of generating common Morel mushroom patches (default = 12)")
-                .defineInRange("morelCommonChance", 12, 0, Integer.MAX_VALUE);
+                .comment("Rarity of Morels in Mushroom Fields.",
+                        "Default: 12")
+                .defineInRange("morelMushroomFieldRarity", 12, 0, Integer.MAX_VALUE);
+
         CHANCE_INKY_CAP_RARE = BUILDER
-                .comment("Chance of generating rare Inky Cap mushroom patches (default = 64)")
-                .defineInRange("inkyCapRareChance", 64, 0, Integer.MAX_VALUE);
+                .comment("Rarity of Inky Caps in Tagged biomes.",
+                        "Default: 64")
+                .defineInRange("inkyCapTaggedRarity", 64, 0, Integer.MAX_VALUE);
         CHANCE_MOREL_RARE = BUILDER
-                .comment("Chance of generating rare Morel mushroom patches (default = 32)")
-                .defineInRange("morelRareChance", 32, 0, Integer.MAX_VALUE);
+                .comment("Rarity of Morels in Tagged biomes.",
+                        "Default: 32")
+                .defineInRange("morelTaggedRarity", 32, 0, Integer.MAX_VALUE);
         BUILDER.pop();
 
-        BUILDER.comment("Smaller value = more frequent. Or provide 0 to disable generation.");
+        // --- Ores ---
         BUILDER.push("Truffle Ore Generation");
         CHANCE_ROOTED_DIRT_BLOB = BUILDER
-                .comment("Chance of generating rooted dirt blobs (default = 3)")
-                .defineInRange("rootedDirtBlobChance", 3, 0, Integer.MAX_VALUE);
+                .comment("Average number of chunks between Rooted Dirt blobs.",
+                        "Default: 3")
+                .defineInRange("rootedDirtBlobRarity", 3, 0, Integer.MAX_VALUE);
         CHANCE_TRUFFLE_DIRT_ORE = BUILDER
-                .comment("Chance of generating truffle dirt ores (replacing the said rooted dirt blocks) (default = 1)")
-                .defineInRange("truffleDirtOreChance", 1, 0, Integer.MAX_VALUE);
+                .comment("Average number of chunks between Truffle Dirt Ores.",
+                        "Note: This replaces Rooted Dirt generated by the config above.",
+                        "Default: 1")
+                .defineInRange("truffleDirtOreRarity", 1, 0, Integer.MAX_VALUE);
+        BUILDER.pop(); // Pop Ore
+        BUILDER.pop(); // Pop World Gen
 
-        BUILDER.pop();
         CONFIG = BUILDER.build();
     }
 }
