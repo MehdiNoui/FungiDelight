@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -29,7 +30,8 @@ public class ItemTags extends ItemTagsProvider {
     public void registerForgeTags() {
         tag(Tags.Items.MUSHROOMS).add(
                 ModItems.INKY_CAP_MUSHROOM.get(),
-                ModItems.MOREL_MUSHROOM.get()
+                ModItems.MOREL_MUSHROOM.get(),
+                ModItems.TRUFFLE.get()
         );
         tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_BROWN_MUSHROOM)
                 .add(ModBlocks.BROWN_MUSHROOM_CRATE.get().asItem());

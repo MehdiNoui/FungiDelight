@@ -65,6 +65,12 @@ public class BlockTags extends BlockTagsProvider {
                 ModBlocks.RED_MUSHROOM_CRATE.get(),
                 ModBlocks.TRUFFLE_CRATE.get()
         );
+        tag(net.minecraft.tags.BlockTags.DIRT).add(
+                ModBlocks.TRUFFLE_DIRT.get()
+        );
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(
+                ModBlocks.TRUFFLE_DIRT.get()
+        );
         tag(net.minecraft.tags.BlockTags.REPLACEABLE_BY_TREES).add(
                 ModBlocks.INKY_GOO_VEIL.get()
         );
