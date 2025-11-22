@@ -2,7 +2,7 @@ package net.mehdinoui.fungidelight.server.event;
 
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
-import net.mehdinoui.fungidelight.client.event.ModInteractionEvents;
+import net.mehdinoui.fungidelight.common.event.ModInteractionEvents;
 import net.mehdinoui.fungidelight.common.entity.ai.pig.TruffleDiggingGoal;
 import net.mehdinoui.fungidelight.common.entity.ai.wolf.DogTruffleHuntGoal;
 import net.minecraft.core.particles.ParticleTypes;

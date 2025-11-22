@@ -1,7 +1,7 @@
 package net.mehdinoui.fungidelight.common.entity.ai.wolf;
 
 import net.mehdinoui.fungidelight.Configuration;
-import net.mehdinoui.fungidelight.client.event.ModInteractionEvents;
+import net.mehdinoui.fungidelight.common.event.ModInteractionEvents;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -11,7 +11,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.EnumSet;

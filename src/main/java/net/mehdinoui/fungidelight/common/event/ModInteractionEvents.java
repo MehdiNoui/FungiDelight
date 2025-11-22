@@ -1,4 +1,4 @@
-package net.mehdinoui.fungidelight.client.event;
+package net.mehdinoui.fungidelight.common.event;
 
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
