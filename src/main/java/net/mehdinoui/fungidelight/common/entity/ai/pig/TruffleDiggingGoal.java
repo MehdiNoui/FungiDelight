@@ -3,6 +3,8 @@ package net.mehdinoui.fungidelight.common.entity.ai.pig;
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
+import net.mehdinoui.fungidelight.common.registry.ModItems;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -76,7 +78,7 @@ public class TruffleDiggingGoal extends Goal {
         }
     }
 
-    private BlockPos findNearestPODZOL() {
+    private BlockPos findDiggableBlock() {
         BlockPos origin = this.pig.blockPosition();
         BlockPos best = null;
         double bestDist = Double.MAX_VALUE;
@@ -85,8 +87,8 @@ public class TruffleDiggingGoal extends Goal {
                 origin.offset(-SEARCH_RADIUS, -1, -SEARCH_RADIUS),
                 origin.offset(SEARCH_RADIUS, 1, SEARCH_RADIUS)
         )) {
-            // Must be Podzol AND have air above it
-            if (level.getBlockState(pos).is(Blocks.PODZOL) && level.isEmptyBlock(pos.above())) {
+            // Check Tag
+            if (level.getBlockState(pos).is(FungiDelightTags.PIG_CAN_DIG_UP) && level.isEmptyBlock(pos.above())) {
                 double dist = pos.distSqr(origin);
                 if (dist < bestDist) {
                     bestDist = dist;
@@ -98,13 +100,29 @@ public class TruffleDiggingGoal extends Goal {
     }
 
     private void dropLoot() {
-        if (this.level instanceof ServerLevel serverLevel) {
+        if (!(this.level instanceof ServerLevel serverLevel)) return;
+        BlockState state = this.level.getBlockState(this.targetBlock);
+        // if Truffle Dirt
+        if (state.is(ModBlocks.TRUFFLE_DIRT.get())) {
+            // Drop 1 to 3 Truffles
+            int count = 1 + this.level.random.nextInt(3);
+            ItemStack truffles = new ItemStack(ModItems.TRUFFLE.get(), count);
+            ItemEntity itemEntity = new ItemEntity(this.level,
+                    this.targetBlock.getX() + 0.5D,
+                    this.targetBlock.getY() + 1.0D,
+                    this.targetBlock.getZ() + 0.5D,
+                    truffles);
+            itemEntity.setDeltaMovement(0, 0.25, 0);
+            this.level.addFreshEntity(itemEntity);
+        }
+        // Otherwise use the loot table
+        else {
             LootTable lootTable = serverLevel.getServer().getLootData().getLootTable(DIGGING_LOOT);
             List<ItemStack> items = lootTable.getRandomItems(
                     new LootParams.Builder(serverLevel)
                             .withParameter(LootContextParams.ORIGIN, this.pig.position())
                             .withParameter(LootContextParams.THIS_ENTITY, this.pig)
-                            .create(LootContextParamSets.PIGLIN_BARTER) // Note: Ensure your loot table works with this context
+                            .create(LootContextParamSets.PIGLIN_BARTER)
             );
 
             for (ItemStack item : items) {
@@ -134,14 +152,13 @@ public class TruffleDiggingGoal extends Goal {
         if (this.level.random.nextFloat() >= Configuration.CHANCE_PIG_DIGGING.get().floatValue()) {
             return false;
         }
-        // Find Podzol
-        this.targetBlock = findNearestPODZOL();
+        this.targetBlock = findDiggableBlock();
         return targetBlock != null;
     }
 
     @Override
     public boolean canContinueToUse() {
-        boolean targetBlockStillValid = this.targetBlock != null && this.level.getBlockState(this.targetBlock).is(Blocks.PODZOL);
+        boolean targetBlockStillValid = this.targetBlock != null && this.level.getBlockState(this.targetBlock).is(FungiDelightTags.PIG_CAN_DIG_UP);
         return this.digTime > 0
                 && targetBlockStillValid
                 && this.pig.hurtTime <= 0
@@ -188,7 +205,7 @@ public class TruffleDiggingGoal extends Goal {
         lookAtTarget();
 
         // Security Check: Did the block change?
-        if (this.targetBlock == null || !this.level.getBlockState(this.targetBlock).is(Blocks.PODZOL)){
+        if (this.targetBlock == null || !this.level.getBlockState(this.targetBlock).is(FungiDelightTags.PIG_CAN_DIG_UP)){
             this.digTime = 0;
             return;
         }
@@ -218,7 +235,7 @@ public class TruffleDiggingGoal extends Goal {
 
     @Override
     public void stop() {
-        if (this.hasFinishedDigging && this.targetBlock != null && level.getBlockState(targetBlock).is(Blocks.PODZOL)) {
+        if (this.hasFinishedDigging && this.targetBlock != null && level.getBlockState(targetBlock).is(FungiDelightTags.PIG_CAN_DIG_UP)) {
             this.level.playSound(null, this.targetBlock, SoundEvents.MUD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
             this.level.playSound(null, this.targetBlock, SoundEvents.CHICKEN_EGG, SoundSource.NEUTRAL, 1.0F, 1.0F);
             this.dropLoot();
