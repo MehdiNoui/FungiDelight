@@ -101,5 +101,10 @@ public class BlockTags extends BlockTagsProvider {
                 .addTag(net.minecraft.tags.BlockTags.MUSHROOM_GROW_BLOCK)
                 .addTag(Tags.Blocks.COBBLESTONE)
                 .addTag(Tags.Blocks.STONE);
+        tag(FungiDelightTags.PIG_CAN_DIG_UP)
+                .add(Blocks.PODZOL)
+                .add(Blocks.MUD)
+                .add(Blocks.ROOTED_DIRT)
+                .add(ModBlocks.TRUFFLE_DIRT.get());
     }
 }

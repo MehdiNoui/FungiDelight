@@ -28,6 +28,10 @@ public class FungiDelightTags {
         return ItemTags.create(new ResourceLocation("forge", path));
     }
 
+    // Blocks pig can dig up
+    public static final TagKey<Block> PIG_CAN_DIG_UP =
+            fungiDelightBlockTag("pig_can_dig_up");
+
     // Blocks morels can naturally spawn on
     public static final TagKey<Block> MOREL_PLACEABLE_ON =
             fungiDelightBlockTag("morel_placeable_on");
