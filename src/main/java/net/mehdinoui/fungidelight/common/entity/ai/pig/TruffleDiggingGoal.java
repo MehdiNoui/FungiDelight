@@ -2,6 +2,7 @@ package net.mehdinoui.fungidelight.common.entity.ai.pig;
 
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -41,8 +43,8 @@ public class TruffleDiggingGoal extends Goal {
 
     // Constants
     private static final int SEARCH_RADIUS = 6;
-    private static final int DIG_DURATION = 60; // 3 Seconds of digging
-    private static final int MAX_GIVE_UP_TICKS = 100; // 5 Seconds to reach the block before giving up
+    private static final int DIG_DURATION = 60; // 3 Seconds for success
+    private static final int MAX_GIVE_UP_TICKS = 120;  // 6 Seconds to reach the block before giving up
 
     public TruffleDiggingGoal(Pig pig) {
         this.pig = pig;
@@ -67,7 +69,7 @@ public class TruffleDiggingGoal extends Goal {
         if (targetBlock != null) {
             this.pig.getNavigation().moveTo(
                     this.targetBlock.getX() + 0.5D,
-                    this.targetBlock.getY(),
+                    this.targetBlock.getY() + 1.0D,
                     this.targetBlock.getZ() + 0.5D,
                     1.0D
             );
@@ -78,10 +80,10 @@ public class TruffleDiggingGoal extends Goal {
         BlockPos origin = this.pig.blockPosition();
         BlockPos best = null;
         double bestDist = Double.MAX_VALUE;
-
+        // Getting Best path
         for (BlockPos pos : BlockPos.betweenClosed(
                 origin.offset(-SEARCH_RADIUS, -1, -SEARCH_RADIUS),
-                origin.offset(SEARCH_RADIUS, 0, SEARCH_RADIUS)
+                origin.offset(SEARCH_RADIUS, 1, SEARCH_RADIUS)
         )) {
             // Must be Podzol AND have air above it
             if (level.getBlockState(pos).is(Blocks.PODZOL) && level.isEmptyBlock(pos.above())) {
@@ -102,7 +104,7 @@ public class TruffleDiggingGoal extends Goal {
                     new LootParams.Builder(serverLevel)
                             .withParameter(LootContextParams.ORIGIN, this.pig.position())
                             .withParameter(LootContextParams.THIS_ENTITY, this.pig)
-                            .create(LootContextParamSets.PIGLIN_BARTER)
+                            .create(LootContextParamSets.PIGLIN_BARTER) // Note: Ensure your loot table works with this context
             );
 
             for (ItemStack item : items) {
@@ -121,30 +123,27 @@ public class TruffleDiggingGoal extends Goal {
     @Override
     public boolean canUse() {
         // Config Option Check
-        if (!Configuration.ENABLE_PIG_DIGGING.get()){
-            return false;
-        }
-        // Cooldown Check
+        if (!Configuration.ENABLE_PIG_DIGGING.get()) return false;
+        // Basic State Checks
         if (cooldown > 0) {
             cooldown--;
             return false;
         }
-        // Basic State Checks
-        if (!this.pig.onGround() || this.pig.isBaby()) {
-            return false;
-        }
+        if (!this.pig.onGround() || this.pig.isBaby()) return false;
         // Rarity Check
         if (this.level.random.nextFloat() >= Configuration.CHANCE_PIG_DIGGING.get().floatValue()) {
             return false;
         }
-        targetBlock = findNearestPODZOL();
+        // Find Podzol
+        this.targetBlock = findNearestPODZOL();
         return targetBlock != null;
     }
 
     @Override
     public boolean canContinueToUse() {
+        boolean targetBlockStillValid = this.targetBlock != null && this.level.getBlockState(this.targetBlock).is(Blocks.PODZOL);
         return this.digTime > 0
-                && this.targetBlock != null
+                && targetBlockStillValid
                 && this.pig.hurtTime <= 0
                 && this.pig.onGround()
                 && this.offBlockTimer < MAX_GIVE_UP_TICKS
@@ -156,7 +155,7 @@ public class TruffleDiggingGoal extends Goal {
         this.digTime = DIG_DURATION;
         this.offBlockTimer = 0;
         this.hasFinishedDigging = false;
-        // Stop wandering and go to the podzol
+        // Start Moving
         this.pig.getNavigation().stop();
         navigateToTarget();
         // Initial sound
@@ -167,33 +166,40 @@ public class TruffleDiggingGoal extends Goal {
     @Override
     public void tick() {
         if (targetBlock == null) return;
-        // Calculate distance to the block
-        double distSqr = this.pig.distanceToSqr(
-                targetBlock.getX() + 0.5,
-                targetBlock.getY() + 1,
-                targetBlock.getZ() + 0.5);
-        // Movement Phase
-        if (distSqr > 2.25D) { // > 1.5 blocks away
+
+        // Calculate distance
+        Vec3 targetCenter = new Vec3(targetBlock.getX() + 0.5, targetBlock.getY() + 1.0, targetBlock.getZ() + 0.5);
+        double dx = this.pig.getX() - targetCenter.x;
+        double dz = this.pig.getZ() - targetCenter.z;
+        double distSqrHorizontal = dx * dx + dz * dz;
+
+        // --- Movement Phase ---
+        if (distSqrHorizontal > 2.25D) { // Approx 1.5 blocks away
             this.offBlockTimer++;
-            if (this.pig.getNavigation().isDone()) {
-                navigateToTarget(); // Recalculate path if it stopped early
+            if (this.pig.getNavigation().isDone() || this.offBlockTimer % 10 == 0) {
+                navigateToTarget();
             }
-            lookAtTarget();
-            return;
+            return; // Don't execute success logic yet
         }
-        // Digging Phase
+
+        // --- Success Phase (Arrived) ---
         this.offBlockTimer = 0;
         this.pig.getNavigation().stop();
         lookAtTarget();
-        // Security Check
-        if (!level.getBlockState(targetBlock).is(Blocks.PODZOL)) {
-            this.digTime = 0; // Abort
+
+        // Security Check: Did the block change?
+        if (this.targetBlock == null || !this.level.getBlockState(this.targetBlock).is(Blocks.PODZOL)){
+            this.digTime = 0;
             return;
         }
-        // Decrement timer
+
         this.digTime = Math.max(0, this.digTime - 1);
-        // Particles & Sound
+
+        // Success particles
         if (this.digTime > 0) {
+            if (this.digTime % 5 == 0) {
+                this.level.broadcastEntityEvent(this.pig, (byte) 10);
+            }
             if (this.digTime % 5 == 0 && this.level instanceof ServerLevel serverLevel) {
                 BlockState blockState = this.level.getBlockState(this.targetBlock);
                 serverLevel.sendParticles(
@@ -203,7 +209,7 @@ public class TruffleDiggingGoal extends Goal {
                         this.targetBlock.getZ() + 0.5D,
                         6, 0.3D, 0.1D, 0.3D, 0.15D
                 );
-                this.level.playSound(null, this.pig, SoundEvents.ROOTED_DIRT_BREAK, SoundSource.NEUTRAL, 0.5F, 0.8F);
+                this.level.playSound(null, this.targetBlock, SoundEvents.ROOTED_DIRT_BREAK, SoundSource.NEUTRAL, 0.5F, 0.8F);
             }
         } else {
             this.hasFinishedDigging = true;
@@ -213,24 +219,14 @@ public class TruffleDiggingGoal extends Goal {
     @Override
     public void stop() {
         if (this.hasFinishedDigging && this.targetBlock != null && level.getBlockState(targetBlock).is(Blocks.PODZOL)) {
-            // --- SUCCESS ---
-            // Success sounds
             this.level.playSound(null, this.targetBlock, SoundEvents.MUD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
             this.level.playSound(null, this.targetBlock, SoundEvents.CHICKEN_EGG, SoundSource.NEUTRAL, 1.0F, 1.0F);
-            // Drop Loot
             this.dropLoot();
-            // Convert Block
             this.level.setBlockAndUpdate(this.targetBlock, Blocks.COARSE_DIRT.defaultBlockState());
-            // Cooldown (2400 ticks = 2 Minutes)
             this.cooldown = 2400;
         } else {
-            // --- FAILURE / ABORT ---
-            // The pig didn't finish, or block broke, or path failed.
-            // Apply Short Cooldown so it can try again soon.
-            // 200 ticks = 10 Seconds
             this.cooldown = 200;
         }
-        // Cleanup
         this.targetBlock = null;
         this.hasFinishedDigging = false;
         this.pig.getNavigation().stop();
