@@ -4,12 +4,17 @@ import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,9 +34,24 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MOREL_MUSHROOM_CRATE.get());
         this.dropSelf(ModBlocks.INKY_CAP_MUSHROOM_CRATE.get());
         this.dropSelf(ModBlocks.TRUFFLE_CRATE.get());
-
         this.dropSelf(ModBlocks.INKY_CAP_MUSHROOM.get());
         this.dropSelf(ModBlocks.MOREL_MUSHROOM.get());
+
+        this.add(ModBlocks.TRUFFLE_DIRT.get(),
+                LootTable.lootTable().withPool(
+                        LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModBlocks.TRUFFLE_DIRT.get())
+                                        .when(HAS_SILK_TOUCH)
+                                        .otherwise(LootItem.lootTableItem(ModItems.TRUFFLE.get())
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
+                                                .apply(ApplyExplosionDecay.explosionDecay())
+                                        )
+                                )
+                )
+        );
+
+
         this.add(ModBlocks.INKY_GOO_VEIL.get(),
                 LootTable.lootTable().withPool(
                         LootPool.lootPool()
