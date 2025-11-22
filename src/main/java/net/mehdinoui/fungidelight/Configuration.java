@@ -6,12 +6,12 @@ public class Configuration {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CONFIG;
 
-    // --- Pigs ---
+    // --- Animal Settings ---
+    // ---- Pigs ----
     public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_FOODS;
     public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_DIGGING;
     public static final ForgeConfigSpec.DoubleValue CHANCE_PIG_DIGGING;
-
-    // --- Wolf ---
+    // ---- Wolf ----
     public static final ForgeConfigSpec.BooleanValue ENABLE_WOLF_HUNT_TRUFFLE;
 
     // --- Trades ---
@@ -47,24 +47,26 @@ public class Configuration {
         // ==========================================
         BUILDER.push("Animal Settings");
 
+        BUILDER.push("Pig:");
         ENABLE_PIG_FOODS = BUILDER
                 .comment("If true, Pigs can be tempted and bred using Fungi Delight mushrooms.")
                 .define("enablePigFoods", true);
-
         ENABLE_PIG_DIGGING = BUILDER
-                .comment("If true, Pigs can randomly dig up items when standing on Podzol.")
+                .comment("If true, Pigs can randomly dig up items from tagged blocks (Podzol, Rooted dirt etc...)")
                 .define("enablePigDigging", true);
-
         CHANCE_PIG_DIGGING = BUILDER
                 .comment("The probability per tick that a pig will attempt to dig a podzol block",
                         "Formula: 1 / value = Average Ticks.",
                         "Default: 0.00025 (Approx. 1 attempt every 3 min 20 sec).",
                         "Range: 0.0 (Disabled) to 1.0 (Every tick).")
                 .defineInRange("chancePigDigging", 0.00025, 0.0, 1.0);
+        BUILDER.pop();
 
+        BUILDER.push("Wolf:");
         ENABLE_WOLF_HUNT_TRUFFLE = BUILDER
                 .comment("If true, Tamed Wolves can be used to sniff and locate Truffle Dirt blocks")
                 .define("enableWolfHuntTruffle", true);
+        BUILDER.pop();
 
         BUILDER.pop();
 
