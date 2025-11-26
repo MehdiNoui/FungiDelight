@@ -26,7 +26,6 @@
   "block.fungidelight.inky_cap_mushroom_stem": "Inky Cap Mushroom Stem",
   "block.fungidelight.inky_cap_mushroom_edge": "Inky Cap Mushroom Edge",
   "block.fungidelight.inky_goo_veil": "Inky Goo Veil",
-
   "block.fungidelight.morel_mushroom_block": "Morel Mushroom Block",
   "block.fungidelight.morel_mushroom_stem": "Morel Mushroom Stem",
 
@@ -39,5 +38,7 @@
   "block.fungidelight.red_mushroom_crate": "Red Mushroom Crate",
   "block.fungidelight.truffle_mushroom_crate": "Truffle Mushroom Crate",
 
-  "block.fungidelight.truffle_dirt": "Truffle Dirt"
+  "block.fungidelight.truffle_dirt": "Truffle Dirt",
+
+  "subtitles.fungidelight.pig_happy": "Pig squeals happily"
 }
