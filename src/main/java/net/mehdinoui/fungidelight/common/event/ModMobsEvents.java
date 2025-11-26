@@ -2,11 +2,14 @@ package net.mehdinoui.fungidelight.common.event;
 
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.common.registry.ModEntities;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
+import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.crafting.CompoundIngredient;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -29,5 +32,10 @@ public class ModMobsEvents {
                 Pig.FOOD_ITEMS = new CompoundIngredient(Arrays.asList(Pig.FOOD_ITEMS, newPigFood)) {};
             });
         }
+    }
+    @SubscribeEvent
+    public static void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(ModEntities.INKY_CAP_COW.get(), Cow.createAttributes().build());
+        event.put(ModEntities.MOREL_COW.get(), Cow.createAttributes().build());
     }
 }
