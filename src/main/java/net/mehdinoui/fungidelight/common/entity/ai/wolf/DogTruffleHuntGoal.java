@@ -3,6 +3,7 @@ package net.mehdinoui.fungidelight.common.entity.ai.wolf;
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.common.event.ModInteractionEvents;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
+import net.mehdinoui.fungidelight.common.registry.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -111,7 +112,7 @@ public class DogTruffleHuntGoal extends Goal {
             this.wolf.getNavigation().stop();
         }
         // Initial sound
-        this.wolf.playSound(SoundEvents.WOLF_GROWL, 1.0F, 1.0F);
+        this.wolf.playSound(ModSoundEvents.DOG_FOUND_TRUFFLE.get());
     }
 
     @Override
@@ -161,7 +162,7 @@ public class DogTruffleHuntGoal extends Goal {
 
         // Success Sound (Play once)
         if (this.barkTimer == 0) {
-            this.wolf.playSound(SoundEvents.WOLF_HOWL, 1.0F, 1.0F);
+            this.wolf.playSound(ModSoundEvents.DOG_ALERT_TRUFFLE.get());
         }
 
         // Success particles

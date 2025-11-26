@@ -2,6 +2,7 @@ package net.mehdinoui.fungidelight.common.event;
 
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
+import net.mehdinoui.fungidelight.common.registry.ModSoundEvents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionResult;
@@ -24,7 +25,7 @@ public class ModInteractionEvents {
                 if (!event.getLevel().isClientSide) {
                     long endTime = event.getLevel().getGameTime() + HUNT_DURATION;
                     wolf.getPersistentData().putLong(HUNTING_TAG, endTime);
-                    wolf.playSound(SoundEvents.WOLF_PANT, 1.0F, 1.2F);
+                    wolf.playSound(ModSoundEvents.DOG_SNIFF_TRUFFLE.get());
                 }
                 // Successful Interaction Particles
                 if (event.getLevel().isClientSide) {

@@ -227,7 +227,7 @@ public class TruffleDiggingGoal extends Goal {
                         this.targetBlock.getZ() + 0.5D,
                         6, 0.3D, 0.1D, 0.3D, 0.15D
                 );
-                this.level.playSound(null, this.targetBlock, SoundEvents.ROOTED_DIRT_BREAK, SoundSource.NEUTRAL, 0.5F, 0.8F);
+                this.level.playSound(null, this.targetBlock, ModSoundEvents.PIG_DIG.get(), SoundSource.NEUTRAL, 0.5F, 0.8F);
             }
         } else {
             this.hasFinishedDigging = true;
@@ -238,7 +238,7 @@ public class TruffleDiggingGoal extends Goal {
     public void stop() {
         if (this.hasFinishedDigging && this.targetBlock != null && level.getBlockState(targetBlock).is(FungiDelightTags.PIG_CAN_DIG_UP)) {
             this.level.playSound(null, this.targetBlock, SoundEvents.MUD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
-            this.level.playSound(null, this.targetBlock, SoundEvents.CHICKEN_EGG, SoundSource.NEUTRAL, 1.0F, 1.0F);
+            this.level.playSound(null, this.targetBlock, ModSoundEvents.PIG_DROP.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
             this.dropLoot();
             this.level.setBlockAndUpdate(this.targetBlock, Blocks.COARSE_DIRT.defaultBlockState());
             this.cooldown = 2400;
