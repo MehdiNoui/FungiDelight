@@ -20,6 +20,7 @@ public class ModComposterEvent {
             ComposterBlock.COMPOSTABLES.put(ModItems.COOKED_CLEANED_CAPS.get(), 0.65f);
             ComposterBlock.COMPOSTABLES.put(ModItems.MOREL_MUSHROOM.get(), 0.65f);
             ComposterBlock.COMPOSTABLES.put(ModItems.INKY_CAP_MUSHROOM_STEM.get(), 0.65f);
+            ComposterBlock.COMPOSTABLES.put(ModItems.INKY_GOO_VEIL.get(), 0.65f);
             ComposterBlock.COMPOSTABLES.put(ModItems.MOREL_MUSHROOM_STEM.get(), 0.65f);
             // 85%
             ComposterBlock.COMPOSTABLES.put(ModItems.INKY_CAP_MUSHROOM_BLOCK.get(), 0.85f);
