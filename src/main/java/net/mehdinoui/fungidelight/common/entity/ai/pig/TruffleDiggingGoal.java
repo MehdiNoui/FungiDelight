@@ -4,6 +4,7 @@ import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
+import net.mehdinoui.fungidelight.common.registry.ModSoundEvents;
 import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -176,7 +177,7 @@ public class TruffleDiggingGoal extends Goal {
         this.pig.getNavigation().stop();
         navigateToTarget();
         // Initial sound
-        this.level.playSound(null, this.pig, SoundEvents.HOGLIN_RETREAT, SoundSource.NEUTRAL, 1.0F, 1.0F);
+        this.level.playSound(null, this.pig, ModSoundEvents.PIG_HAPPY.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
         lookAtTarget();
     }
 
