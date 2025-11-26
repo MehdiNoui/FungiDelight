@@ -1,0 +1,9 @@
+{
+  "pig_happy": {
+    "category": "neutral",
+    "subtitle": "subtitles.fungidelight.pig_happy",
+    "sounds": [
+      "fungidelight:pig_happy"
+    ]
+  }
+}
