@@ -55,6 +55,13 @@ public class ModVillagerEvents {
                         20, // Villager XP
                         0.05f // Price multiplier
                 ));
+                level3Trades.add((entity, random) -> new MerchantOffer(
+                        new ItemStack(ModItems.TRUFFLE.get(), 4),
+                        new ItemStack(Items.EMERALD, 1),
+                        12, // Max uses
+                        20, // Villager XP
+                        0.05f // Price multiplier
+                ));
             }
         }
     }
