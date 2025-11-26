@@ -1,0 +1,47 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "fungidelight:inky_cap_mushroom_colony"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "fungidelight:inky_cap_mushroom_colony"
+  },
+  "categories": [
+    "rich_soul",
+    "crimson_nylium"
+  ],
+  "growthTicks": 1400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "fungidelight:inky_cap_mushroom_colony"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "fungidelight:inky_cap_mushroom"
+      },
+      "minRolls": 1,
+      "maxRolls": 3
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "fungidelight:inky_cap_mushroom"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}
