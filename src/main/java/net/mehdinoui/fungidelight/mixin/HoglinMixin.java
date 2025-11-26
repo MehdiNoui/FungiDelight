@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class HoglinMixin {
     @Inject(method = "isFood", at = @At("HEAD"), cancellable = true)
     private void fungiDelight$isFood(ItemStack pStack, CallbackInfoReturnable<Boolean> cir) {
-        System.out.println("Mixin is checking food: " + pStack.getItem());
         if (pStack.is(ModItems.TRUFFLE.get())) {
             cir.setReturnValue(true);
         }
