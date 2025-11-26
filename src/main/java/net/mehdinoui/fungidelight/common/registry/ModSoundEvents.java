@@ -16,7 +16,22 @@ public class ModSoundEvents {
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }
+
     // --- Sounds Registry ---
+    // Custom new Sounds
     public static final RegistryObject<SoundEvent> PIG_HAPPY = SOUND_EVENTS.register("pig_happy",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(FungiDelight.MOD_ID, "pig_happy")));
+
+    // Sounds Wrappers
+    public static final RegistryObject<SoundEvent> PIG_DIG = SOUND_EVENTS.register("pig_dig",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(FungiDelight.MOD_ID, "pig_dig")));
+    public static final RegistryObject<SoundEvent> PIG_DROP = SOUND_EVENTS.register("pig_drop",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(FungiDelight.MOD_ID, "pig_drop")));
+
+    public static final RegistryObject<SoundEvent> DOG_SNIFF_TRUFFLE = SOUND_EVENTS.register("dog_sniff_truffle",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("fungidelight", "dog_sniff_truffle")));
+    public static final RegistryObject<SoundEvent> DOG_FOUND_TRUFFLE = SOUND_EVENTS.register("dog_found_truffle",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("fungidelight", "dog_found_truffle")));
+    public static final RegistryObject<SoundEvent> DOG_ALERT_TRUFFLE = SOUND_EVENTS.register("dog_alert_truffle",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("fungidelight", "dog_alert_truffle")));
 }

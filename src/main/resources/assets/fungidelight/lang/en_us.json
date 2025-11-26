@@ -40,5 +40,11 @@
 
   "block.fungidelight.truffle_dirt": "Truffle Dirt",
 
-  "subtitles.fungidelight.pig_happy": "Pig squeals happily"
+  "subtitles.fungidelight.pig_happy": "Pig squeals happily",
+  "subtitles.fungidelight.pig_dig": "Pig digs",
+  "subtitles.fungidelight.pig_drop": "Truffle pops",
+
+  "subtitles.fungidelight.dog_sniff_truffle": "Dog smells a truffle",
+  "subtitles.fungidelight.dog_found_truffle": "Dog catches a scent",
+  "subtitles.fungidelight.dog_alert_truffle": "Dog finds truffle"
 }
