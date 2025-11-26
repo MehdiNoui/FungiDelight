@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cooked_cleaned_cap": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fungidelight:cleaned_cap"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fungidelight:cooked_cleaned_cap_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cooked_cleaned_cap",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fungidelight:cooked_cleaned_cap_from_smoking"
+    ]
+  },
+  "sends_telemetry_event": false
+}

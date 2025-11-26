@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cooked_caps": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fungidelight:cooked_cleaned_cap"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fungidelight:inky_cap_scrambled_eggs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cooked_caps",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fungidelight:inky_cap_scrambled_eggs"
+    ]
+  },
+  "sends_telemetry_event": false
+}

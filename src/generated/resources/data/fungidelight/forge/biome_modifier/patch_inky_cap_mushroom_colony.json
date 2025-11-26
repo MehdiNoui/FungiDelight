@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#forge:is_mushroom",
+  "features": "fungidelight:patch_inky_cap_mushroom_colony",
+  "step": "vegetal_decoration"
+}

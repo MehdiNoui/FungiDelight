@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "fungidelight:inky_cap_mushroom_normal",
+  "step": "vegetal_decoration"
+}

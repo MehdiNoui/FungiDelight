@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_inky_cap_mushroom_crate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fungidelight:inky_cap_mushroom_crate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fungidelight:inky_cap_mushrooms_from_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_inky_cap_mushroom_crate",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fungidelight:inky_cap_mushrooms_from_crate"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,23 @@
+{
+  "feature": "fungidelight:truffle_dirt_ore",
+  "placement": [
+    {
+      "type": "fungidelight:configurable_rarity_filter",
+      "config_key": "truffle_dirt_ore"
+    },
+    {
+      "type": "minecraft:count",
+      "count": 1
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

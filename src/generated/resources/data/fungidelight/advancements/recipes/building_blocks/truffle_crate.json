@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fungidelight:truffle_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_truffle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fungidelight:truffle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_truffle",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fungidelight:truffle_crate"
+    ]
+  },
+  "sends_telemetry_event": false
+}

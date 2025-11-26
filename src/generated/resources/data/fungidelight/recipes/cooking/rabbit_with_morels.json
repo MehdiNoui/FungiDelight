@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "minecraft:rabbit"
+    },
+    {
+      "item": "fungidelight:morel_mushroom"
+    },
+    {
+      "item": "fungidelight:morel_mushroom"
+    },
+    {
+      "item": "minecraft:carrot"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "fungidelight:rabbit_with_morels"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#fungidelight:has_inky_caps",
+  "features": "fungidelight:inky_cap_mushroom_rare",
+  "step": "vegetal_decoration"
+}

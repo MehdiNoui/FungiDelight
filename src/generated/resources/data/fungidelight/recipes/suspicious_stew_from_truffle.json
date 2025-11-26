@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "fungidelight:truffle"
+    }
+  ],
+  "result": {
+    "item": "minecraft:suspicious_stew",
+    "nbt": "{Effects:[{EffectDuration:160,EffectId:3}]}"
+  }
+}

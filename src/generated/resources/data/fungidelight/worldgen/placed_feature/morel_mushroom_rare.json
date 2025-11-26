@@ -1,0 +1,19 @@
+{
+  "feature": "fungidelight:patch_morel_mushroom",
+  "placement": [
+    {
+      "type": "fungidelight:configurable_rarity_filter",
+      "config_key": "morel_rare"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

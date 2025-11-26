@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#fungidelight:has_morels",
+  "features": "fungidelight:morel_mushroom_rare",
+  "step": "vegetal_decoration"
+}

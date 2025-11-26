@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "fungidelight:morel_mushroom_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "fungidelight:morel_mushroom"
+  }
+}

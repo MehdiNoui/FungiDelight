@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#fungidelight:has_truffles",
+  "features": "fungidelight:rooted_dirt_blob",
+  "step": "underground_ores"
+}

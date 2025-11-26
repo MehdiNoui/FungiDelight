@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "fungidelight:truffle_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "fungidelight:truffle"
+  }
+}
