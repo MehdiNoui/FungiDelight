@@ -12,8 +12,12 @@ public class ModComposterEvent {
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            // 50%
+            ComposterBlock.COMPOSTABLES.put(ModItems.CLEANED_CAPS.get(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(ModItems.TRUFFLE_SLICE.get(), 0.5f);
             // 65%
             ComposterBlock.COMPOSTABLES.put(ModItems.INKY_CAP_MUSHROOM.get(), 0.65f);
+            ComposterBlock.COMPOSTABLES.put(ModItems.COOKED_CLEANED_CAPS.get(), 0.65f);
             ComposterBlock.COMPOSTABLES.put(ModItems.MOREL_MUSHROOM.get(), 0.65f);
             ComposterBlock.COMPOSTABLES.put(ModItems.INKY_CAP_MUSHROOM_STEM.get(), 0.65f);
             ComposterBlock.COMPOSTABLES.put(ModItems.MOREL_MUSHROOM_STEM.get(), 0.65f);
@@ -22,6 +26,7 @@ public class ModComposterEvent {
             ComposterBlock.COMPOSTABLES.put(ModItems.INKY_CAP_MUSHROOM_EDGE.get(), 0.85f);
             ComposterBlock.COMPOSTABLES.put(ModItems.MOREL_MUSHROOM_BLOCK.get(), 0.85f);
             // 100%
+            ComposterBlock.COMPOSTABLES.put(ModItems.TRUFFLE.get(), 1.0f);
             ComposterBlock.COMPOSTABLES.put(ModItems.INKY_CAP_MUSHROOM_COLONY.get(), 1.0f);
             ComposterBlock.COMPOSTABLES.put(ModItems.MOREL_MUSHROOM_COLONY.get(), 1.0f);
         });
