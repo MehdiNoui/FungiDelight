@@ -48,6 +48,10 @@ public class ModCreativeTab {
                         pOutput.accept(ModItems.MOREL_MUSHROOM_STEM.get());
                         pOutput.accept(ModItems.TRUFFLE_DIRT.get());
 
+                        // Entities
+                        pOutput.accept(ModItems.INKY_CAP_COW_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.MOREL_COW_SPAWN_EGG.get());
+
                         // Ingredients
                         pOutput.accept(ModItems.CLEANED_CAPS.get());
                         pOutput.accept(ModItems.COOKED_CLEANED_CAPS.get());
