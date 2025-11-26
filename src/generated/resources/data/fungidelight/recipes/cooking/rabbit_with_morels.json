@@ -16,7 +16,10 @@
       "item": "fungidelight:morel_mushroom"
     },
     {
-      "item": "minecraft:carrot"
+      "tag": "forge:vegetables/carrot"
+    },
+    {
+      "tag": "forge:crops/onion"
     }
   ],
   "recipe_book_tab": "meals",
