@@ -54,10 +54,14 @@ public class ModItems {
             () -> new Item(bowlFoodItem(ModFoods.TRUFFLE_PASTA)));
     public static final RegistryObject<Item> STUFFED_MORELS = ITEMS.register("stuffed_morels",
             () -> new Item(bowlFoodItem(ModFoods.STUFFED_MORELS)));
+    public static final RegistryObject<Item> STEAK_WITH_MUSHROOMS = ITEMS.register("steak_with_mushrooms",
+            () -> new Item(bowlFoodItem(ModFoods.STEAK_WITH_MUSHROOMS)));
     public static final RegistryObject<Item> MUTTON_CHOPS_WITH_TRUFFLE = ITEMS.register("mutton_chops_with_truffle",
             () -> new Item(bowlFoodItem(ModFoods.MUTTON_CHOPS_WITH_TRUFFLE)));
     public static final RegistryObject<Item> RABBIT_WITH_MORELS = ITEMS.register("rabbit_with_morels",
             () -> new Item(bowlFoodItem(ModFoods.RABBIT_WITH_MORELS)));
+    public static final RegistryObject<Item> PORK_MARSALA_WITH_MUSHROOMS = ITEMS.register("pork_marsala_with_mushrooms",
+            () -> new Item(bowlFoodItem(ModFoods.PORK_MARSALA_WITH_MUSHROOMS)));
 
     // ---- Block Items ----
     // --- Crates ---

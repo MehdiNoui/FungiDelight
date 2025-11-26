@@ -55,6 +55,15 @@ public class ModCookingRecipes {
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(consumer, new ResourceLocation("fungidelight", "cooking/stuffed_morels"));
 
+        CookingPotRecipeBuilder.cookingPotRecipe(ModItems.STEAK_WITH_MUSHROOMS.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
+                .addIngredient(Items.BEEF)
+                .addIngredient(Items.BROWN_MUSHROOM)
+                .addIngredient(ForgeTags.CROPS_ONION)
+                .addIngredient(ForgeTags.MILK)
+                .unlockedByItems("has_brown_mushroom", Items.BROWN_MUSHROOM)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(consumer, new ResourceLocation("fungidelight", "cooking/steak_with_mushrooms"));
+
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.MUTTON_CHOPS_WITH_TRUFFLE.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
                 .addIngredient(ForgeTags.RAW_MUTTON)
                 .addIngredient(ModItems.TRUFFLE_SLICE.get())
@@ -72,6 +81,15 @@ public class ModCookingRecipes {
                 .unlockedByItems("has_morel", ModItems.MOREL_MUSHROOM.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(consumer, new ResourceLocation("fungidelight", "cooking/rabbit_with_morels"));
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ModItems.PORK_MARSALA_WITH_MUSHROOMS.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
+                .addIngredient(ForgeTags.RAW_PORK)
+                .addIngredient(Items.RED_MUSHROOM)
+                .addIngredient(Items.RED_MUSHROOM)
+                .addIngredient(vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE.get())
+                .unlockedByItems("has_red_mushroom", Items.RED_MUSHROOM)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(consumer, new ResourceLocation("fungidelight", "cooking/pork_marsala_with_mushrooms"));
     }
     private static void cookMiscellaneous(Consumer<FinishedRecipe> consumer) {
     }

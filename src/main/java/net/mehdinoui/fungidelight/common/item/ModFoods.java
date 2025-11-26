@@ -48,6 +48,9 @@ public class ModFoods {
     public static final FoodProperties STUFFED_MORELS = new FoodProperties.Builder().
             nutrition(12).saturationMod(0.8f)
             .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), MEDIUM_DURATION, 0), 1.0F).build();
+    public static final FoodProperties STEAK_WITH_MUSHROOMS = new FoodProperties.Builder().
+            nutrition(12).saturationMod(0.8f)
+            .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), MEDIUM_DURATION, 0), 1.0F).build();
     public static final FoodProperties MUTTON_CHOPS_WITH_TRUFFLE = new FoodProperties.Builder().
             nutrition(14).saturationMod(0.75f)
             .effect(()-> new MobEffectInstance(ModEffects.NOURISHMENT.get(), LONG_DURATION,0),1.0f)
@@ -56,4 +59,9 @@ public class ModFoods {
             nutrition(14).saturationMod(0.75f)
             .effect(()-> new MobEffectInstance(ModEffects.NOURISHMENT.get(), LONG_DURATION,0),1.0f)
             .build();
+    public static final FoodProperties PORK_MARSALA_WITH_MUSHROOMS = new FoodProperties.Builder().
+            nutrition(14).saturationMod(0.75f)
+            .effect(()-> new MobEffectInstance(ModEffects.NOURISHMENT.get(), LONG_DURATION,0),1.0f)
+            .build();
+
 }

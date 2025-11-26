@@ -38,8 +38,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.INKY_CAP_SCRAMBLED_EGGS);
         simpleItem(ModItems.TRUFFLE_PASTA);
         simpleItem(ModItems.STUFFED_MORELS);
+        simpleItem(ModItems.STEAK_WITH_MUSHROOMS);
         simpleItem(ModItems.MUTTON_CHOPS_WITH_TRUFFLE);
         simpleItem(ModItems.RABBIT_WITH_MORELS);
+        simpleItem(ModItems.PORK_MARSALA_WITH_MUSHROOMS);
 
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_BLOCK, "_inventory");
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_EDGE, "_inventory");

@@ -61,8 +61,10 @@ public class ModCreativeTab {
                         pOutput.accept(ModItems.INKY_CAP_SCRAMBLED_EGGS.get());
                         pOutput.accept(ModItems.TRUFFLE_PASTA.get());
                         pOutput.accept(ModItems.STUFFED_MORELS.get());
+                        pOutput.accept(ModItems.STEAK_WITH_MUSHROOMS.get());
                         pOutput.accept(ModItems.MUTTON_CHOPS_WITH_TRUFFLE.get());
                         pOutput.accept(ModItems.RABBIT_WITH_MORELS.get());
+                        pOutput.accept(ModItems.PORK_MARSALA_WITH_MUSHROOMS.get());
 
                         // Desserts
                         pOutput.accept(ModItems.TRUFFLE_ICE_CREAM.get());
