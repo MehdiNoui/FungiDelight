@@ -1,0 +1,43 @@
+{
+  "creativetab.fungidelight_tab": "Fungi Delight",
+
+  "item.fungidelight.cleaned_cap": "Cleaned Mushroom Cap",
+  "item.fungidelight.cooked_cleaned_cap": "Cooked Mushroom Cap",
+  "item.fungidelight.truffle": "Truffle",
+  "item.fungidelight.truffle_slice": "Truffle Slice",
+
+  "item.fungidelight.inky_caps_salad": "Inky Caps Salad",
+
+  "item.fungidelight.creamy_morel_soup": "Creamy Morel Soup",
+  "item.fungidelight.truffle_ice_cream": "Truffle Ice Cream",
+
+  "item.fungidelight.inky_cap_scrambled_eggs": "Inky Cap Scrambled Eggs",
+  "item.fungidelight.truffle_pasta": "Truffle Pasta",
+  "item.fungidelight.stuffed_morels": "Stuffed Morels",
+  "item.fungidelight.steak_with_mushrooms": "Steak With Mushrooms",
+  "item.fungidelight.mutton_chops_with_truffle": "Mutton Chops with Truffle",
+  "item.fungidelight.rabbit_with_morels": "Rabbit with Morels",
+  "item.fungidelight.pork_marsala_with_mushrooms": "Pork Marsala With Mushrooms",
+
+  "block.fungidelight.inky_cap_mushroom": "Inky Cap Mushroom",
+  "block.fungidelight.morel_mushroom": "Morel Mushroom",
+
+  "block.fungidelight.inky_cap_mushroom_block": "Inky Cap Mushroom Block",
+  "block.fungidelight.inky_cap_mushroom_stem": "Inky Cap Mushroom Stem",
+  "block.fungidelight.inky_cap_mushroom_edge": "Inky Cap Mushroom Edge",
+  "block.fungidelight.inky_goo_veil": "Inky Goo Veil",
+
+  "block.fungidelight.morel_mushroom_block": "Morel Mushroom Block",
+  "block.fungidelight.morel_mushroom_stem": "Morel Mushroom Stem",
+
+  "block.fungidelight.inky_cap_mushroom_colony": "Inky Cap Mushroom Colony",
+  "block.fungidelight.morel_mushroom_colony": "Morel Mushroom Colony",
+
+  "block.fungidelight.brown_mushroom_crate": "Brown Mushroom Crate",
+  "block.fungidelight.inky_cap_mushroom_crate": "Inky Cap Mushroom Crate",
+  "block.fungidelight.morel_mushroom_crate": "Morel Mushroom Crate",
+  "block.fungidelight.red_mushroom_crate": "Red Mushroom Crate",
+  "block.fungidelight.truffle_mushroom_crate": "Truffle Mushroom Crate",
+
+  "block.fungidelight.truffle_dirt": "Truffle Dirt"
+}
