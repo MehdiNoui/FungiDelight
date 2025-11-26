@@ -161,16 +161,16 @@ public class DogTruffleHuntGoal extends Goal {
 
         // Success Sound (Play once)
         if (this.barkTimer == 0) {
-            this.wolf.playSound(SoundEvents.WOLF_HOWL, 1.0F, 1.0F); // Pitch 1.2 is a bit high/squeaky, 1.0 is standard
+            this.wolf.playSound(SoundEvents.WOLF_HOWL, 1.0F, 1.0F);
         }
 
         // Success particles
         if (this.barkTimer % 5 == 0 ) {
-            BlockState blockState = this.level.getBlockState(this.targetSurfacePos);
+            BlockState blockState = this.level.getBlockState(this.targetSurfacePos.below());
             serverLevel.sendParticles(
                     new BlockParticleOption(ParticleTypes.BLOCK, blockState),
                     this.targetSurfacePos.getX() + 0.5D,
-                    this.targetSurfacePos.getY() + 1.0D,
+                    this.targetSurfacePos.getY() + 0.2D,
                     this.targetSurfacePos.getZ() + 0.5D,
                     6, 0.3D, 0.1D, 0.3D, 0.15D
             );
