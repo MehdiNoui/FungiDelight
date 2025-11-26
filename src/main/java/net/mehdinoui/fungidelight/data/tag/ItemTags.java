@@ -31,8 +31,10 @@ public class ItemTags extends ItemTagsProvider {
     public void registerForgeTags() {
         tag(Tags.Items.MUSHROOMS).add(
                 ModItems.INKY_CAP_MUSHROOM.get(),
+                ModItems.CLEANED_CAPS.get(),
                 ModItems.MOREL_MUSHROOM.get(),
-                ModItems.TRUFFLE.get()
+                ModItems.TRUFFLE.get(),
+                ModItems.TRUFFLE_SLICE.get()
         );
         tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_BROWN_MUSHROOM)
                 .add(ModBlocks.BROWN_MUSHROOM_CRATE.get().asItem());
