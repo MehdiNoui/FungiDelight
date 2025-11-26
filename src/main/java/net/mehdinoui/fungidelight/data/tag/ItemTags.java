@@ -8,10 +8,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
@@ -44,6 +45,24 @@ public class ItemTags extends ItemTagsProvider {
         tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_TRUFFLE)
                 .add(ModBlocks.TRUFFLE_CRATE.get().asItem());
     }
-    public void registerMinecraftTags() {}
-    public void registerFarmersDelightTags() {}
+    public void registerMinecraftTags() {
+       tag(net.minecraft.tags.ItemTags.PIGLIN_FOOD).add(
+               ModItems.TRUFFLE.get()
+       );
+       tag(net.minecraft.tags.ItemTags.SNIFFER_FOOD).add(
+               ModItems.TRUFFLE.get()
+       );
+    }
+    public void registerFarmersDelightTags() {
+        tag(ModTags.MEALS).add(
+                ModItems.CREAMY_MOREL_SOUP.get(),
+                ModItems.INKY_CAP_SCRAMBLED_EGGS.get(),
+                ModItems.TRUFFLE_PASTA.get(),
+                ModItems.STUFFED_MORELS.get(),
+                ModItems.STEAK_WITH_MUSHROOMS.get(),
+                ModItems.MUTTON_CHOPS_WITH_TRUFFLE.get(),
+                ModItems.RABBIT_WITH_MORELS.get(),
+                ModItems.PORK_MARSALA_WITH_MUSHROOMS.get()
+        );
+    }
 }
