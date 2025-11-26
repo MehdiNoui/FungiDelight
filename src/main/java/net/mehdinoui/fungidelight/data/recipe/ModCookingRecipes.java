@@ -77,13 +77,15 @@ public class ModCookingRecipes {
                 .addIngredient(Items.RABBIT)
                 .addIngredient(ModItems.MOREL_MUSHROOM.get())
                 .addIngredient(ModItems.MOREL_MUSHROOM.get())
-                .addIngredient(Items.CARROT)
+                .addIngredient(ForgeTags.VEGETABLES_CARROT)
+                .addIngredient(ForgeTags.CROPS_ONION)
                 .unlockedByItems("has_morel", ModItems.MOREL_MUSHROOM.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(consumer, new ResourceLocation("fungidelight", "cooking/rabbit_with_morels"));
 
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.PORK_MARSALA_WITH_MUSHROOMS.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
                 .addIngredient(ForgeTags.RAW_PORK)
+                .addIngredient(ForgeTags.CROPS_ONION)
                 .addIngredient(Items.RED_MUSHROOM)
                 .addIngredient(Items.RED_MUSHROOM)
                 .addIngredient(vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE.get())
