@@ -1,15 +1,22 @@
 package net.mehdinoui.fungidelight.data.recipe;
 
+import com.google.gson.JsonObject;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.function.Consumer;
@@ -17,6 +24,51 @@ import java.util.function.Consumer;
 import static net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance.hasItems;
 
 public class ModBasicRecipes {
+    // Helper method
+    private static void suspiciousStew(Consumer<FinishedRecipe> consumer, ItemLike ingredient, MobEffect effect, int duration) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.SUSPICIOUS_STEW, 1)
+                .requires(Items.BOWL)
+                .requires(Items.BROWN_MUSHROOM)
+                .requires(Items.RED_MUSHROOM)
+                .requires(ingredient)
+                .unlockedBy("has_ingredient", hasItems(ingredient))
+                .save(wrapper -> {
+                    consumer.accept(new FinishedRecipe() {
+                        @Override
+                        public void serializeRecipeData(JsonObject json) {
+                            wrapper.serializeRecipeData(json);
+                            // Create the NBT tags
+                            CompoundTag nbt = new CompoundTag();
+                            ListTag effects = new ListTag();
+                            CompoundTag effectTag = new CompoundTag();
+                            int effectId = BuiltInRegistries.MOB_EFFECT.getId(effect);
+                            effectTag.putInt("EffectId", effectId);
+                            effectTag.putInt("EffectDuration", duration);
+                            effects.add(effectTag);
+                            nbt.put("Effects", effects);
+                            json.getAsJsonObject("result").addProperty("nbt", nbt.toString());
+                        }
+                        @Override
+                        public ResourceLocation getId() {
+                            ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(ingredient.asItem());
+                            return new ResourceLocation(FungiDelight.MOD_ID, "suspicious_stew_from_" + itemId.getPath());
+                        }
+                        @Override
+                        public net.minecraft.world.item.crafting.RecipeSerializer<?> getType() {
+                            return wrapper.getType();
+                        }
+                        @Override
+                        public JsonObject serializeAdvancement() {
+                            return wrapper.serializeAdvancement();
+                        }
+                        @Override
+                        public ResourceLocation getAdvancementId() {
+                            return wrapper.getAdvancementId();
+                        }
+                    });
+                });
+    }
+
     public static void register(Consumer<FinishedRecipe> consumer) {
         shapefulRecipes(consumer);
         shapelessRecipes(consumer);;
@@ -103,5 +155,9 @@ public class ModBasicRecipes {
                 .requires(ModBlocks.TRUFFLE_CRATE.get())
                 .unlockedBy("has_truffle_crate", hasItems(ModBlocks.TRUFFLE_CRATE.get()))
                 .save(consumer, new ResourceLocation(FungiDelight.MOD_ID,"truffles_from_crate"));
+        // Suspicious Stews
+        suspiciousStew(consumer, ModItems.INKY_CAP_MUSHROOM.get(), MobEffects.BLINDNESS, 160);
+        suspiciousStew(consumer, ModItems.MOREL_MUSHROOM.get(), MobEffects.SATURATION, 160);
+        suspiciousStew(consumer, ModItems.TRUFFLE.get(), MobEffects.DIG_SPEED, 160);
     }
 }
