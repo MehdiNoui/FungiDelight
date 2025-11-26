@@ -1,6 +1,7 @@
 package net.mehdinoui.fungidelight.data.recipe;
 
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
@@ -41,5 +42,11 @@ public class ModSmeltingRecipes {
     }
 
     public static void tripletRecipes(Consumer<FinishedRecipe> consumer) {
+        cookingTriplet(consumer,
+                Ingredient.of(ModItems.CLEANED_CAPS.get()),
+                ModItems.COOKED_CLEANED_CAPS.get(),
+                0.35F, 200,
+                "cooked_cleaned_cap",
+                ModItems.CLEANED_CAPS.get());
     }
 }

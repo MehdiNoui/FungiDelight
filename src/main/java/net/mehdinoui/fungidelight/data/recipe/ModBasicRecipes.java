@@ -8,7 +8,9 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.function.Consumer;
 
@@ -58,6 +60,28 @@ public class ModBasicRecipes {
                 .save(consumer, new ResourceLocation(FungiDelight.MOD_ID,"truffle_crate"));
     }
     public static void shapelessRecipes(Consumer<FinishedRecipe> consumer){
+        // Food items
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.INKY_CAP_SCRAMBLED_EGGS.get(),1)
+                .requires(ForgeTags.COOKED_EGGS)
+                .requires(ForgeTags.COOKED_EGGS)
+                .requires(ModItems.COOKED_CLEANED_CAPS.get())
+                .requires(Items.BOWL)
+                .unlockedBy("has_cooked_caps", hasItems(ModItems.COOKED_CLEANED_CAPS.get()))
+                .save(consumer, new ResourceLocation(FungiDelight.MOD_ID,"inky_cap_scrambled_eggs"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.INKY_CAPS_SALAD.get(),1)
+                .requires(ForgeTags.SALAD_INGREDIENTS)
+                .requires(ModItems.CLEANED_CAPS.get())
+                .requires(Items.BOWL)
+                .unlockedBy("has_bowl", hasItems(Items.BOWL))
+                .save(consumer, new ResourceLocation(FungiDelight.MOD_ID,"inky_cap_salad"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.TRUFFLE_ICE_CREAM.get(), 1)
+                .requires(ModItems.TRUFFLE_SLICE.get())
+                .requires(Items.SNOWBALL)
+                .requires(Items.SUGAR)
+                .requires(Items.MILK_BUCKET)
+                .requires(Items.BOWL)
+                .unlockedBy("has_truffle_slice", hasItems(ModItems.TRUFFLE_SLICE.get()))
+                .save(consumer, new ResourceLocation(FungiDelight.MOD_ID, "truffle_ice_cream"));
         // Mushroom from crates
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BROWN_MUSHROOM, 9)
                 .requires(ModBlocks.BROWN_MUSHROOM_CRATE.get())

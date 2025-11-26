@@ -17,10 +17,22 @@ public class ModCuttingRecipes {
         CuttingBoardRecipeBuilder.cuttingRecipe(
                         Ingredient.of(ModItems.INKY_CAP_MUSHROOM_COLONY.get()),
                         Ingredient.of(ForgeTags.TOOLS_KNIVES), ModItems.INKY_CAP_MUSHROOM.get(),5)
-                .build(consumer,new ResourceLocation(FungiDelight.MOD_ID, "cutting/inky_cap_mushroom_colony"));
+                .build(consumer, new ResourceLocation(FungiDelight.MOD_ID, "cutting/inky_cap_mushroom_colony"));
         CuttingBoardRecipeBuilder.cuttingRecipe(
                         Ingredient.of(ModItems.MOREL_MUSHROOM_COLONY.get()),
                         Ingredient.of(ForgeTags.TOOLS_KNIVES), ModItems.MOREL_MUSHROOM.get(),5)
-                .build(consumer,new ResourceLocation(FungiDelight.MOD_ID, "cutting/morel_mushroom_colony"));
+                .build(consumer, new ResourceLocation(FungiDelight.MOD_ID, "cutting/morel_mushroom_colony"));
+        // Inky cap
+        CuttingBoardRecipeBuilder.cuttingRecipe(
+                Ingredient.of(ModItems.INKY_CAP_MUSHROOM.get()),
+                Ingredient.of(ForgeTags.TOOLS_KNIVES), ModItems.CLEANED_CAPS.get(),1)
+                .addResult(Items.BLACK_DYE, 1)
+                .addResultWithChance(Items.BLACK_DYE, 0.2F, 1)
+                .build(consumer, new ResourceLocation(FungiDelight.MOD_ID, "cutting/cleaned_cap"));
+        // Truffle
+        CuttingBoardRecipeBuilder.cuttingRecipe(
+                        Ingredient.of(ModItems.TRUFFLE.get()),
+                        Ingredient.of(ForgeTags.TOOLS_KNIVES), ModItems.TRUFFLE_SLICE.get(),2)
+                .build(consumer, new ResourceLocation(FungiDelight.MOD_ID, "cutting/truffle_slice"));
     }
 }

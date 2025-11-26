@@ -27,7 +27,19 @@ public class ModItemModelProvider extends ItemModelProvider {
         flatItem(ModItems.MOREL_MUSHROOM_COLONY, "_stage3");
 
         flatItem(ModItems.INKY_GOO_VEIL, "_connected");
+
+        simpleItem(ModItems.CLEANED_CAPS);
+        simpleItem(ModItems.COOKED_CLEANED_CAPS);
         simpleItem(ModItems.TRUFFLE);
+        simpleItem(ModItems.TRUFFLE_SLICE);
+        simpleItem(ModItems.INKY_CAPS_SALAD);
+        simpleItem(ModItems.CREAMY_MOREL_SOUP);
+        simpleItem(ModItems.TRUFFLE_ICE_CREAM);
+        simpleItem(ModItems.INKY_CAP_SCRAMBLED_EGGS);
+        simpleItem(ModItems.TRUFFLE_PASTA);
+        simpleItem(ModItems.STUFFED_MORELS);
+        simpleItem(ModItems.MUTTON_CHOPS_WITH_TRUFFLE);
+        simpleItem(ModItems.RABBIT_WITH_MORELS);
 
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_BLOCK, "_inventory");
         simpleBlock(ModBlocks.INKY_CAP_MUSHROOM_EDGE, "_inventory");
