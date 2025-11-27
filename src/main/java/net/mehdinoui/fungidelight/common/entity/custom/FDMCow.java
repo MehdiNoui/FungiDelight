@@ -1,5 +1,6 @@
 package net.mehdinoui.fungidelight.common.entity.custom;
 
+import net.mehdinoui.fungidelight.common.registry.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -107,6 +108,14 @@ public class FDMCow extends MushroomCow {
     @Nullable
     @Override
     public MushroomCow getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
-        return (MushroomCow) this.getType().create(level);
+        EntityType<?> babyType = this.getType();
+        if (otherParent.getType() == this.getType() && this.random.nextInt(1024) == 0) {
+            if (this.getType() == ModEntities.INKY_CAP_COW.get()) {
+                babyType = ModEntities.MOREL_COW.get();
+            } else if (this.getType() == ModEntities.MOREL_COW.get()) {
+                babyType = ModEntities.INKY_CAP_COW.get();
+            }
+        }
+        return (MushroomCow) babyType.create(level);
     }
 }
