@@ -4,7 +4,6 @@ import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.mehdinoui.fungidelight.common.registry.ModSoundEvents;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.item.ItemStack;

@@ -2,7 +2,6 @@ package net.mehdinoui.fungidelight.common.registry;
 
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.world.ConfigurableRarityFilter;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -11,7 +10,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import vectorwing.farmersdelight.common.world.filter.BiomeTagFilter;
