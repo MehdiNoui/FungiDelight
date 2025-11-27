@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#forge:is_mushroom",
+  "spawners": {
+    "type": "fungidelight:inky_cap_cow",
+    "maxCount": 4,
+    "minCount": 2,
+    "weight": 6
+  }
+}

@@ -10,12 +10,15 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.List;
 
 public class ModBiomeModifiers {
     // --- Keys ---
@@ -49,6 +52,10 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_TRUFFLE_DIRT_ORE =
             ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_truffle_dirt_ore"));
 
+    public static final ResourceKey<BiomeModifier> ADD_INKY_CAP_COW_SPAWN =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_inky_cap_cow_spawn"));
+    public static final ResourceKey<BiomeModifier> ADD_MOREL_COW_SPAWN =
+            ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(FungiDelight.MOD_ID, "add_morel_cow_spawn"));
 
     // --- Register ---
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
@@ -155,5 +162,24 @@ public class ModBiomeModifiers {
                         GenerationStep.Decoration.UNDERGROUND_ORES
                 )
         );
+        // New Mushroom Cows
+        context.register(
+                ADD_INKY_CAP_COW_SPAWN,
+                new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_MUSHROOM),
+                        List.of(
+                                new MobSpawnSettings.SpawnerData(ModEntities.INKY_CAP_COW.get(),
+                                        6, 2, 4)
+                        )
+                )
+        );
+        context.register(
+                ADD_MOREL_COW_SPAWN,
+                new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_MUSHROOM),
+                        List.of(
+                                new MobSpawnSettings.SpawnerData(ModEntities.MOREL_COW.get(),
+                                        6, 2, 4))
+        ));
     }
 }
