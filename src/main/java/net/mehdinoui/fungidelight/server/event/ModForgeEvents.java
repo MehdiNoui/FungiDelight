@@ -35,7 +35,7 @@ public class ModForgeEvents {
                         wrappedGoal -> wrappedGoal.getGoal() instanceof DogTruffleHuntGoal)) {
                     return;
                 }
-                wolf.goalSelector.addGoal(2, new DogTruffleHuntGoal(wolf));
+                wolf.goalSelector.addGoal(6, new DogTruffleHuntGoal(wolf));
             }
         }
     }
