@@ -5,12 +5,18 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.MushroomCow;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -28,10 +34,21 @@ public class FDMCow extends MushroomCow {
         super(type, level);
         this.mushroom = mushroom;
     }
-
     // --- Helper Method ---
     public net.minecraft.world.level.block.state.BlockState getMushroomBlockState() {
         return this.mushroom.get().defaultBlockState();
+    }
+
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new PanicGoal(this, (double)2.0F));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D, MushroomCow.class));
+        this.goalSelector.addGoal(3, new TemptGoal(this, (double)1.25F, Ingredient.of(new ItemLike[]{Items.WHEAT}), false));
+        this.goalSelector.addGoal(4, new FollowParentGoal(this, (double)1.25F));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
 
     @Override
@@ -43,6 +60,7 @@ public class FDMCow extends MushroomCow {
     public List<ItemStack> onSheared(@Nullable Player player, @NotNull ItemStack item, Level world, BlockPos pos, int fortune) {
         this.gameEvent(GameEvent.SHEAR, player);
         this.level().playSound(null, this, SoundEvents.MOOSHROOM_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
+
         if (!this.level().isClientSide()) {
             Cow cow = EntityType.COW.create(this.level());
             if (cow != null) {
@@ -54,6 +72,7 @@ public class FDMCow extends MushroomCow {
                     cow.setCustomName(this.getCustomName());
                     cow.setCustomNameVisible(this.isCustomNameVisible());
                 }
+
                 if (this.isPersistenceRequired()) {
                     cow.setPersistenceRequired();
                 }
@@ -66,9 +85,28 @@ public class FDMCow extends MushroomCow {
                 for (int i = 0; i < 5; ++i) {
                     items.add(new ItemStack(this.mushroom.get()));
                 }
+
                 return items;
             }
         }
+
         return Collections.emptyList();
+    }
+
+    @Override
+    public boolean canMate(@NotNull Animal otherAnimal) {
+        if (otherAnimal == this) {
+            return false;
+        }
+        if (otherAnimal instanceof MushroomCow) {
+            return this.isInLove() && otherAnimal.isInLove();
+        }
+        return false;
+    }
+
+    @Nullable
+    @Override
+    public MushroomCow getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
+        return (MushroomCow) this.getType().create(level);
     }
 }
