@@ -169,7 +169,7 @@ public class ModBiomeModifiers {
                         biomes.getOrThrow(Tags.Biomes.IS_MUSHROOM),
                         List.of(
                                 new MobSpawnSettings.SpawnerData(ModEntities.INKY_CAP_COW.get(),
-                                        6, 2, 4)
+                                        8, 3, 4)
                         )
                 )
         );
@@ -179,7 +179,7 @@ public class ModBiomeModifiers {
                         biomes.getOrThrow(Tags.Biomes.IS_MUSHROOM),
                         List.of(
                                 new MobSpawnSettings.SpawnerData(ModEntities.MOREL_COW.get(),
-                                        6, 2, 4))
+                                        8, 3, 4))
         ));
     }
 }
