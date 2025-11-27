@@ -6,6 +6,7 @@ import net.mehdinoui.fungidelight.common.entity.custom.FDMCow;
 import net.minecraft.client.model.CowModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -23,7 +24,7 @@ public class FDMCowMushroomLayer extends RenderLayer<FDMCow, CowModel<FDMCow>> {
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, FDMCow entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (!entity.isBaby() && !entity.isInvisible()) {
             BlockState blockstate = entity.getMushroomBlockState();
-            int overlay = OverlayTexture.NO_OVERLAY;
+            int overlay = LivingEntityRenderer.getOverlayCoords(entity, 0.0F);
 
             // --- 1. First Mushroom (Back Left) ---
             poseStack.pushPose();
