@@ -28,8 +28,10 @@ public class MorelMushroomBlock extends MushroomBlock {
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!level.isClientSide()) {
-            if (random.nextInt(4) == 0 && level.getBlockState(pos.below()).is(ModTags.MUSHROOM_COLONY_GROWABLE_ON)) {
-                level.setBlockAndUpdate(pos, ModBlocks.MOREL_MUSHROOM_COLONY.get().defaultBlockState());
+            if (level.getBlockState(pos.below()).is(ModTags.MUSHROOM_COLONY_GROWABLE_ON)) {
+                if (random.nextInt(4) == 0) {
+                    level.setBlockAndUpdate(pos, ModBlocks.MOREL_MUSHROOM_COLONY.get().defaultBlockState());
+                }
             } else {
                 super.randomTick(state, level, pos, random);
             }
