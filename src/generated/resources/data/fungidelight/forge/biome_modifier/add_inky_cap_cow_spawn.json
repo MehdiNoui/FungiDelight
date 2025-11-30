@@ -4,7 +4,7 @@
   "spawners": {
     "type": "fungidelight:inky_cap_cow",
     "maxCount": 4,
-    "minCount": 2,
-    "weight": 6
+    "minCount": 3,
+    "weight": 8
   }
 }

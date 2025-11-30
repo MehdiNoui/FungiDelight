@@ -10,11 +10,11 @@
       "item": "fungidelight:cleaned_cap"
     },
     {
-      "item": "minecraft:black_dye"
+      "item": "minecraft:ink_sac"
     },
     {
       "chance": 0.2,
-      "item": "minecraft:black_dye"
+      "item": "minecraft:ink_sac"
     }
   ],
   "tool": {
