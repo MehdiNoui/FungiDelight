@@ -26,6 +26,7 @@ public class FungiDelight {
         ModSoundEvents.register(modEventBus);
         ModEntities.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModPotions.register(modEventBus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Configuration.CONFIG);
         MinecraftForge.EVENT_BUS.register(this);
