@@ -13,6 +13,7 @@ public class ModCommonEvent {
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            ModBrewingRecipes.register();
             // 50%
             ComposterBlock.COMPOSTABLES.put(ModItems.CLEANED_CAPS.get(), 0.5f);
             ComposterBlock.COMPOSTABLES.put(ModItems.TRUFFLE_SLICE.get(), 0.5f);
