@@ -19,6 +19,9 @@
   "item.fungidelight.rabbit_with_morels": "Rabbit with Morels",
   "item.fungidelight.pork_marsala_with_mushrooms": "Pork Marsala With Mushrooms",
 
+  "item.fungidelight.inky_cap_cow_spawn_egg": "Inky Cap Cow Spawn Egg",
+  "item.fungidelight.morel_cow_spawn_egg": "Morel Cow Spawn Egg",
+
   "block.fungidelight.inky_cap_mushroom": "Inky Cap Mushroom",
   "block.fungidelight.morel_mushroom": "Morel Mushroom",
 
@@ -40,8 +43,7 @@
 
   "block.fungidelight.truffle_dirt": "Truffle Dirt",
 
-  "item.fungidelight.inky_cap_cow_spawn_egg": "Inky Cap Cow Spawn Egg",
-  "item.fungidelight.morel_cow_spawn_egg": "Morel Cow Spawn Egg",
+  "effect.fungidelight.burrowing": "Burrowing",
 
   "subtitles.fungidelight.pig_happy": "Pig squeals happily",
   "subtitles.fungidelight.pig_dig": "Pig digs",
