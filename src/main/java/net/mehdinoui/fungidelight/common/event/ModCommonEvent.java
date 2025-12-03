@@ -1,6 +1,7 @@
 package net.mehdinoui.fungidelight.common.event;
 
 import net.mehdinoui.fungidelight.FungiDelight;
+import net.mehdinoui.fungidelight.common.potion.ModBrewingRecipes;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -8,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModComposterEvent {
+public class ModCommonEvent {
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
