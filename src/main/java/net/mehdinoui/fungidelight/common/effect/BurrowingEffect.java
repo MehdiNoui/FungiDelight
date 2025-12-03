@@ -5,6 +5,6 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 public class BurrowingEffect extends MobEffect {
     public BurrowingEffect() {
-        super(MobEffectCategory.BENEFICIAL, 0x8B4513);
+        super(MobEffectCategory.BENEFICIAL, 0xE66E67);
     }
 }
