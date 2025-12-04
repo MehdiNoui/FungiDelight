@@ -17,7 +17,7 @@ public class ModEffectEvents {
         }
         if (event.getState().is(BlockTags.MINEABLE_WITH_SHOVEL)) {
             int amplifier = Objects.requireNonNull(event.getEntity().getEffect(ModEffects.BURROWING.get())).getAmplifier();
-            float multiplier = 1.2F + (0.2F * amplifier);
+            float multiplier = 1.5F + (0.5F * amplifier);
             event.setNewSpeed(event.getOriginalSpeed() * multiplier);
         }
     }
