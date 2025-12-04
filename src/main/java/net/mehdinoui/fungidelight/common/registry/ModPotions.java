@@ -22,4 +22,6 @@ public class ModPotions {
             () -> new Potion(new MobEffectInstance(ModEffects.BURROWING.get(), 3600)));
     public static final RegistryObject<Potion> LONG_BURROWING_POTION = POTIONS.register("long_burrowing",
             () -> new Potion("burrowing", new MobEffectInstance(ModEffects.BURROWING.get(), 9600)));
+    public static final RegistryObject<Potion> STRONG_BURROWING_POTION = POTIONS.register("strong_burrowing",
+            () -> new Potion("burrowing", new MobEffectInstance(ModEffects.BURROWING.get(), 1800, 1)));
 }

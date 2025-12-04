@@ -25,5 +25,10 @@ public class ModBrewingRecipes {
                 Ingredient.of(Items.REDSTONE),
                 PotionUtils.setPotion(new ItemStack(Items.POTION), ModPotions.LONG_BURROWING_POTION.get())
         ));
+        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
+                Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), ModPotions.BURROWING_POTION.get())),
+                Ingredient.of(Items.GLOWSTONE_DUST),
+                PotionUtils.setPotion(new ItemStack(Items.POTION), ModPotions.STRONG_BURROWING_POTION.get())
+        ));
     }
 }
