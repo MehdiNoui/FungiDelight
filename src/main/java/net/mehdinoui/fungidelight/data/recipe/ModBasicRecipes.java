@@ -3,6 +3,7 @@ package net.mehdinoui.fungidelight.data.recipe;
 import com.google.gson.JsonObject;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
+import net.mehdinoui.fungidelight.common.registry.ModEffects;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -157,6 +158,6 @@ public class ModBasicRecipes {
         // Suspicious Stews
         suspiciousStew(consumer, ModItems.INKY_CAP_MUSHROOM.get(), MobEffects.BLINDNESS, 160);
         suspiciousStew(consumer, ModItems.MOREL_MUSHROOM.get(), MobEffects.SATURATION, 160);
-        suspiciousStew(consumer, ModItems.TRUFFLE.get(), MobEffects.DIG_SPEED, 160);
+        suspiciousStew(consumer, ModItems.TRUFFLE.get(), ModEffects.BURROWING.get(), 160);
     }
 }
