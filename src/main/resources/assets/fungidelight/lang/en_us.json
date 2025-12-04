@@ -19,6 +19,21 @@
   "item.fungidelight.rabbit_with_morels": "Rabbit with Morels",
   "item.fungidelight.pork_marsala_with_mushrooms": "Pork Marsala With Mushrooms",
 
+  "item.minecraft.potion.effect.burrowing": "Potion of Burrowing",
+  "item.minecraft.splash_potion.effect.burrowing": "Splash Potion of Burrowing",
+  "item.minecraft.lingering_potion.effect.burrowing": "Lingering Potion of Burrowing",
+  "item.minecraft.tipped_arrow.effect.burrowing": "Arrow of Burrowing",
+
+  "item.minecraft.potion.effect.long_burrowing": "Potion of Burrowing",
+  "item.minecraft.splash_potion.effect.long_burrowing": "Splash Potion of Burrowing",
+  "item.minecraft.lingering_potion.effect.long_burrowing": "Lingering Potion of Burrowing",
+  "item.minecraft.tipped_arrow.effect.long_burrowing": "Arrow of Burrowing",
+
+  "item.minecraft.potion.effect.strong_burrowing": "Potion of Burrowing",
+  "item.minecraft.splash_potion.effect.strong_burrowing": "Splash Potion of Burrowing",
+  "item.minecraft.lingering_potion.effect.strong_burrowing": "Lingering Potion of Burrowing",
+  "item.minecraft.tipped_arrow.effect.strong_burrowing": "Arrow of Burrowing",
+
   "item.fungidelight.inky_cap_cow_spawn_egg": "Inky Cap Cow Spawn Egg",
   "item.fungidelight.morel_cow_spawn_egg": "Morel Cow Spawn Egg",
 
@@ -44,6 +59,8 @@
   "block.fungidelight.truffle_dirt": "Truffle Dirt",
 
   "effect.fungidelight.burrowing": "Burrowing",
+
+  "tooltip.fungidelight.burrowing_desc": "+%s Mining Speed on soil",
 
   "subtitles.fungidelight.pig_happy": "Pig squeals happily",
   "subtitles.fungidelight.pig_dig": "Pig digs",
