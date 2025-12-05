@@ -33,6 +33,7 @@ public class ModEntitiesEvents {
     public static final int HUNT_DURATION = 20 * 60 * 2;
     @SubscribeEvent
     public static void onDogInteract(PlayerInteractEvent.EntityInteract event) {
+        if (!Configuration.ENABLE_WOLF_HUNT_TRUFFLE.get()) return;
         if (event.getTarget() instanceof Wolf wolf && wolf.isTame()) {
             ItemStack itemStack = event.getItemStack();
             if (itemStack.is(ModItems.TRUFFLE.get())) {
@@ -59,6 +60,8 @@ public class ModEntitiesEvents {
 
     @SubscribeEvent
     public static void onPigInteract(PlayerInteractEvent.EntityInteract event) {
+        if (!Configuration.ENABLE_PIG_FOODS.get()) return;
+        if (!Configuration.ENABLE_PIG_EXTRA_BABY.get()) return;
         if (event.getTarget() instanceof Pig pig && pig.isFood(event.getItemStack())) {
             if (event.getItemStack().is(ModItems.TRUFFLE.get())) {
                 if (pig.getAge() == 0 && !pig.isInLove()) {
@@ -78,6 +81,8 @@ public class ModEntitiesEvents {
 
     @SubscribeEvent
     public static void onBabySpawn(BabyEntitySpawnEvent event) {
+        if (!Configuration.ENABLE_PIG_FOODS.get()) return;
+        if (!Configuration.ENABLE_PIG_EXTRA_BABY.get()) return;
         Level level = event.getParentA().level();
         if (!(event.getParentA() instanceof Pig parentA)
                 || !(event.getParentB() instanceof Pig parentB)) {
@@ -161,6 +166,7 @@ public class ModEntitiesEvents {
 
     @SubscribeEvent
     public static void onLootTableLoad(LootTableLoadEvent event) {
+        if (!Configuration.ENABLE_SNIFFER_TRUFFLE.get()) return;
         if (event.getName().equals(BuiltInLootTables.SNIFFER_DIGGING)) {
             event.getTable().addPool(
                     LootPool.lootPool()

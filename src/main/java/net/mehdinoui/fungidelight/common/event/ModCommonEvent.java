@@ -49,7 +49,9 @@ public class ModCommonEvent {
             ComposterBlock.COMPOSTABLES.put(ModItems.MOREL_MUSHROOM_COLONY.get(), 1.0f);
         });
 
-        ModBrewingRecipes.register();
+        if (!Configuration.ENABLE_BURROWING_POTION.get()) {
+            ModBrewingRecipes.register();
+        }
 
         if (Configuration.ENABLE_PIG_FOODS.get()) {
             event.enqueueWork(() -> {

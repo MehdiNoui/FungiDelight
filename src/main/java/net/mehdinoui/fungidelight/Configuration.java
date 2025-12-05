@@ -10,9 +10,15 @@ public class Configuration {
     // ---- Pigs ----
     public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_FOODS;
     public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_DIGGING;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_PIG_EXTRA_BABY;
     public static final ForgeConfigSpec.DoubleValue CHANCE_PIG_DIGGING;
+    // ---- Sniffer ----
+    public static final ForgeConfigSpec.BooleanValue ENABLE_SNIFFER_TRUFFLE;
     // ---- Wolf ----
     public static final ForgeConfigSpec.BooleanValue ENABLE_WOLF_HUNT_TRUFFLE;
+
+    // --- Potions ---
+    public static final ForgeConfigSpec.BooleanValue  ENABLE_BURROWING_POTION;
 
     // --- Trades ---
     public static final ForgeConfigSpec.BooleanValue ENABLE_VILLAGER_TRADES;
@@ -54,6 +60,9 @@ public class Configuration {
         ENABLE_PIG_DIGGING = BUILDER
                 .comment("If true, Pigs can randomly dig up items from tagged blocks (Podzol, Rooted dirt etc...)")
                 .define("enablePigDigging", true);
+        ENABLE_PIG_EXTRA_BABY = BUILDER
+                .comment("If true, breeding pigs with Truffles gives a chance for twins/triplets.")
+                .define("enablePigExtraBaby", true);
         CHANCE_PIG_DIGGING = BUILDER
                 .comment("The probability per tick that a pig will attempt to dig a podzol block",
                         "Formula: 1 / value = Average Ticks.",
@@ -62,12 +71,27 @@ public class Configuration {
                 .defineInRange("chancePigDigging", 0.00025, 0.0, 1.0);
         BUILDER.pop();
 
+        BUILDER.push("Sniffer:");
+        ENABLE_SNIFFER_TRUFFLE = BUILDER
+                .comment("If true, Sniffers have a chance to drop Truffles when digging.")
+                .define("enableSnifferTruffle", true);
+        BUILDER.pop();
+
         BUILDER.push("Wolf:");
         ENABLE_WOLF_HUNT_TRUFFLE = BUILDER
                 .comment("If true, Tamed Wolves can be used to sniff and locate Truffle Dirt blocks")
                 .define("enableWolfHuntTruffle", true);
         BUILDER.pop();
 
+        BUILDER.pop();
+
+        // ==========================================
+        //              Potion Settings
+        // ==========================================
+        BUILDER.push("Potion Settings");
+        ENABLE_BURROWING_POTION = BUILDER
+                .comment("If true, the Burrowing Potion effect is enabled and craftable.")
+                .define("enableBurrowingPotion", true);
         BUILDER.pop();
 
         // ==========================================

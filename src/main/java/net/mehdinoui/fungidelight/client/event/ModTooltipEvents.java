@@ -1,5 +1,6 @@
 package net.mehdinoui.fungidelight.client.event;
 
+import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModEffects;
 import net.minecraft.ChatFormatting;
@@ -19,6 +20,7 @@ import java.util.List;
 public class ModTooltipEvents {
     @SubscribeEvent
     public static void onTooltip(ItemTooltipEvent event) {
+        if (!Configuration.ENABLE_BURROWING_POTION.get()) return;
         ItemStack stack = event.getItemStack();
         if (stack.getItem() != Items.POTION && stack.getItem() != Items.SPLASH_POTION
                 && stack.getItem() != Items.LINGERING_POTION && stack.getItem() != Items.TIPPED_ARROW) {

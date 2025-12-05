@@ -1,5 +1,6 @@
 package net.mehdinoui.fungidelight.common.event;
 
+import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModEffects;
 import net.minecraft.tags.BlockTags;
@@ -12,6 +13,7 @@ import java.util.Objects;
 public class ModEffectEvents {
     @SubscribeEvent
     public static void onBreakSpeed(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event) {
+        if (!Configuration.ENABLE_BURROWING_POTION.get()) return;
         if (!event.getEntity().hasEffect(ModEffects.BURROWING.get())) {
             return;
         }
