@@ -59,6 +59,7 @@
   "block.fungidelight.truffle_dirt": "Truffle Dirt",
 
   "effect.fungidelight.burrowing": "Burrowing",
+  "effect.fungidelight.weak_stomach": "Weak Stomach",
 
   "tooltip.fungidelight.burrowing_desc": "+%s Mining Speed on soil",
 

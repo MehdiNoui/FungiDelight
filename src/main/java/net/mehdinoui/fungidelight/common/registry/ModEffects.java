@@ -2,6 +2,7 @@ package net.mehdinoui.fungidelight.common.registry;
 
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.effect.BurrowingEffect;
+import net.mehdinoui.fungidelight.common.effect.WeakStomachEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,4 +21,6 @@ public class ModEffects {
     // --- Effects Registry ---
     public static final RegistryObject<MobEffect> BURROWING = EFFECTS.register("burrowing",
             BurrowingEffect::new);
+    public static final RegistryObject<MobEffect> WEAK_STOMACH = EFFECTS.register("weak_stomach",
+            WeakStomachEffect::new);
 }
