@@ -52,6 +52,60 @@ public class ModEntitiesEvents {
     }
 
     @SubscribeEvent
+    public static void onPigInteract(PlayerInteractEvent.EntityInteract event) {
+        if (event.getTarget() instanceof Pig pig && pig.isFood(event.getItemStack())) {
+            if (event.getItemStack().is(ModItems.TRUFFLE.get())) {
+                if (pig.getAge() == 0 && !pig.isInLove()) {
+                    pig.getPersistentData().putBoolean("FD_TruffleBred", true);
+                    if (!event.getLevel().isClientSide) {
+                        pig.setInLove(event.getEntity());
+                        if (!event.getEntity().getAbilities().instabuild) {
+                            event.getItemStack().shrink(1);
+                        }
+                    }
+                    event.setCancellationResult(InteractionResult.SUCCESS);
+                    event.setCanceled(true); // Prevent default interaction (like opening GUI)
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onBabySpawn(BabyEntitySpawnEvent event) {
+        Level level = event.getParentA().level();
+        if (!(event.getParentA() instanceof Pig parentA)
+                || !(event.getParentB() instanceof Pig parentB)) {
+            return;
+        }
+
+        CompoundTag dataA = parentA.getPersistentData();
+        CompoundTag dataB = parentB.getPersistentData();
+
+        if (dataA.getBoolean("FD_TruffleBred") || dataB.getBoolean("FD_TruffleBred")) {
+            if (level instanceof ServerLevel serverLevel) {
+                float roll = parentA.getRandom().nextFloat();
+                int extrasToSpawn = 0;
+
+                if (roll < 0.1f) extrasToSpawn = 2;
+                else if (roll < 0.5f) extrasToSpawn = 1;
+
+                if (extrasToSpawn > 0) {
+                    for (int i = 0; i < extrasToSpawn; i++) {
+                        Pig extraBaby = (Pig) parentA.getBreedOffspring(serverLevel, parentB);
+                        if (extraBaby != null) {
+                            extraBaby.setBaby(true);
+                            extraBaby.moveTo(parentA.getX(), parentA.getY(), parentA.getZ(), 0.0F, 0.0F);
+                            serverLevel.addFreshEntity(extraBaby);
+                        }
+                    }
+                }
+            }
+            dataA.remove("FD_TruffleBred");
+            dataB.remove("FD_TruffleBred");
+        }
+    }
+
+    @SubscribeEvent
     public static void addCustomGoals(EntityJoinLevelEvent event) {
         // --- PIG LOGIC ---
         if (Configuration.ENABLE_PIG_DIGGING.get()) {
