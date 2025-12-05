@@ -14,9 +14,9 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class ModClientForgeEvents {
-
+@Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID,
+        value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class ModTooltipEvents {
     @SubscribeEvent
     public static void onTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();

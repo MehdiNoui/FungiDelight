@@ -7,8 +7,9 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModClientEvents {
+@Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID,
+        bus = Mod.EventBusSubscriber.Bus.MOD)
+public class ModClientSetupEvents {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.INKY_CAP_COW.get(), FDMCowRenderer::new);

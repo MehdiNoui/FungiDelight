@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID)
 public class ModEffectEvents {
     @SubscribeEvent
     public static void onBreakSpeed(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event) {
@@ -21,4 +21,5 @@ public class ModEffectEvents {
             event.setNewSpeed(event.getOriginalSpeed() * multiplier);
         }
     }
+
 }

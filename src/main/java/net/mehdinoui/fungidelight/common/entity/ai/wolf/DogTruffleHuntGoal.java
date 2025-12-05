@@ -1,7 +1,7 @@
 package net.mehdinoui.fungidelight.common.entity.ai.wolf;
 
 import net.mehdinoui.fungidelight.Configuration;
-import net.mehdinoui.fungidelight.common.event.ModInteractionEvents;
+import net.mehdinoui.fungidelight.common.event.ModEntitiesEvents;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.mehdinoui.fungidelight.common.registry.ModSoundEvents;
 import net.minecraft.core.BlockPos;
@@ -40,13 +40,13 @@ public class DogTruffleHuntGoal extends Goal {
 
     // --- Helper Methods ---
     private boolean isHunting() {
-        if (!this.wolf.getPersistentData().contains(ModInteractionEvents.HUNTING_TAG)) return false;
-        long endTime = this.wolf.getPersistentData().getLong(ModInteractionEvents.HUNTING_TAG);
+        if (!this.wolf.getPersistentData().contains(ModEntitiesEvents.HUNTING_TAG)) return false;
+        long endTime = this.wolf.getPersistentData().getLong(ModEntitiesEvents.HUNTING_TAG);
         return this.level.getGameTime() < endTime;
     }
 
     private void completeHunt() {
-        this.wolf.getPersistentData().remove(ModInteractionEvents.HUNTING_TAG);
+        this.wolf.getPersistentData().remove(ModEntitiesEvents.HUNTING_TAG);
     }
 
     private BlockPos findNearestTruffle() {
