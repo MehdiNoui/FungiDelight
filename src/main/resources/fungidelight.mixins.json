@@ -6,7 +6,8 @@
   "refmap": "fungidelight.refmap.json",
   "mixins": [
     "HoglinMixin",
-    "MushroomCowMixin"
+    "MushroomCowMixin",
+    "SnifferAiMixin"
   ],
   "client": [
   ],
