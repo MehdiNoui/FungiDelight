@@ -44,6 +44,6 @@ public class ModEffectEvents {
     }
     private static void triggerReaction(LivingEntity entity) {
         entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 400, 1));
-        entity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 0));
+        entity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
     }
 }
