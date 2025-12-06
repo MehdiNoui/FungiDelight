@@ -10,7 +10,10 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PotionItem;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -36,7 +39,8 @@ public class ModEffectEvents {
         if (event.getEntity().level().isClientSide) return;
         if (event.getEntity().hasEffect(ModEffects.WEAK_STOMACH.get())) {
             ItemStack consumedItem = event.getItem();
-            boolean isPotion = consumedItem.getItem() instanceof PotionItem;
+            boolean isPotion = consumedItem.getItem() instanceof PotionItem
+                    && PotionUtils.getPotion(consumedItem) != Potions.WATER;
             if (isPotion) {
                 triggerReaction(event.getEntity());
             }
