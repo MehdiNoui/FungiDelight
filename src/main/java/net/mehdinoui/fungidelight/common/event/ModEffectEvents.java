@@ -53,7 +53,9 @@ public class ModEffectEvents {
         }
     }
     private static void triggerReaction(LivingEntity entity) {
-        entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 400, 1));
+        if (!Configuration.ENABLE_WEAK_STOMACH_EFFECT.get()) return;
+        entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 1));
         entity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
+        entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 1));
     }
 }
