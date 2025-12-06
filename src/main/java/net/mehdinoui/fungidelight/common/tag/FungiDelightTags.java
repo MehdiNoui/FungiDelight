@@ -66,4 +66,8 @@ public class FungiDelightTags {
             forgeItemTag("storage_blocks/morel");
     public static final TagKey<Item> STORAGE_BLOCKS_ITEM_TRUFFLE =
             forgeItemTag("storage_blocks/truffle");
+
+    // Reference Key for alcohol items (done in json)
+    public static final TagKey<Item> ALCOHOL =
+            forgeItemTag("alcohol");
 }
