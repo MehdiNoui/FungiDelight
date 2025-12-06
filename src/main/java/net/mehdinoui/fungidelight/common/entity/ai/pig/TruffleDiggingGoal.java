@@ -104,7 +104,7 @@ public class TruffleDiggingGoal extends Goal {
         if (!(this.level instanceof ServerLevel serverLevel)) return;
         BlockState state = this.level.getBlockState(this.targetBlock);
         // if Truffle Dirt
-        if (state.is(ModBlocks.TRUFFLE_DIRT.get())) {
+        if (state.is(FungiDelightTags.TRUFFLE_ORE)) {
             // Drop 1 to 3 Truffles
             int count = 1 + this.level.random.nextInt(3);
             ItemStack truffles = new ItemStack(ModItems.TRUFFLE.get(), count);

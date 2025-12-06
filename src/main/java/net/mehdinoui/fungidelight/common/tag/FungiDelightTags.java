@@ -27,10 +27,18 @@ public class FungiDelightTags {
         return ItemTags.create(new ResourceLocation("forge", path));
     }
 
+    // BIOMES:
+    public static final TagKey<Biome> HAS_INKY_CAPS = fungiDelightBiomeTag("has_inky_caps");
+    public static final TagKey<Biome> HAS_MORELS = fungiDelightBiomeTag("has_morels");
+    public static final TagKey<Biome> HAS_TRUFFLES = fungiDelightBiomeTag("has_truffles");
+
+    // Fungi Delight Tags:
+    // Truffle Ore
+    public static final TagKey<Block> TRUFFLE_ORE =
+            fungiDelightBlockTag("truffle_ore");
     // Blocks pig can dig up
     public static final TagKey<Block> PIG_CAN_DIG_UP =
             fungiDelightBlockTag("pig_can_dig_up");
-
     // Blocks morels can naturally spawn on
     public static final TagKey<Block> MOREL_PLACEABLE_ON =
             fungiDelightBlockTag("morel_placeable_on");
@@ -38,11 +46,7 @@ public class FungiDelightTags {
     public static final TagKey<Block> INKY_CAP_PLACEABLE_ON =
             fungiDelightBlockTag("inky_cap_placeable_on");
 
-    // BIOMES:
-    public static final TagKey<Biome> HAS_INKY_CAPS = fungiDelightBiomeTag("has_inky_caps");
-    public static final TagKey<Biome> HAS_MORELS = fungiDelightBiomeTag("has_morels");
-    public static final TagKey<Biome> HAS_TRUFFLES = fungiDelightBiomeTag("has_truffles");
-
+    // Forge Tags:
     // BLOCKS: Storage blocks
     public static final TagKey<Block> STORAGE_BLOCKS_BROWN_MUSHROOM =
             forgeBlockTag("storage_blocks/brown_mushroom");

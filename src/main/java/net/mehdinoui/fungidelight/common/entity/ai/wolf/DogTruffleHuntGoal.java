@@ -4,6 +4,7 @@ import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.common.event.ModEntitiesEvents;
 import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.mehdinoui.fungidelight.common.registry.ModSoundEvents;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -58,7 +59,7 @@ public class DogTruffleHuntGoal extends Goal {
                 origin.offset(-SEARCH_RADIUS, -SEARCH_DEPTH, -SEARCH_RADIUS),
                 origin.offset(SEARCH_RADIUS, -1, SEARCH_RADIUS)
         )) {
-            if (this.level.getBlockState(pos).is(ModBlocks.TRUFFLE_DIRT.get())) {
+            if (this.level.getBlockState(pos).is(FungiDelightTags.TRUFFLE_ORE)) {
                 double dist = pos.distSqr(origin);
                 if (dist < bestDist) {
                     bestDist = dist;
@@ -83,7 +84,7 @@ public class DogTruffleHuntGoal extends Goal {
 
     @Override
     public boolean canContinueToUse() {
-        boolean targetBlockStillValid = this.targetTrufflePos != null && this.level.getBlockState(this.targetTrufflePos).is(ModBlocks.TRUFFLE_DIRT.get());
+        boolean targetBlockStillValid = this.targetTrufflePos != null && this.level.getBlockState(this.targetTrufflePos).is(FungiDelightTags.TRUFFLE_ORE);
         return isHunting()
                 && targetBlockStillValid
                 && !this.wolf.isOrderedToSit()
@@ -154,7 +155,7 @@ public class DogTruffleHuntGoal extends Goal {
         );
 
         // Security Check: Did the block change?
-        if (this.targetTrufflePos == null || !this.level.getBlockState(this.targetTrufflePos).is(ModBlocks.TRUFFLE_DIRT.get())) {
+        if (this.targetTrufflePos == null || !this.level.getBlockState(this.targetTrufflePos).is(FungiDelightTags.TRUFFLE_ORE)) {
             this.barkTimer = 0;
             return;
         }
