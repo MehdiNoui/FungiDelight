@@ -3,14 +3,12 @@ package net.mehdinoui.fungidelight.common.event;
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModEffects;
-import net.minecraft.core.registries.Registries;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
@@ -41,7 +39,8 @@ public class ModEffectEvents {
             ItemStack consumedItem = event.getItem();
             boolean isPotion = consumedItem.getItem() instanceof PotionItem
                     && PotionUtils.getPotion(consumedItem) != Potions.WATER;
-            if (isPotion) {
+            boolean isAlcohol = consumedItem.is(FungiDelightTags.ALCOHOL);
+            if (isPotion || isAlcohol) {
                 triggerReaction(event.getEntity());
             }
         }
