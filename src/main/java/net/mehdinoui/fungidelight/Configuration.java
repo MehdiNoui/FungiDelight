@@ -2,6 +2,8 @@ package net.mehdinoui.fungidelight;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.List;
+
 public class Configuration {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CONFIG;
@@ -17,8 +19,10 @@ public class Configuration {
     // ---- Wolf ----
     public static final ForgeConfigSpec.BooleanValue ENABLE_WOLF_HUNT_TRUFFLE;
 
-    // --- Potions ---
-    public static final ForgeConfigSpec.BooleanValue  ENABLE_BURROWING_POTION;
+    // --- Effects ---
+    public static final ForgeConfigSpec.BooleanValue ENABLE_BURROWING_EFFECT;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_WEAK_STOMACH_EFFECT;
+    public static final ForgeConfigSpec.ConfigValue<List<? extends String>> WEAK_STOMACH_ITEMS;
 
     // --- Trades ---
     public static final ForgeConfigSpec.BooleanValue ENABLE_VILLAGER_TRADES;
@@ -86,12 +90,18 @@ public class Configuration {
         BUILDER.pop();
 
         // ==========================================
-        //              Potion Settings
+        //             Effect Settings
         // ==========================================
-        BUILDER.push("Potion Settings");
-        ENABLE_BURROWING_POTION = BUILDER
-                .comment("If true, the Burrowing Potion effect is enabled and craftable.")
-                .define("enableBurrowingPotion", true);
+        BUILDER.push("Effect Settings");
+        ENABLE_BURROWING_EFFECT = BUILDER
+                .comment("If true, the Burrowing effect is enabled and craftable.")
+                .define("enableBurrowingEffect", true);
+        ENABLE_WEAK_STOMACH_EFFECT = BUILDER
+                .comment("If true, the Weak Stomach effect is enabled.")
+                .define("enableWeakStomachEffect", true);
+        WEAK_STOMACH_ITEMS = BUILDER
+                .comment("List of Item IDs that trigger the Weak Stomach effect (e.g. 'minecraft:milk_bucket', 'some_mod:skibidi_soup').")
+                .defineList("Trigger Items", List.of(), entry -> entry instanceof String);
         BUILDER.pop();
 
         // ==========================================

@@ -4,6 +4,7 @@ import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModEffects;
 import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
 
@@ -22,7 +24,7 @@ import java.util.Objects;
 public class ModEffectEvents {
     @SubscribeEvent
     public static void onBreakSpeed(net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed event) {
-        if (!Configuration.ENABLE_BURROWING_POTION.get()) return;
+        if (!Configuration.ENABLE_BURROWING_EFFECT.get()) return;
         if (!event.getEntity().hasEffect(ModEffects.BURROWING.get())) {
             return;
         }
@@ -34,13 +36,18 @@ public class ModEffectEvents {
     }
     @SubscribeEvent
     public static void onFoodEaten(LivingEntityUseItemEvent.Finish event) {
+        if (!Configuration.ENABLE_WEAK_STOMACH_EFFECT.get()) return;
         if (event.getEntity().level().isClientSide) return;
         if (event.getEntity().hasEffect(ModEffects.WEAK_STOMACH.get())) {
             ItemStack consumedItem = event.getItem();
+            ResourceLocation itemID = ForgeRegistries.ITEMS.getKey(consumedItem.getItem());
+
             boolean isPotion = consumedItem.getItem() instanceof PotionItem
                     && PotionUtils.getPotion(consumedItem) != Potions.WATER;
             boolean isAlcohol = consumedItem.is(FungiDelightTags.ALCOHOL);
-            if (isPotion || isAlcohol) {
+            boolean isConfigured = itemID != null
+                    && Configuration.WEAK_STOMACH_ITEMS.get().contains(itemID.toString());
+            if (isPotion || isAlcohol || isConfigured) {
                 triggerReaction(event.getEntity());
             }
         }
