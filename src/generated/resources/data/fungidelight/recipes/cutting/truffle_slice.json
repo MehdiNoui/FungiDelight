@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "fungidelight:truffle"
+      "tag": "forge:mushrooms/truffle"
     }
   ],
   "result": [

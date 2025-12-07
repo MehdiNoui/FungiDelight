@@ -1,6 +1,7 @@
 package net.mehdinoui.fungidelight.data.recipe;
 
 import net.mehdinoui.fungidelight.common.registry.ModItems;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -27,8 +28,8 @@ public class ModCookingRecipes {
 
         // --- Soups ---
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.CREAMY_MOREL_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
-                .addIngredient(ModItems.MOREL_MUSHROOM.get())
-                .addIngredient(ModItems.MOREL_MUSHROOM.get())
+                .addIngredient(FungiDelightTags.MORELS)
+                .addIngredient(FungiDelightTags.MORELS)
                 .addIngredient(ForgeTags.MILK)
                 .addIngredient(ForgeTags.CROPS_ONION)
                 .unlockedByItems("has_morel", ModItems.MOREL_MUSHROOM.get())
@@ -38,7 +39,7 @@ public class ModCookingRecipes {
         // --- Plated Meals ---
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.TRUFFLE_PASTA.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
                 .addIngredient(ForgeTags.PASTA)
-                .addIngredient(ModItems.TRUFFLE_SLICE.get())
+                .addIngredient(FungiDelightTags.TRUFFLES)
                 .addIngredient(ForgeTags.MILK)
                 .addIngredient(ForgeTags.CROPS_ONION)
                 .unlockedByItems("has_truffle_slice", ModItems.TRUFFLE_SLICE.get())
@@ -46,8 +47,8 @@ public class ModCookingRecipes {
                 .build(consumer, new ResourceLocation("fungidelight", "cooking/truffle_pasta"));
 
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.STUFFED_MORELS.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
-                .addIngredient(ModItems.MOREL_MUSHROOM.get())
-                .addIngredient(ModItems.MOREL_MUSHROOM.get())
+                .addIngredient(FungiDelightTags.MORELS)
+                .addIngredient(FungiDelightTags.MORELS)
                 .addIngredient(ForgeTags.GRAIN_RICE)
                 .addIngredient(ForgeTags.CROPS_TOMATO)
                 .addIngredient(ForgeTags.COOKED_CHICKEN)
@@ -66,7 +67,7 @@ public class ModCookingRecipes {
 
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.MUTTON_CHOPS_WITH_TRUFFLE.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
                 .addIngredient(ForgeTags.RAW_MUTTON)
-                .addIngredient(ModItems.TRUFFLE_SLICE.get())
+                .addIngredient(FungiDelightTags.TRUFFLES)
                 .addIngredient(ForgeTags.VEGETABLES_POTATO)
                 .addIngredient(ForgeTags.CROPS_ONION)
                 .unlockedByItems("has_truffle_slice", ModItems.TRUFFLE_SLICE.get())
@@ -75,8 +76,8 @@ public class ModCookingRecipes {
 
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.RABBIT_WITH_MORELS.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BOWL)
                 .addIngredient(Items.RABBIT)
-                .addIngredient(ModItems.MOREL_MUSHROOM.get())
-                .addIngredient(ModItems.MOREL_MUSHROOM.get())
+                .addIngredient(FungiDelightTags.MORELS)
+                .addIngredient(FungiDelightTags.MORELS)
                 .addIngredient(ForgeTags.VEGETABLES_CARROT)
                 .addIngredient(ForgeTags.CROPS_ONION)
                 .unlockedByItems("has_morel", ModItems.MOREL_MUSHROOM.get())

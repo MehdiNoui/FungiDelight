@@ -7,10 +7,10 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "fungidelight:morel_mushroom"
+      "tag": "forge:mushrooms/morel"
     },
     {
-      "item": "fungidelight:morel_mushroom"
+      "tag": "forge:mushrooms/morel"
     },
     {
       "tag": "forge:grain/rice"
