@@ -1,9 +1,7 @@
 {
   "values": [
-    "fungidelight:inky_cap_mushroom",
-    "fungidelight:cleaned_cap",
-    "fungidelight:morel_mushroom",
-    "fungidelight:truffle",
-    "fungidelight:truffle_slice"
+    "#forge:mushrooms/inky_cap",
+    "#forge:mushrooms/morel",
+    "#forge:mushrooms/truffle"
   ]
 }

@@ -59,7 +59,14 @@ public class FungiDelightTags {
     public static final TagKey<Block> STORAGE_BLOCKS_TRUFFLE =
             forgeBlockTag("storage_blocks/truffle");
 
-    // ITEMS: Storage block items
+    // ITEMS:
+    public static final TagKey<Item> INKY_CAPS =
+            forgeItemTag("mushrooms/inky_cap");
+    public static final TagKey<Item> MORELS =
+            forgeItemTag("mushrooms/morel");
+    public static final TagKey<Item> TRUFFLES =
+            forgeItemTag("mushrooms/truffle");
+    // Storage block items
     public static final TagKey<Item> STORAGE_BLOCKS_ITEM_BROWN_MUSHROOM =
             forgeItemTag("storage_blocks/brown_mushroom");
     public static final TagKey<Item> STORAGE_BLOCKS_ITEM_RED_MUSHROOM =

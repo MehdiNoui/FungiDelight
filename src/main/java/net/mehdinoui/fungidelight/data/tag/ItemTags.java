@@ -28,13 +28,21 @@ public class ItemTags extends ItemTagsProvider {
         this.registerFarmersDelightTags();
     }
     public void registerForgeTags() {
-        tag(Tags.Items.MUSHROOMS).add(
+        tag(FungiDelightTags.INKY_CAPS).add(
                 ModItems.INKY_CAP_MUSHROOM.get(),
-                ModItems.CLEANED_CAPS.get(),
-                ModItems.MOREL_MUSHROOM.get(),
+                ModItems.CLEANED_CAPS.get()
+        );
+        tag(FungiDelightTags.MORELS).add(
+                ModItems.MOREL_MUSHROOM.get()
+        );
+        tag(FungiDelightTags.TRUFFLES).add(
                 ModItems.TRUFFLE.get(),
                 ModItems.TRUFFLE_SLICE.get()
         );
+        tag(Tags.Items.MUSHROOMS)
+                .addTag(FungiDelightTags.INKY_CAPS)
+                .addTag(FungiDelightTags.MORELS)
+                .addTag(FungiDelightTags.TRUFFLES);
         tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_BROWN_MUSHROOM)
                 .add(ModBlocks.BROWN_MUSHROOM_CRATE.get().asItem());
         tag(FungiDelightTags.STORAGE_BLOCKS_ITEM_RED_MUSHROOM)
