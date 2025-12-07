@@ -20,6 +20,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
 
+import static vectorwing.farmersdelight.common.FoodValues.MEDIUM_DURATION;
+
 @Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID)
 public class ModEffectEvents {
     @SubscribeEvent
@@ -38,18 +40,19 @@ public class ModEffectEvents {
     public static void onFoodEaten(LivingEntityUseItemEvent.Finish event) {
         if (!Configuration.ENABLE_WEAK_STOMACH_EFFECT.get()) return;
         if (event.getEntity().level().isClientSide) return;
+        ItemStack consumedItem = event.getItem();
         if (event.getEntity().hasEffect(ModEffects.WEAK_STOMACH.get())) {
-            ItemStack consumedItem = event.getItem();
             ResourceLocation itemID = ForgeRegistries.ITEMS.getKey(consumedItem.getItem());
-
             boolean isPotion = consumedItem.getItem() instanceof PotionItem
                     && PotionUtils.getPotion(consumedItem) != Potions.WATER;
             boolean isAlcohol = consumedItem.is(FungiDelightTags.ALCOHOL);
             boolean isConfigured = itemID != null
                     && Configuration.WEAK_STOMACH_ITEMS.get().contains(itemID.toString());
-            if (isPotion || isAlcohol || isConfigured) {
-                triggerReaction(event.getEntity());
-            }
+            if (isPotion || isAlcohol || isConfigured) triggerReaction(event.getEntity());
+        } else {
+            boolean isCoprine = consumedItem.is(FungiDelightTags.COPRINE_FOOD);
+            if (isCoprine) event.getEntity().addEffect(
+                    new MobEffectInstance(ModEffects.WEAK_STOMACH.get(), 1200, 0));
         }
     }
     private static void triggerReaction(LivingEntity entity) {
