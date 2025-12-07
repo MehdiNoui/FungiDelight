@@ -60,6 +60,7 @@
 
   "effect.fungidelight.burrowing": "Burrowing",
   "effect.fungidelight.weak_stomach": "Weak Stomach",
+  "tooltip.fungidelight.weak_stomach_desc": "Causes Weak Stomach",
 
   "tooltip.fungidelight.burrowing_desc": "+%s Mining Speed on soil",
 

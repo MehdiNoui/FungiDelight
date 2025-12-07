@@ -3,6 +3,7 @@ package net.mehdinoui.fungidelight.client.event;
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.FungiDelight;
 import net.mehdinoui.fungidelight.common.registry.ModEffects;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -19,7 +20,17 @@ import java.util.List;
         value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModTooltipEvents {
     @SubscribeEvent
-    public static void onTooltip(ItemTooltipEvent event) {
+    public static void onCoprineItemTooltip(ItemTooltipEvent event) {
+        if (!Configuration.ENABLE_WEAK_STOMACH_EFFECT.get()) return;
+        ItemStack stack = event.getItemStack();
+        if (stack.is(FungiDelightTags.COPRINE_FOOD)) {
+            event.getToolTip().add(Component.translatable("tooltip.fungidelight.weak_stomach_desc")
+                    .withStyle(ChatFormatting.RED));
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPotionTooltip(ItemTooltipEvent event) {
         if (!Configuration.ENABLE_BURROWING_EFFECT.get()) return;
         ItemStack stack = event.getItemStack();
         if (stack.getItem() != Items.POTION && stack.getItem() != Items.SPLASH_POTION
