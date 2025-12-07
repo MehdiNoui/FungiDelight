@@ -18,7 +18,7 @@ public class ModFoods {
     public static final FoodProperties COOKED_CLEANED_CAPS = new FoodProperties.Builder().
             nutrition(4).saturationMod(0.4f).build();
     public static final FoodProperties TRUFFLE = new FoodProperties.Builder().
-            nutrition(4).saturationMod(0.4f)
+            nutrition(6).saturationMod(0.6f)
             .effect(() -> new MobEffectInstance(net.mehdinoui.fungidelight.common.registry.ModEffects.WEAK_STOMACH.get(),BRIEF_DURATION , 0), 1.0F)
             .build();
     public static final FoodProperties TRUFFLE_SLICE = new FoodProperties.Builder().
