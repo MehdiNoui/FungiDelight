@@ -81,4 +81,6 @@ public class FungiDelightTags {
     // Reference Key for alcohol items (done in json)
     public static final TagKey<Item> ALCOHOL =
             forgeItemTag("alcohol");
+    public static final TagKey<Item> COPRINE_FOOD =
+            fungiDelightItemTag("coprine_food");
 }
