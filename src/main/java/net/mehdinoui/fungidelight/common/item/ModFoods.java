@@ -22,7 +22,7 @@ public class ModFoods {
 
     // SALADS
     public static final FoodProperties INKY_CAPS_SALAD = new FoodProperties.Builder().
-            nutrition(8).saturationMod(076f)
+            nutrition(8).saturationMod(0.75f)
             .effect(() -> new MobEffectInstance(MobEffects.LUCK,BRIEF_DURATION , 0), 1.0F).build();
 
     // SNACKS & BAKED GOODS
