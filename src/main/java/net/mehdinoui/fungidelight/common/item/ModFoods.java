@@ -13,11 +13,9 @@ public class ModFoods {
     // BASIC INGREDIENTS & COMPONENTS
     public static final FoodProperties CLEANED_CAPS = new FoodProperties.Builder().
             nutrition(4).saturationMod(0.4f)
-            .effect(() -> new MobEffectInstance(net.mehdinoui.fungidelight.common.registry.ModEffects.WEAK_STOMACH.get(),BRIEF_DURATION , 0), 1.0F)
             .build();
     public static final FoodProperties TRUFFLE = new FoodProperties.Builder().
             nutrition(6).saturationMod(0.6f)
-            .effect(() -> new MobEffectInstance(net.mehdinoui.fungidelight.common.registry.ModEffects.WEAK_STOMACH.get(),BRIEF_DURATION , 0), 1.0F)
             .build();
     public static final FoodProperties TRUFFLE_SLICE = new FoodProperties.Builder().
             nutrition(2).saturationMod(0.2f).build();
@@ -25,7 +23,6 @@ public class ModFoods {
     // SALADS
     public static final FoodProperties INKY_CAPS_SALAD = new FoodProperties.Builder().
             nutrition(8).saturationMod(076f)
-            .effect(() -> new MobEffectInstance(net.mehdinoui.fungidelight.common.registry.ModEffects.WEAK_STOMACH.get(),BRIEF_DURATION , 0), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.LUCK,BRIEF_DURATION , 0), 1.0F).build();
 
     // SNACKS & BAKED GOODS
@@ -42,9 +39,8 @@ public class ModFoods {
 
 
     // PLATED MEALS
-    public static final FoodProperties INKY_CAP_SCRAMBLED_EGGS = new FoodProperties.Builder(). // Note: DANDELION_AND_EGGS in output.accept.
+    public static final FoodProperties INKY_CAP_SCRAMBLED_EGGS = new FoodProperties.Builder().
             nutrition(10).saturationMod(0.9f)
-            .effect(() -> new MobEffectInstance(net.mehdinoui.fungidelight.common.registry.ModEffects.WEAK_STOMACH.get(),MEDIUM_DURATION , 0), 1.0F)
             .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), MEDIUM_DURATION, 0), 1.0F)
             .build();
     public static final FoodProperties TRUFFLE_PASTA = new FoodProperties.Builder().
