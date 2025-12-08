@@ -23,7 +23,7 @@ public class ModTooltipEvents {
     public static void onCoprineItemTooltip(ItemTooltipEvent event) {
         if (!Configuration.ENABLE_WEAK_STOMACH_EFFECT.get()) return;
         ItemStack stack = event.getItemStack();
-        if (stack.is(FungiDelightTags.COPRINE_FOOD)) {
+        if (stack.is(FungiDelightTags.ALCOHOL_REACTION)) {
             event.getToolTip().add(Component.translatable("tooltip.fungidelight.weak_stomach_desc")
                     .withStyle(ChatFormatting.RED));
         }

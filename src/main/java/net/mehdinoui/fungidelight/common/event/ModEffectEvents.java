@@ -48,7 +48,7 @@ public class ModEffectEvents {
                     && Configuration.WEAK_STOMACH_ITEMS.get().contains(itemID.toString());
             if (isPotion || isAlcohol || isConfigured) triggerReaction(event.getEntity());
         } else {
-            boolean isCoprine = consumedItem.is(FungiDelightTags.COPRINE_FOOD);
+            boolean isCoprine = consumedItem.is(FungiDelightTags.ALCOHOL_REACTION);
             if (isCoprine) event.getEntity().addEffect(
                     new MobEffectInstance(ModEffects.WEAK_STOMACH.get(), 1200, 0));
         }
