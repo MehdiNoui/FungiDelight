@@ -1,6 +1,6 @@
 package net.mehdinoui.fungidelight.mixin;
 
-import net.mehdinoui.fungidelight.common.registry.ModItems;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.world.entity.animal.sniffer.SnifferAi;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.crafting.CompoundIngredient;
@@ -17,7 +17,7 @@ public class SnifferAiMixin {
     private static void addTruffleToSnifferTemptation(CallbackInfoReturnable<Ingredient> cir) {
         cir.setReturnValue(new CompoundIngredient(
                 Arrays.asList(cir.getReturnValue(),
-                        Ingredient.of(ModItems.TRUFFLE.get()))) {}
+                        Ingredient.of(FungiDelightTags.TRUFFLES))) {}
         );
     }
 }

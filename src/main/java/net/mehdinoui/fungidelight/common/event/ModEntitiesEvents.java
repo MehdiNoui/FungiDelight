@@ -6,6 +6,7 @@ import net.mehdinoui.fungidelight.common.entity.ai.pig.TruffleDiggingGoal;
 import net.mehdinoui.fungidelight.common.entity.ai.wolf.DogTruffleHuntGoal;
 import net.mehdinoui.fungidelight.common.registry.ModItems;
 import net.mehdinoui.fungidelight.common.registry.ModSoundEvents;
+import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -36,7 +37,7 @@ public class ModEntitiesEvents {
         if (!Configuration.ENABLE_WOLF_HUNT_TRUFFLE.get()) return;
         if (event.getTarget() instanceof Wolf wolf && wolf.isTame()) {
             ItemStack itemStack = event.getItemStack();
-            if (itemStack.is(ModItems.TRUFFLE.get())) {
+            if (itemStack.is(FungiDelightTags.TRUFFLES)) {
                 if (!event.getLevel().isClientSide) {
                     long endTime = event.getLevel().getGameTime() + HUNT_DURATION;
                     wolf.getPersistentData().putLong(HUNTING_TAG, endTime);
@@ -63,7 +64,7 @@ public class ModEntitiesEvents {
         if (!Configuration.ENABLE_PIG_FOODS.get()) return;
         if (!Configuration.ENABLE_PIG_EXTRA_BABY.get()) return;
         if (event.getTarget() instanceof Pig pig && pig.isFood(event.getItemStack())) {
-            if (event.getItemStack().is(ModItems.TRUFFLE.get())) {
+            if (event.getItemStack().is(FungiDelightTags.TRUFFLES)) {
                 if (pig.getAge() == 0 && !pig.isInLove()) {
                     pig.getPersistentData().putBoolean("FD_TruffleBred", true);
                     if (!event.getLevel().isClientSide) {
