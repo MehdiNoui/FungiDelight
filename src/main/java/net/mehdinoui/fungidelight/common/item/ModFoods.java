@@ -37,7 +37,6 @@ public class ModFoods {
             nutrition(7).saturationMod(0.5f)
             .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED,200 , 0), 1.0F).build();
 
-
     // PLATED MEALS
     public static final FoodProperties INKY_CAP_SCRAMBLED_EGGS = new FoodProperties.Builder().
             nutrition(10).saturationMod(0.9f)
@@ -64,5 +63,4 @@ public class ModFoods {
             nutrition(14).saturationMod(0.75f)
             .effect(()-> new MobEffectInstance(ModEffects.NOURISHMENT.get(), LONG_DURATION,0),1.0f)
             .build();
-
 }

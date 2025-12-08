@@ -20,8 +20,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
 
-import static vectorwing.farmersdelight.common.FoodValues.MEDIUM_DURATION;
-
 @Mod.EventBusSubscriber(modid = FungiDelight.MOD_ID)
 public class ModEffectEvents {
     @SubscribeEvent

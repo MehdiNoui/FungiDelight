@@ -2,7 +2,6 @@ package net.mehdinoui.fungidelight.common.entity.ai.wolf;
 
 import net.mehdinoui.fungidelight.Configuration;
 import net.mehdinoui.fungidelight.common.event.ModEntitiesEvents;
-import net.mehdinoui.fungidelight.common.registry.ModBlocks;
 import net.mehdinoui.fungidelight.common.registry.ModSoundEvents;
 import net.mehdinoui.fungidelight.common.tag.FungiDelightTags;
 import net.minecraft.core.BlockPos;
