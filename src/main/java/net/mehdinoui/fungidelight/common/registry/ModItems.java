@@ -11,6 +11,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.MushroomColonyItem;
 
 public class ModItems {
@@ -50,27 +51,27 @@ public class ModItems {
             () -> new Item(basicItem().food(ModFoods.TRUFFLE_SLICE)));
     // --- Salads ---
     public static final RegistryObject<Item> INKY_CAPS_SALAD = ITEMS.register("inky_caps_salad",
-            () -> new Item(bowlFoodItem(ModFoods.INKY_CAPS_SALAD)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.INKY_CAPS_SALAD)));
     // --- Soups & Desserts ---
     public static final RegistryObject<Item> CREAMY_MOREL_SOUP = ITEMS.register("creamy_morel_soup",
-            () -> new Item(bowlFoodItem(ModFoods.CREAMY_MOREL_SOUP)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.CREAMY_MOREL_SOUP)));
     public static final RegistryObject<Item> TRUFFLE_ICE_CREAM = ITEMS.register("truffle_ice_cream",
-            () -> new Item(bowlFoodItem(ModFoods.TRUFFLE_ICE_CREAM)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.TRUFFLE_ICE_CREAM)));
     // --- Plated Meals ---
     public static final RegistryObject<Item> INKY_CAP_SCRAMBLED_EGGS = ITEMS.register("inky_cap_scrambled_eggs",
-            () -> new Item(bowlFoodItem(ModFoods.INKY_CAP_SCRAMBLED_EGGS)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.INKY_CAP_SCRAMBLED_EGGS)));
     public static final RegistryObject<Item> TRUFFLE_PASTA = ITEMS.register("truffle_pasta",
-            () -> new Item(bowlFoodItem(ModFoods.TRUFFLE_PASTA)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.TRUFFLE_PASTA)));
     public static final RegistryObject<Item> STUFFED_MORELS = ITEMS.register("stuffed_morels",
-            () -> new Item(bowlFoodItem(ModFoods.STUFFED_MORELS)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.STUFFED_MORELS)));
     public static final RegistryObject<Item> STEAK_WITH_MUSHROOMS = ITEMS.register("steak_with_mushrooms",
-            () -> new Item(bowlFoodItem(ModFoods.STEAK_WITH_MUSHROOMS)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.STEAK_WITH_MUSHROOMS)));
     public static final RegistryObject<Item> MUTTON_CHOPS_WITH_TRUFFLE = ITEMS.register("mutton_chops_with_truffle",
-            () -> new Item(bowlFoodItem(ModFoods.MUTTON_CHOPS_WITH_TRUFFLE)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.MUTTON_CHOPS_WITH_TRUFFLE)));
     public static final RegistryObject<Item> RABBIT_WITH_MORELS = ITEMS.register("rabbit_with_morels",
-            () -> new Item(bowlFoodItem(ModFoods.RABBIT_WITH_MORELS)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.RABBIT_WITH_MORELS)));
     public static final RegistryObject<Item> PORK_MARSALA_WITH_MUSHROOMS = ITEMS.register("pork_marsala_with_mushrooms",
-            () -> new Item(bowlFoodItem(ModFoods.PORK_MARSALA_WITH_MUSHROOMS)));
+            () -> new ConsumableItem(bowlFoodItem(ModFoods.PORK_MARSALA_WITH_MUSHROOMS)));
 
     // ---- Block Items ----
     // --- Crates ---
