@@ -148,6 +148,9 @@ public class TruffleDiggingGoal extends Goal {
             cooldown--;
             return false;
         }
+        // Chunk check
+        if (!this.level.shouldTickBlocksAt(this.pig.blockPosition())) return false;
+        // Pig state Check
         if (!this.pig.onGround() || this.pig.isBaby()) return false;
         // Rarity Check
         if (this.level.random.nextFloat() >= Configuration.CHANCE_PIG_DIGGING.get().floatValue()) {
