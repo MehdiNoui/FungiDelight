@@ -32,7 +32,7 @@ public class ModCuttingRecipes {
                 .build(consumer, new ResourceLocation(FungiDelight.MOD_ID, "cutting/cleaned_cap"));
         // Truffle
         CuttingBoardRecipeBuilder.cuttingRecipe(
-                        Ingredient.of(FungiDelightTags.TRUFFLES),
+                        Ingredient.of(ModItems.TRUFFLE.get()),
                         Ingredient.of(ForgeTags.TOOLS_KNIVES), ModItems.TRUFFLE_SLICE.get(),3)
                 .build(consumer, new ResourceLocation(FungiDelight.MOD_ID, "cutting/truffle_slice"));
     }
