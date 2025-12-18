@@ -25,7 +25,7 @@ public class ModCuttingRecipes {
                 .build(consumer, new ResourceLocation(FungiDelight.MOD_ID, "cutting/morel_mushroom_colony"));
         // Inky cap
         CuttingBoardRecipeBuilder.cuttingRecipe(
-                Ingredient.of(FungiDelightTags.INKY_CAPS),
+                Ingredient.of(ModItems.INKY_CAP_MUSHROOM.get()),
                 Ingredient.of(ForgeTags.TOOLS_KNIVES), ModItems.CLEANED_CAPS.get(),1)
                 .addResult(Items.INK_SAC, 1)
                 .addResultWithChance(Items.INK_SAC, 0.2F, 1)
