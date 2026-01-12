@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "tag": "forge:mushrooms/inky_cap"
+      "item": "fungidelight:inky_cap_mushroom"
     }
   ],
   "result": [
