@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_mushroom",
+  "spawners": {
+    "type": "fungidelight:morel_cow",
+    "maxCount": 4,
+    "minCount": 3,
+    "weight": 8
+  }
+}

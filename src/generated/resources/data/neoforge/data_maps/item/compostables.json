@@ -1,0 +1,46 @@
+{
+  "values": {
+    "fungidelight:cleaned_cap": {
+      "chance": 0.5
+    },
+    "fungidelight:cooked_cleaned_cap": {
+      "chance": 0.65
+    },
+    "fungidelight:inky_cap_mushroom": {
+      "chance": 0.65
+    },
+    "fungidelight:inky_cap_mushroom_block": {
+      "chance": 0.85
+    },
+    "fungidelight:inky_cap_mushroom_colony": {
+      "chance": 1.0
+    },
+    "fungidelight:inky_cap_mushroom_edge": {
+      "chance": 0.85
+    },
+    "fungidelight:inky_cap_mushroom_stem": {
+      "chance": 0.65
+    },
+    "fungidelight:inky_goo_veil": {
+      "chance": 0.65
+    },
+    "fungidelight:morel_mushroom": {
+      "chance": 0.65
+    },
+    "fungidelight:morel_mushroom_block": {
+      "chance": 0.85
+    },
+    "fungidelight:morel_mushroom_colony": {
+      "chance": 1.0
+    },
+    "fungidelight:morel_mushroom_stem": {
+      "chance": 0.65
+    },
+    "fungidelight:truffle": {
+      "chance": 1.0
+    },
+    "fungidelight:truffle_slice": {
+      "chance": 0.5
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#c:is_mushroom",
+  "features": "fungidelight:huge_inky_cap_mushroom",
+  "step": "vegetal_decoration"
+}

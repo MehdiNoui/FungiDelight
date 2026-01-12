@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "fungidelight:inky_cap_mushroom_colony"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 5,
+        "id": "fungidelight:inky_cap_mushroom"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

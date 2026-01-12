@@ -1,0 +1,19 @@
+// 1.21.1	2026-01-12T14:21:16.2264558	Tags for minecraft:block mod id fungidelight
+fd75eca2f547003c4655b12e1d357af622a5448e data/c/tags/block/storage_blocks.json
+007b81a50e88b26d2cc886d0f471fec35a842e8d data/c/tags/block/storage_blocks/brown_mushroom.json
+7630474c1beac26cc5976dcec5180d5627896ab6 data/c/tags/block/storage_blocks/inky_cap.json
+732e02c84d09eae6cb7df098c57ead4f6acc5fb4 data/c/tags/block/storage_blocks/morel.json
+b8b10b4d143431100ee354ea1f09cd860cce2e13 data/c/tags/block/storage_blocks/red_mushroom.json
+9935db2bf7519a41e846b0f364833fc282aed391 data/c/tags/block/storage_blocks/truffle.json
+18f64671b8c31614d622f17f8f91380969d9e7c1 data/farmersdelight/tags/block/compost_activators.json
+5649ecb1560e0c8174d23ca19db5e4e499f2f2db data/farmersdelight/tags/block/unaffected_by_rich_soil.json
+06d5a94c70fd2831c8494fb3d837bee2757106f4 data/fungidelight/tags/block/inky_cap_placeable_on.json
+2774db5142f3ba751bc747c5eb0af10be81e4d7f data/fungidelight/tags/block/morel_placeable_on.json
+b3664c1a9dac950afbc9d525abf16e6aa6ce0344 data/minecraft/tags/block/dirt.json
+6736c35fb9ea1e7e1157ddfa97ebebcd15fd22a7 data/minecraft/tags/block/enchantment_power_transmitter.json
+37da9329817d42bd9b596112af28bc110d568f9d data/minecraft/tags/block/enderman_holdable.json
+6c338e0d481f89fa7868a2bf0cf30492f9931206 data/minecraft/tags/block/mineable/axe.json
+b3664c1a9dac950afbc9d525abf16e6aa6ce0344 data/minecraft/tags/block/mineable/shovel.json
+6736c35fb9ea1e7e1157ddfa97ebebcd15fd22a7 data/minecraft/tags/block/replaceable.json
+6736c35fb9ea1e7e1157ddfa97ebebcd15fd22a7 data/minecraft/tags/block/replaceable_by_trees.json
+270ff74ca73e1e98d80a045b6c99bd9d0cd5b49e data/minecraft/tags/block/sword_efficient.json

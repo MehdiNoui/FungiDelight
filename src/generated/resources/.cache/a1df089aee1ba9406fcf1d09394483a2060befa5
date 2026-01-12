@@ -1,0 +1,17 @@
+// 1.21.1	2026-01-12T14:21:16.2238583	Tags for minecraft:item mod id fungidelight
+8884d6f2312a13a301c98075c574f28a498ba937 data/c/tags/item/foods.json
+ff63e662865523f769f4ead47b970f38a3897ca7 data/c/tags/item/foods/soup.json
+06b041c7a1d03d762e3e5e12cd781d37877c4f5b data/c/tags/item/mushrooms.json
+f61e603f753a95a2270190ce3b1d26bcb59cbb4b data/c/tags/item/mushrooms/inky_cap.json
+d965290f04db6e29e66176002a4a7199db99d471 data/c/tags/item/mushrooms/morel.json
+04a58b0cfed326d4b456b7108857660d329cda3d data/c/tags/item/mushrooms/truffle.json
+fd75eca2f547003c4655b12e1d357af622a5448e data/c/tags/item/storage_blocks.json
+007b81a50e88b26d2cc886d0f471fec35a842e8d data/c/tags/item/storage_blocks/brown_mushroom.json
+7630474c1beac26cc5976dcec5180d5627896ab6 data/c/tags/item/storage_blocks/inky_cap.json
+732e02c84d09eae6cb7df098c57ead4f6acc5fb4 data/c/tags/item/storage_blocks/morel.json
+b8b10b4d143431100ee354ea1f09cd860cce2e13 data/c/tags/item/storage_blocks/red_mushroom.json
+9935db2bf7519a41e846b0f364833fc282aed391 data/c/tags/item/storage_blocks/truffle.json
+ee2491c4955183d52882ac08d9cfa2cd998e102b data/farmersdelight/tags/item/meals.json
+84f1dd48b073d8a97df5d5685f48e46830a6bf41 data/minecraft/tags/item/piglin_food.json
+7354aa5005741e9ea64bcda99cb249597210524a data/minecraft/tags/item/pig_food.json
+84f1dd48b073d8a97df5d5685f48e46830a6bf41 data/minecraft/tags/item/sniffer_food.json

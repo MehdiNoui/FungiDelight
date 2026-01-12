@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#fungidelight:has_truffles",
+  "features": "fungidelight:truffle_dirt_ore",
+  "step": "underground_ores"
+}

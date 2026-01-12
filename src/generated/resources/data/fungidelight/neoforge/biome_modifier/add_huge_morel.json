@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#c:is_mushroom",
+  "features": "fungidelight:huge_morel_mushroom",
+  "step": "vegetal_decoration"
+}

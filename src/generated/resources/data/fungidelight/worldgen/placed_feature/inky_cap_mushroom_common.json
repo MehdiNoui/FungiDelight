@@ -1,0 +1,19 @@
+{
+  "feature": "fungidelight:patch_inky_cap_mushroom",
+  "placement": [
+    {
+      "type": "fungidelight:configurable_rarity_filter",
+      "config_key": "inky_cap_common"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

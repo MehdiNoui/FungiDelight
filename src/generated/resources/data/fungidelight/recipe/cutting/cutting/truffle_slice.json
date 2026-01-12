@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "fungidelight:truffle"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 3,
+        "id": "fungidelight:truffle_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}
