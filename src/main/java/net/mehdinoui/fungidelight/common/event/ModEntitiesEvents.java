@@ -164,18 +164,4 @@ public class ModEntitiesEvents {
             }
         }
     }
-
-    @SubscribeEvent
-    public static void onLootTableLoad(LootTableLoadEvent event) {
-        if (!Configuration.ENABLE_SNIFFER_TRUFFLE.get()) return;
-        if (event.getName().equals(BuiltInLootTables.SNIFFER_DIGGING)) {
-            event.getTable().addPool(
-                    LootPool.lootPool()
-                            .setRolls(ConstantValue.exactly(1))
-                            .add(LootItem.lootTableItem(ModItems.TRUFFLE.get()))
-                            .when(LootItemRandomChanceCondition.randomChance(0.05f))
-                            .build()
-            );
-        }
-    }
 }
