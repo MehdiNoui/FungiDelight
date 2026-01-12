@@ -191,7 +191,7 @@ public class ModPlacedFeatures {
                         configured.getOrThrow(ModConfiguredFeatures.TRUFFLE_DIRT_ORE_KEY),
                         List.of(
                                 new ConfigurableRarityFilter("truffle_dirt_ore"),
-                                CountPlacement.of(1),
+                                CountPlacement.of(5),
                                 InSquarePlacement.spread(),
                                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                                 BiomeFilter.biome()
